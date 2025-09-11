@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  zenoh:
+    image: eclipse/zenoh
+    restart: unless-stopped
+    ports:
+      - 7447:7447/tcp
+      - 7446:7446/udp
+      - 8000:8000
+    volumes:
+      - ./zenoh_docker:/root/.zenoh
+    environment:
+      - RUST_LOG=debug
+    networks:
+      - zenoh-nw
+
+volumes:
+  duckdb-volume:
+
+networks:
+  zenoh-nw:
+    driver: bridge
