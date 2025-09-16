@@ -173,48 +173,75 @@
         }
       }
     },
-    "app_proto": {
-      "type": "string",
-      "description": "Application layer protocol of the flow",
-      "suricata": {
-        "keywords": [
-          "app-layer-protocol"
-        ]
-      }
-    },
-    "frame": {
+    "rdp": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "complete": {
-          "type": "boolean"
+        "channels": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
         },
-        "direction": {
+        "client": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "build": {
+              "type": "string"
+            },
+            "capabilities": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "client_name": {
+              "type": "string"
+            },
+            "color_depth": {
+              "type": "integer"
+            },
+            "desktop_height": {
+              "type": "integer"
+            },
+            "desktop_width": {
+              "type": "integer"
+            },
+            "function_keys": {
+              "type": "integer"
+            },
+            "id": {
+              "type": "string"
+            },
+            "keyboard_layout": {
+              "type": "string"
+            },
+            "keyboard_type": {
+              "type": "string"
+            },
+            "product_id": {
+              "type": "integer"
+            },
+            "version": {
+              "type": "string"
+            }
+          }
+        },
+        "cookie": {
           "type": "string"
         },
-        "id": {
-          "type": "integer"
-        },
-        "length": {
-          "type": "integer"
-        },
-        "payload": {
+        "event_type": {
           "type": "string"
-        },
-        "payload_printable": {
-          "type": "string"
-        },
-        "stream_offset": {
-          "type": "integer"
         },
         "tx_id": {
           "type": "integer"
-        },
-        "type": {
-          "type": "string"
         }
-      }
+      },
+      "optional": true
     }
   },
-  "description": "FRAME事件Schema，基于Suricata源码分析"
+  "description": "RDP事件Schema，基于Suricata源码分析"
 }

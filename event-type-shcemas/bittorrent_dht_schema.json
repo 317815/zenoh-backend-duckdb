@@ -173,48 +173,127 @@
         }
       }
     },
-    "app_proto": {
-      "type": "string",
-      "description": "Application layer protocol of the flow",
-      "suricata": {
-        "keywords": [
-          "app-layer-protocol"
-        ]
-      }
-    },
-    "frame": {
+    "bittorrent_dht": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "complete": {
-          "type": "boolean"
-        },
-        "direction": {
+        "client_version": {
           "type": "string"
         },
-        "id": {
-          "type": "integer"
+        "error": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "msg": {
+              "type": "string"
+            },
+            "num": {
+              "type": "integer"
+            }
+          }
         },
-        "length": {
-          "type": "integer"
+        "request": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "implied_port": {
+              "type": "integer"
+            },
+            "info_hash": {
+              "type": "string"
+            },
+            "port": {
+              "type": "integer"
+            },
+            "target": {
+              "type": "string"
+            },
+            "token": {
+              "type": "string"
+            }
+          }
         },
-        "payload": {
+        "request_type": {
           "type": "string"
         },
-        "payload_printable": {
-          "type": "string"
+        "response": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "nodes": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "id",
+                    "ip",
+                    "port"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "ip": {
+                      "type": "string"
+                    },
+                    "port": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            },
+            "nodes6": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "ip",
+                  "port"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "ip": {
+                    "type": "string"
+                  },
+                  "port": {
+                    "type": "number"
+                  }
+                }
+              }
+            },
+            "token": {
+              "type": "string"
+            },
+            "values": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
         },
-        "stream_offset": {
-          "type": "integer"
-        },
-        "tx_id": {
-          "type": "integer"
-        },
-        "type": {
+        "transaction_id": {
           "type": "string"
         }
       }
     }
   },
-  "description": "FRAME事件Schema，基于Suricata源码分析"
+  "description": "BITTORRENT_DHT事件Schema，基于Suricata源码分析"
 }

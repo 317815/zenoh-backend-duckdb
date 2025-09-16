@@ -13,17 +13,36 @@
     "flow_id": {
       "type": "integer"
     },
+    "parent_id": {
+      "type": "integer"
+    },
+    "sensor_id": {
+      "type": "integer"
+    },
+    "in_iface": {
+      "type": "string"
+    },
+    "pcap_cnt": {
+      "type": "integer"
+    },
     "event_type": {
       "type": "string"
+    },
+    "vlan": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "number"
+      }
     },
     "src_ip": {
       "type": "string"
     },
-    "dest_ip": {
-      "type": "string"
-    },
     "src_port": {
       "type": "integer"
+    },
+    "dest_ip": {
+      "type": "string"
     },
     "dest_port": {
       "type": "integer"
@@ -34,19 +53,6 @@
     "ip_v": {
       "type": "integer",
       "description": "IP version of the packet or flow"
-    },
-    "in_iface": {
-      "type": "string"
-    },
-    "vlan": {
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "type": "number"
-      }
-    },
-    "pcap_cnt": {
-      "type": "integer"
     },
     "icmp_type": {
       "type": "integer"
@@ -166,6 +172,120 @@
           }
         }
       }
+    },
+    "rpc": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "auth_type": {
+          "type": "string"
+        },
+        "creds": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "gid": {
+              "type": "integer"
+            },
+            "machine_name": {
+              "type": "string"
+            },
+            "uid": {
+              "type": "integer"
+            }
+          },
+          "optional": true
+        },
+        "status": {
+          "type": "string"
+        },
+        "xid": {
+          "type": "integer"
+        }
+      },
+      "optional": true
+    },
+    "nfs": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "file_tx": {
+          "type": "boolean"
+        },
+        "filename": {
+          "type": "string"
+        },
+        "hhash": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "procedure": {
+          "type": "string"
+        },
+        "read": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "chunks": {
+              "type": "integer"
+            },
+            "first": {
+              "type": "boolean"
+            },
+            "last": {
+              "type": "boolean"
+            },
+            "last_xid": {
+              "type": "integer"
+            }
+          },
+          "optional": true
+        },
+        "rename": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "from": {
+              "type": "string"
+            },
+            "to": {
+              "type": "string"
+            }
+          },
+          "optional": true
+        },
+        "status": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "version": {
+          "type": "integer"
+        },
+        "write": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "chunks": {
+              "type": "integer"
+            },
+            "first": {
+              "type": "boolean"
+            },
+            "last": {
+              "type": "boolean"
+            },
+            "last_xid": {
+              "type": "integer"
+            }
+          },
+          "optional": true
+        }
+      },
+      "optional": true
     }
   },
   "description": "NFS事件Schema，基于Suricata源码分析"

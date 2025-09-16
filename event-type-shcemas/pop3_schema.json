@@ -173,48 +173,52 @@
         }
       }
     },
-    "app_proto": {
-      "type": "string",
-      "description": "Application layer protocol of the flow",
-      "suricata": {
-        "keywords": [
-          "app-layer-protocol"
-        ]
-      }
-    },
-    "frame": {
+    "pop3": {
       "type": "object",
-      "additionalProperties": false,
       "properties": {
-        "complete": {
-          "type": "boolean"
+        "request": {
+          "type": "object",
+          "properties": {
+            "args": {
+              "type": "array",
+              "description": "Pop3 request arguments",
+              "items": {
+                "type": "string"
+              }
+            },
+            "command": {
+              "type": "string",
+              "description": "A pop3 command, for example `USER` or `STAT`"
+            }
+          },
+          "optional": true
         },
-        "direction": {
-          "type": "string"
-        },
-        "id": {
-          "type": "integer"
-        },
-        "length": {
-          "type": "integer"
-        },
-        "payload": {
-          "type": "string"
-        },
-        "payload_printable": {
-          "type": "string"
-        },
-        "stream_offset": {
-          "type": "integer"
-        },
-        "tx_id": {
-          "type": "integer"
-        },
-        "type": {
-          "type": "string"
+        "response": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "header": {
+              "type": "string",
+              "description": "First line of response"
+            },
+            "status": {
+              "type": "string"
+            },
+            "success": {
+              "type": "boolean",
+              "description": "Response indicated positive status ie +OK"
+            }
+          },
+          "optional": true
         }
-      }
+      },
+      "optional": true
     }
   },
-  "description": "FRAME事件Schema，基于Suricata源码分析"
+  "description": "POP3事件Schema，基于Suricata源码分析"
 }

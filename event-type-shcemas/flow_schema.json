@@ -13,17 +13,30 @@
     "flow_id": {
       "type": "integer"
     },
+    "parent_id": {
+      "type": "integer"
+    },
+    "in_iface": {
+      "type": "string"
+    },
     "event_type": {
       "type": "string"
+    },
+    "vlan": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "number"
+      }
     },
     "src_ip": {
       "type": "string"
     },
-    "dest_ip": {
-      "type": "string"
-    },
     "src_port": {
       "type": "integer"
+    },
+    "dest_ip": {
+      "type": "string"
     },
     "dest_port": {
       "type": "integer"
@@ -35,27 +48,63 @@
       "type": "integer",
       "description": "IP version of the packet or flow"
     },
-    "in_iface": {
-      "type": "string"
-    },
-    "vlan": {
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "type": "number"
-      }
-    },
-    "pcap_cnt": {
-      "type": "integer"
-    },
     "icmp_type": {
       "type": "integer"
     },
     "icmp_code": {
       "type": "integer"
     },
-    "pkt_src": {
-      "type": "string"
+    "response_icmp_type": {
+      "type": "integer"
+    },
+    "response_icmp_code": {
+      "type": "integer"
+    },
+    "spi": {
+      "type": "integer"
+    },
+    "app_proto": {
+      "type": "string",
+      "description": "Application layer protocol of the flow",
+      "suricata": {
+        "keywords": [
+          "app-layer-protocol"
+        ]
+      }
+    },
+    "app_proto_ts": {
+      "type": "string",
+      "description": "Application layer protocol detected to server in case of mismatch",
+      "suricata": {
+        "keywords": [
+          "app-layer-protocol"
+        ]
+      }
+    },
+    "app_proto_tc": {
+      "type": "string",
+      "description": "Application layer protocol detected to client in case of mismatch",
+      "suricata": {
+        "keywords": [
+          "app-layer-protocol"
+        ]
+      }
+    },
+    "app_proto_orig": {
+      "type": "string",
+      "description": "Original application layer protocol of the flow after a protocol change",
+      "suricata": {
+        "keywords": [
+          "app-layer-protocol"
+        ]
+      }
+    },
+    "app_proto_expected": {
+      "type": "string",
+      "description": "In case of a protocol change to a specific protocol, and this specific protocol was not recognised, this field will have the value of the expected protocol",
+      "suricata": {
+        "$comment": "TODO implement keyword app-layer-protocol option"
+      }
     },
     "flow": {
       "type": "object",
@@ -187,49 +236,6 @@
         "wrong_thread": {
           "type": "boolean"
         }
-      }
-    },
-    "app_proto": {
-      "type": "string",
-      "description": "Application layer protocol of the flow",
-      "suricata": {
-        "keywords": [
-          "app-layer-protocol"
-        ]
-      }
-    },
-    "app_proto_ts": {
-      "type": "string",
-      "description": "Application layer protocol detected to server in case of mismatch",
-      "suricata": {
-        "keywords": [
-          "app-layer-protocol"
-        ]
-      }
-    },
-    "app_proto_tc": {
-      "type": "string",
-      "description": "Application layer protocol detected to client in case of mismatch",
-      "suricata": {
-        "keywords": [
-          "app-layer-protocol"
-        ]
-      }
-    },
-    "app_proto_orig": {
-      "type": "string",
-      "description": "Original application layer protocol of the flow after a protocol change",
-      "suricata": {
-        "keywords": [
-          "app-layer-protocol"
-        ]
-      }
-    },
-    "app_proto_expected": {
-      "type": "string",
-      "description": "In case of a protocol change to a specific protocol, and this specific protocol was not recognised, this field will have the value of the expected protocol",
-      "suricata": {
-        "$comment": "TODO implement keyword app-layer-protocol option"
       }
     },
     "suricata_version": {

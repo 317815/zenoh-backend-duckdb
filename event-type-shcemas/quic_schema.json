@@ -173,48 +173,111 @@
         }
       }
     },
-    "app_proto": {
-      "type": "string",
-      "description": "Application layer protocol of the flow",
-      "suricata": {
-        "keywords": [
-          "app-layer-protocol"
-        ]
-      }
-    },
-    "frame": {
+    "quic": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "complete": {
-          "type": "boolean"
+        "cyu": {
+          "type": "array",
+          "description": "JA3-like fingerprint for versions of QUIC before standardization",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "hash": {
+                "type": "string",
+                "description": "CYU hash hex representation"
+              },
+              "string": {
+                "type": "string",
+                "description": "CYU hash string representation"
+              }
+            }
+          }
         },
-        "direction": {
-          "type": "string"
+        "extensions": {
+          "type": "array",
+          "description": "list of extensions in hello",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Human-friendly name of the extension"
+              },
+              "type": {
+                "type": "integer",
+                "description": "Integer identifier of the extension"
+              },
+              "values": {
+                "type": "array",
+                "description": "Extension values",
+                "minItems": 1,
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
         },
-        "id": {
-          "type": "integer"
+        "ja3": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "hash": {
+              "type": "string",
+              "description": "JA3 hex representation"
+            },
+            "string": {
+              "type": "string",
+              "description": "JA3 string representation"
+            }
+          },
+          "description": "JA3 from client, as in TLS",
+          "optional": true
         },
-        "length": {
-          "type": "integer"
+        "ja3s": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "hash": {
+              "type": "string",
+              "description": "JA3s hex representation"
+            },
+            "string": {
+              "type": "string",
+              "description": "JA3s string representation"
+            }
+          },
+          "description": "JA3 from server, as in TLS",
+          "optional": true
         },
-        "payload": {
-          "type": "string"
+        "ja4": {
+          "type": "string",
+          "suricata": {
+            "keywords": [
+              "ja4.hash"
+            ]
+          }
         },
-        "payload_printable": {
-          "type": "string"
+        "sni": {
+          "type": "string",
+          "description": "Server Name Indication"
         },
-        "stream_offset": {
-          "type": "integer"
+        "ua": {
+          "type": "string",
+          "description": "User Agent for versions of QUIC before standardization"
         },
-        "tx_id": {
-          "type": "integer"
-        },
-        "type": {
-          "type": "string"
+        "version": {
+          "type": "string",
+          "description": "Quic protocol version"
         }
-      }
+      },
+      "optional": true
     }
   },
-  "description": "FRAME事件Schema，基于Suricata源码分析"
+  "description": "QUIC事件Schema，基于Suricata源码分析"
 }

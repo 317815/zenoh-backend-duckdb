@@ -57,6 +57,362 @@
     "pkt_src": {
       "type": "string"
     },
+    "dnp3": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "application": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "complete": {
+              "type": "boolean"
+            },
+            "control": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "con": {
+                  "type": "boolean"
+                },
+                "fin": {
+                  "type": "boolean"
+                },
+                "fir": {
+                  "type": "boolean"
+                },
+                "sequence": {
+                  "type": "integer"
+                },
+                "uns": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "function_code": {
+              "type": "integer"
+            },
+            "objects": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "count": {
+                    "type": "integer"
+                  },
+                  "group": {
+                    "type": "integer"
+                  },
+                  "points": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "object"
+                    }
+                  },
+                  "prefix_code": {
+                    "type": "integer"
+                  },
+                  "qualifier": {
+                    "type": "integer"
+                  },
+                  "range_code": {
+                    "type": "integer"
+                  },
+                  "start": {
+                    "type": "integer"
+                  },
+                  "stop": {
+                    "type": "integer"
+                  },
+                  "variation": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "control": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dir": {
+              "type": "boolean"
+            },
+            "fcb": {
+              "type": "boolean"
+            },
+            "fcv": {
+              "type": "boolean"
+            },
+            "function_code": {
+              "type": "integer"
+            },
+            "pri": {
+              "type": "boolean"
+            }
+          }
+        },
+        "dst": {
+          "type": "integer"
+        },
+        "iin": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "indicators": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "request": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "application": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "complete": {
+                  "type": "boolean"
+                },
+                "control": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "con": {
+                      "type": "boolean"
+                    },
+                    "fin": {
+                      "type": "boolean"
+                    },
+                    "fir": {
+                      "type": "boolean"
+                    },
+                    "sequence": {
+                      "type": "integer"
+                    },
+                    "uns": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "function_code": {
+                  "type": "integer"
+                },
+                "objects": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "count": {
+                        "type": "integer"
+                      },
+                      "group": {
+                        "type": "integer"
+                      },
+                      "points": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                          "type": "object"
+                        }
+                      },
+                      "prefix_code": {
+                        "type": "integer"
+                      },
+                      "qualifier": {
+                        "type": "integer"
+                      },
+                      "range_code": {
+                        "type": "integer"
+                      },
+                      "start": {
+                        "type": "integer"
+                      },
+                      "stop": {
+                        "type": "integer"
+                      },
+                      "variation": {
+                        "type": "integer"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "control": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "dir": {
+                  "type": "boolean"
+                },
+                "fcb": {
+                  "type": "boolean"
+                },
+                "fcv": {
+                  "type": "boolean"
+                },
+                "function_code": {
+                  "type": "integer"
+                },
+                "pri": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "dst": {
+              "type": "integer"
+            },
+            "src": {
+              "type": "integer"
+            },
+            "type": {
+              "type": "string"
+            }
+          }
+        },
+        "response": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "application": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "complete": {
+                  "type": "boolean"
+                },
+                "control": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "con": {
+                      "type": "boolean"
+                    },
+                    "fin": {
+                      "type": "boolean"
+                    },
+                    "fir": {
+                      "type": "boolean"
+                    },
+                    "sequence": {
+                      "type": "integer"
+                    },
+                    "uns": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "function_code": {
+                  "type": "integer"
+                },
+                "objects": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "count": {
+                        "type": "integer"
+                      },
+                      "group": {
+                        "type": "integer"
+                      },
+                      "points": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                          "type": "object"
+                        }
+                      },
+                      "prefix_code": {
+                        "type": "integer"
+                      },
+                      "qualifier": {
+                        "type": "integer"
+                      },
+                      "range_code": {
+                        "type": "integer"
+                      },
+                      "start": {
+                        "type": "integer"
+                      },
+                      "stop": {
+                        "type": "integer"
+                      },
+                      "variation": {
+                        "type": "integer"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "control": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "dir": {
+                  "type": "boolean"
+                },
+                "fcb": {
+                  "type": "boolean"
+                },
+                "fcv": {
+                  "type": "boolean"
+                },
+                "function_code": {
+                  "type": "integer"
+                },
+                "pri": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "dst": {
+              "type": "integer"
+            },
+            "iin": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "indicators": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "src": {
+              "type": "integer"
+            },
+            "type": {
+              "type": "string"
+            }
+          }
+        },
+        "src": {
+          "type": "integer"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
     "suricata_version": {
       "type": "string"
     },

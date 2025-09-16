@@ -173,48 +173,108 @@
         }
       }
     },
-    "app_proto": {
-      "type": "string",
-      "description": "Application layer protocol of the flow",
-      "suricata": {
-        "keywords": [
-          "app-layer-protocol"
-        ]
-      }
+    "tx_id": {
+      "type": "integer"
     },
-    "frame": {
+    "smtp": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "complete": {
+        "helo": {
+          "type": "string"
+        },
+        "mail_from": {
+          "type": "string"
+        },
+        "rcpt_to": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "optional": true
+    },
+    "email": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "attachment": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          },
+          "suricata": {
+            "keywords": [
+              "file.name"
+            ]
+          }
+        },
+        "body_md5": {
+          "type": "string"
+        },
+        "cc": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "date": {
+          "type": "string"
+        },
+        "from": {
+          "type": "string"
+        },
+        "has_exe_url": {
           "type": "boolean"
         },
-        "direction": {
+        "has_ipv4_url": {
+          "type": "boolean"
+        },
+        "has_ipv6_url": {
+          "type": "boolean"
+        },
+        "message_id": {
           "type": "string"
         },
-        "id": {
-          "type": "integer"
+        "received": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
         },
-        "length": {
-          "type": "integer"
-        },
-        "payload": {
+        "status": {
           "type": "string"
         },
-        "payload_printable": {
+        "subject": {
           "type": "string"
         },
-        "stream_offset": {
-          "type": "integer"
+        "subject_md5": {
+          "type": "string"
         },
-        "tx_id": {
-          "type": "integer"
+        "to": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
         },
-        "type": {
+        "url": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "x_mailer": {
           "type": "string"
         }
       }
     }
   },
-  "description": "FRAME事件Schema，基于Suricata源码分析"
+  "description": "SMTP事件Schema，基于Suricata源码分析"
 }

@@ -13,17 +13,36 @@
     "flow_id": {
       "type": "integer"
     },
+    "parent_id": {
+      "type": "integer"
+    },
+    "sensor_id": {
+      "type": "integer"
+    },
+    "in_iface": {
+      "type": "string"
+    },
+    "pcap_cnt": {
+      "type": "integer"
+    },
     "event_type": {
       "type": "string"
+    },
+    "vlan": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "number"
+      }
     },
     "src_ip": {
       "type": "string"
     },
-    "dest_ip": {
-      "type": "string"
-    },
     "src_port": {
       "type": "integer"
+    },
+    "dest_ip": {
+      "type": "string"
     },
     "dest_port": {
       "type": "integer"
@@ -34,19 +53,6 @@
     "ip_v": {
       "type": "integer",
       "description": "IP version of the packet or flow"
-    },
-    "in_iface": {
-      "type": "string"
-    },
-    "vlan": {
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "type": "number"
-      }
-    },
-    "pcap_cnt": {
-      "type": "integer"
     },
     "icmp_type": {
       "type": "integer"
@@ -166,6 +172,383 @@
           }
         }
       }
+    },
+    "mqtt": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "connack": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dup": {
+              "type": "boolean"
+            },
+            "properties": {
+              "type": "object"
+            },
+            "qos": {
+              "type": "integer"
+            },
+            "retain": {
+              "type": "boolean"
+            },
+            "return_code": {
+              "type": "integer"
+            },
+            "session_present": {
+              "type": "boolean"
+            }
+          }
+        },
+        "connect": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "client_id": {
+              "type": "string"
+            },
+            "dup": {
+              "type": "boolean"
+            },
+            "flags": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "clean_session": {
+                  "type": "boolean"
+                },
+                "password": {
+                  "type": "boolean"
+                },
+                "username": {
+                  "type": "boolean"
+                },
+                "will": {
+                  "type": "boolean"
+                },
+                "will_retain": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "password": {
+              "type": "string"
+            },
+            "properties": {
+              "type": "object"
+            },
+            "protocol_string": {
+              "type": "string"
+            },
+            "protocol_version": {
+              "type": "integer"
+            },
+            "qos": {
+              "type": "integer"
+            },
+            "retain": {
+              "type": "boolean"
+            },
+            "username": {
+              "type": "string"
+            },
+            "will": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "properties": {
+                  "type": "object"
+                },
+                "topic": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "disconnect": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dup": {
+              "type": "boolean"
+            },
+            "properties": {
+              "type": "object"
+            },
+            "qos": {
+              "type": "integer"
+            },
+            "reason_code": {
+              "type": "integer"
+            },
+            "retain": {
+              "type": "boolean"
+            }
+          }
+        },
+        "pingreq": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dup": {
+              "type": "boolean"
+            },
+            "qos": {
+              "type": "integer"
+            },
+            "retain": {
+              "type": "boolean"
+            }
+          }
+        },
+        "pingresp": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dup": {
+              "type": "boolean"
+            },
+            "qos": {
+              "type": "integer"
+            },
+            "retain": {
+              "type": "boolean"
+            }
+          }
+        },
+        "puback": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dup": {
+              "type": "boolean"
+            },
+            "message_id": {
+              "type": "integer"
+            },
+            "qos": {
+              "type": "integer"
+            },
+            "reason_code": {
+              "type": "integer"
+            },
+            "retain": {
+              "type": "boolean"
+            }
+          }
+        },
+        "pubcomp": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dup": {
+              "type": "boolean"
+            },
+            "message_id": {
+              "type": "integer"
+            },
+            "qos": {
+              "type": "integer"
+            },
+            "reason_code": {
+              "type": "integer"
+            },
+            "retain": {
+              "type": "boolean"
+            }
+          }
+        },
+        "publish": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dup": {
+              "type": "boolean"
+            },
+            "message": {
+              "type": "string"
+            },
+            "message_id": {
+              "type": "integer"
+            },
+            "properties": {
+              "type": "object"
+            },
+            "qos": {
+              "type": "integer"
+            },
+            "retain": {
+              "type": "boolean"
+            },
+            "skipped_length": {
+              "type": "integer"
+            },
+            "topic": {
+              "type": "string"
+            },
+            "truncated": {
+              "type": "boolean"
+            }
+          }
+        },
+        "pubrec": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dup": {
+              "type": "boolean"
+            },
+            "message_id": {
+              "type": "integer"
+            },
+            "qos": {
+              "type": "integer"
+            },
+            "reason_code": {
+              "type": "integer"
+            },
+            "retain": {
+              "type": "boolean"
+            }
+          }
+        },
+        "pubrel": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dup": {
+              "type": "boolean"
+            },
+            "message_id": {
+              "type": "integer"
+            },
+            "qos": {
+              "type": "integer"
+            },
+            "reason_code": {
+              "type": "integer"
+            },
+            "retain": {
+              "type": "boolean"
+            }
+          }
+        },
+        "suback": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dup": {
+              "type": "boolean"
+            },
+            "message_id": {
+              "type": "integer"
+            },
+            "qos": {
+              "type": "integer"
+            },
+            "qos_granted": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "integer"
+              }
+            },
+            "retain": {
+              "type": "boolean"
+            }
+          }
+        },
+        "subscribe": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dup": {
+              "type": "boolean"
+            },
+            "message_id": {
+              "type": "integer"
+            },
+            "qos": {
+              "type": "integer"
+            },
+            "retain": {
+              "type": "boolean"
+            },
+            "topics": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "qos": {
+                    "type": "integer"
+                  },
+                  "topic": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "unsuback": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dup": {
+              "type": "boolean"
+            },
+            "message_id": {
+              "type": "integer"
+            },
+            "qos": {
+              "type": "integer"
+            },
+            "reason_codes": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "integer"
+              }
+            },
+            "retain": {
+              "type": "boolean"
+            }
+          }
+        },
+        "unsubscribe": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dup": {
+              "type": "boolean"
+            },
+            "message_id": {
+              "type": "integer"
+            },
+            "qos": {
+              "type": "integer"
+            },
+            "retain": {
+              "type": "boolean"
+            },
+            "topics": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "optional": true
     }
   },
   "description": "MQTT事件Schema，基于Suricata源码分析"

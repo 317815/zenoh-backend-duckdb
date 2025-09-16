@@ -173,205 +173,184 @@
         }
       }
     },
-    "ike": {
+    "modbus": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "alg_auth": {
-          "type": "string"
-        },
-        "alg_auth_raw": {
+        "id": {
           "type": "integer"
         },
-        "alg_dh": {
-          "type": "string"
-        },
-        "alg_dh_raw": {
-          "type": "integer"
-        },
-        "alg_enc": {
-          "type": "string"
-        },
-        "alg_enc_raw": {
-          "type": "integer"
-        },
-        "alg_hash": {
-          "type": "string"
-        },
-        "alg_hash_raw": {
-          "type": "integer"
-        },
-        "exchange_type": {
-          "type": "integer"
-        },
-        "exchange_type_verbose": {
-          "type": "string"
-        },
-        "ikev1": {
+        "request": {
           "type": "object",
           "additionalProperties": false,
           "properties": {
-            "client": {
+            "access_type": {
+              "type": "string"
+            },
+            "category": {
+              "type": "string"
+            },
+            "data": {
+              "type": "string"
+            },
+            "diagnostic": {
               "type": "object",
               "additionalProperties": false,
               "properties": {
-                "key_exchange_payload": {
+                "code": {
                   "type": "string"
                 },
-                "key_exchange_payload_length": {
-                  "type": "integer"
-                },
-                "nonce_payload": {
+                "data": {
                   "type": "string"
                 },
-                "nonce_payload_length": {
-                  "type": "integer"
-                },
-                "proposals": {
-                  "type": "array",
-                  "minItems": 1,
-                  "items": {
-                    "type": "object",
-                    "additionalProperties": false,
-                    "properties": {
-                      "alg_auth": {
-                        "type": "string"
-                      },
-                      "alg_auth_raw": {
-                        "type": "integer"
-                      },
-                      "alg_dh": {
-                        "type": "string"
-                      },
-                      "alg_dh_raw": {
-                        "type": "integer"
-                      },
-                      "alg_enc": {
-                        "type": "string"
-                      },
-                      "alg_enc_raw": {
-                        "type": "integer"
-                      },
-                      "alg_hash": {
-                        "type": "string"
-                      },
-                      "alg_hash_raw": {
-                        "type": "integer"
-                      },
-                      "sa_key_length": {
-                        "type": "string"
-                      },
-                      "sa_key_length_raw": {
-                        "type": "integer"
-                      },
-                      "sa_life_duration": {
-                        "type": "string"
-                      },
-                      "sa_life_duration_raw": {
-                        "type": "integer"
-                      },
-                      "sa_life_type": {
-                        "type": "string"
-                      },
-                      "sa_life_type_raw": {
-                        "type": "integer"
-                      }
-                    }
-                  }
-                }
-              }
-            },
-            "doi": {
-              "type": "integer"
-            },
-            "encrypted_payloads": {
-              "type": "boolean"
-            },
-            "server": {
-              "type": "object",
-              "additionalProperties": false,
-              "properties": {
-                "key_exchange_payload": {
-                  "type": "string"
-                },
-                "key_exchange_payload_length": {
-                  "type": "integer"
-                },
-                "nonce_payload": {
-                  "type": "string"
-                },
-                "nonce_payload_length": {
+                "raw": {
                   "type": "integer"
                 }
               }
             },
-            "vendor_ids": {
-              "type": "array",
-              "minItems": 1,
-              "items": {
-                "type": "string"
+            "error_flags": {
+              "type": "string"
+            },
+            "function_code": {
+              "type": "string"
+            },
+            "function_raw": {
+              "type": "integer"
+            },
+            "mei": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "data": {
+                  "type": "string"
+                },
+                "raw": {
+                  "type": "integer"
+                }
+              }
+            },
+            "protocol_id": {
+              "type": "integer"
+            },
+            "read": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "address": {
+                  "type": "integer"
+                },
+                "quantity": {
+                  "type": "integer"
+                }
+              }
+            },
+            "transaction_id": {
+              "type": "integer"
+            },
+            "unit_id": {
+              "type": "integer"
+            },
+            "write": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "address": {
+                  "type": "integer"
+                },
+                "data": {
+                  "type": "integer"
+                }
               }
             }
           }
         },
-        "ikev2": {
+        "response": {
           "type": "object",
           "additionalProperties": false,
           "properties": {
-            "errors": {
+            "access_type": {
+              "type": "string"
+            },
+            "category": {
+              "type": "string"
+            },
+            "data": {
+              "type": "string"
+            },
+            "diagnostic": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "data": {
+                  "type": "string"
+                },
+                "raw": {
+                  "type": "integer"
+                }
+              }
+            },
+            "error_flags": {
+              "type": "string"
+            },
+            "exception": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "raw": {
+                  "type": "integer"
+                }
+              }
+            },
+            "function_code": {
+              "type": "string"
+            },
+            "function_raw": {
               "type": "integer"
             },
-            "notify": {
-              "type": "array"
+            "protocol_id": {
+              "type": "integer"
+            },
+            "read": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "data": {
+                  "type": "string"
+                }
+              }
+            },
+            "transaction_id": {
+              "type": "integer"
+            },
+            "unit_id": {
+              "type": "integer"
+            },
+            "write": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "address": {
+                  "type": "integer"
+                },
+                "data": {
+                  "type": "integer"
+                }
+              }
             }
           }
-        },
-        "init_spi": {
-          "type": "string"
-        },
-        "message_id": {
-          "type": "integer"
-        },
-        "payload": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "type": "string"
-          }
-        },
-        "resp_spi": {
-          "type": "string"
-        },
-        "role": {
-          "type": "string"
-        },
-        "sa_key_length": {
-          "type": "string"
-        },
-        "sa_key_length_raw": {
-          "type": "integer"
-        },
-        "sa_life_duration": {
-          "type": "string"
-        },
-        "sa_life_duration_raw": {
-          "type": "integer"
-        },
-        "sa_life_type": {
-          "type": "string"
-        },
-        "sa_life_type_raw": {
-          "type": "integer"
-        },
-        "version_major": {
-          "type": "integer"
-        },
-        "version_minor": {
-          "type": "integer"
         }
       },
       "optional": true
     }
   },
-  "description": "IKE事件Schema，基于Suricata源码分析"
+  "description": "MODBUS事件Schema，基于Suricata源码分析"
 }

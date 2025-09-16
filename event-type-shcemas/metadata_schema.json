@@ -173,48 +173,26 @@
         }
       }
     },
-    "app_proto": {
-      "type": "string",
-      "description": "Application layer protocol of the flow",
-      "suricata": {
-        "keywords": [
-          "app-layer-protocol"
-        ]
-      }
-    },
-    "frame": {
+    "traffic": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "complete": {
-          "type": "boolean"
-        },
-        "direction": {
-          "type": "string"
-        },
         "id": {
-          "type": "integer"
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
         },
-        "length": {
-          "type": "integer"
-        },
-        "payload": {
-          "type": "string"
-        },
-        "payload_printable": {
-          "type": "string"
-        },
-        "stream_offset": {
-          "type": "integer"
-        },
-        "tx_id": {
-          "type": "integer"
-        },
-        "type": {
-          "type": "string"
+        "label": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
         }
       }
     }
   },
-  "description": "FRAME事件Schema，基于Suricata源码分析"
+  "description": "METADATA事件Schema，基于Suricata源码分析"
 }

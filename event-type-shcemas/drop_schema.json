@@ -13,17 +13,36 @@
     "flow_id": {
       "type": "integer"
     },
+    "parent_id": {
+      "type": "integer"
+    },
+    "sensor_id": {
+      "type": "integer"
+    },
+    "in_iface": {
+      "type": "string"
+    },
+    "pcap_cnt": {
+      "type": "integer"
+    },
     "event_type": {
       "type": "string"
+    },
+    "vlan": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "number"
+      }
     },
     "src_ip": {
       "type": "string"
     },
-    "dest_ip": {
-      "type": "string"
-    },
     "src_port": {
       "type": "integer"
+    },
+    "dest_ip": {
+      "type": "string"
     },
     "dest_port": {
       "type": "integer"
@@ -34,19 +53,6 @@
     "ip_v": {
       "type": "integer",
       "description": "IP version of the packet or flow"
-    },
-    "in_iface": {
-      "type": "string"
-    },
-    "vlan": {
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "type": "number"
-      }
-    },
-    "pcap_cnt": {
-      "type": "integer"
     },
     "icmp_type": {
       "type": "integer"
@@ -164,6 +170,277 @@
           "items": {
             "type": "string"
           }
+        }
+      }
+    },
+    "direction": {
+      "type": "string"
+    },
+    "drop": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ack": {
+          "type": "boolean"
+        },
+        "fin": {
+          "type": "boolean"
+        },
+        "flowlbl": {
+          "type": "integer"
+        },
+        "hoplimit": {
+          "type": "integer"
+        },
+        "icmp_id": {
+          "type": "integer"
+        },
+        "icmp_seq": {
+          "type": "integer"
+        },
+        "ipid": {
+          "type": "integer"
+        },
+        "len": {
+          "type": "integer"
+        },
+        "psh": {
+          "type": "boolean"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "rst": {
+          "type": "boolean"
+        },
+        "syn": {
+          "type": "boolean"
+        },
+        "tc": {
+          "type": "integer"
+        },
+        "tcpack": {
+          "type": "integer"
+        },
+        "tcpres": {
+          "type": "integer"
+        },
+        "tcpseq": {
+          "type": "integer"
+        },
+        "tcpurgp": {
+          "type": "integer"
+        },
+        "tcpwin": {
+          "type": "integer"
+        },
+        "tos": {
+          "type": "integer"
+        },
+        "ttl": {
+          "type": "integer"
+        },
+        "udplen": {
+          "type": "integer"
+        },
+        "urg": {
+          "type": "boolean"
+        },
+        "verdict": {
+          "$ref": "#/$defs/verdict_type"
+        }
+      },
+      "suricata": {
+        "keywords": false
+      }
+    },
+    "verdict": {
+      "$ref": "#/$defs/verdict_type"
+    },
+    "tx_id": {
+      "type": "integer"
+    },
+    "tx_guessed": {
+      "type": "boolean",
+      "description": "The signature that triggered this alert didn't tie to a transaction, so the transaction (and metadata) logged is a forced estimation and may not be the one you expect"
+    },
+    "alert": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "context": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "Extra context data created by keywords such as dataset with JSON"
+        },
+        "gid": {
+          "type": "integer"
+        },
+        "metadata": {
+          "type": "object",
+          "properties": {
+            "affected_product": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "attack_target": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "created_at": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "deployment": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "former_category": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "malware_family": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "policy": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "signature_severity": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "tag": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "updated_at": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "references": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "rev": {
+          "type": "integer"
+        },
+        "rule": {
+          "type": "string"
+        },
+        "severity": {
+          "type": "integer"
+        },
+        "signature": {
+          "type": "string"
+        },
+        "signature_id": {
+          "type": "integer"
+        },
+        "source": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "ip": {
+              "type": "string"
+            },
+            "port": {
+              "type": "integer"
+            }
+          }
+        },
+        "target": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "ip": {
+              "type": "string"
+            },
+            "port": {
+              "type": "integer"
+            }
+          }
+        },
+        "xff": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "verdict_type": {
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string"
+        },
+        "reject": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "oneOf": [
+              {
+                "enum": [
+                  "icmp-prohib",
+                  "tcp-reset"
+                ]
+              }
+            ]
+          }
+        },
+        "reject-target": {
+          "type": "string",
+          "oneOf": [
+            {
+              "enum": [
+                "to_client",
+                "to_server",
+                "both"
+              ]
+            }
+          ]
         }
       }
     }

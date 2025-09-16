@@ -13,36 +13,17 @@
     "flow_id": {
       "type": "integer"
     },
-    "parent_id": {
-      "type": "integer"
-    },
-    "sensor_id": {
-      "type": "integer"
-    },
-    "in_iface": {
-      "type": "string"
-    },
-    "pcap_cnt": {
-      "type": "integer"
-    },
     "event_type": {
       "type": "string"
-    },
-    "vlan": {
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "type": "number"
-      }
     },
     "src_ip": {
       "type": "string"
     },
-    "src_port": {
-      "type": "integer"
-    },
     "dest_ip": {
       "type": "string"
+    },
+    "src_port": {
+      "type": "integer"
     },
     "dest_port": {
       "type": "integer"
@@ -53,6 +34,19 @@
     "ip_v": {
       "type": "integer",
       "description": "IP version of the packet or flow"
+    },
+    "in_iface": {
+      "type": "string"
+    },
+    "vlan": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "number"
+      }
+    },
+    "pcap_cnt": {
+      "type": "integer"
     },
     "icmp_type": {
       "type": "integer"
@@ -172,49 +166,7 @@
           }
         }
       }
-    },
-    "app_proto": {
-      "type": "string",
-      "description": "Application layer protocol of the flow",
-      "suricata": {
-        "keywords": [
-          "app-layer-protocol"
-        ]
-      }
-    },
-    "frame": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "complete": {
-          "type": "boolean"
-        },
-        "direction": {
-          "type": "string"
-        },
-        "id": {
-          "type": "integer"
-        },
-        "length": {
-          "type": "integer"
-        },
-        "payload": {
-          "type": "string"
-        },
-        "payload_printable": {
-          "type": "string"
-        },
-        "stream_offset": {
-          "type": "integer"
-        },
-        "tx_id": {
-          "type": "integer"
-        },
-        "type": {
-          "type": "string"
-        }
-      }
     }
   },
-  "description": "FRAME事件Schema，基于Suricata源码分析"
+  "description": "BITTORRENT-DHT事件Schema，基于Suricata源码分析"
 }

@@ -6,113 +6,34 @@
     "timestamp"
   ],
   "properties": {
-    "suricata_version": {
-      "type": "string"
-    },
-    "host": {
+    "timestamp": {
       "type": "string",
-      "$comment": "May change to sensor_name in the future, or become user configurable: https://redmine.openinfosecfoundation.org/issues/4919",
-      "description": "the sensor-name, if configured"
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d+[+\\-]\\d+$"
     },
-    "pcap_filename": {
+    "log_level": {
       "type": "string"
     },
-    "metadata": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "entropy": {
-          "type": "object",
-          "suricata": {
-            "keywords": [
-              "entropy"
-            ]
-          }
-        },
-        "flowbits": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "type": "string"
-          },
-          "suricata": {
-            "keywords": [
-              "flowbits"
-            ]
-          }
-        },
-        "flowints": {
-          "type": "object",
-          "suricata": {
-            "keywords": [
-              "flowint"
-            ]
-          }
-        },
-        "flowvars": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "type": "object",
-            "properties": {
-              "gid": {
-                "type": "string"
-              },
-              "key": {
-                "type": "string"
-              },
-              "value": {
-                "type": "string"
-              }
-            }
-          }
-        },
-        "pktvars": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "type": "object",
-            "additionalProperties": true,
-            "properties": {
-              "uid": {
-                "type": "string"
-              },
-              "username": {
-                "type": "string"
-              }
-            }
-          }
-        }
-      },
-      "optional": true
+    "event_type": {
+      "type": "string"
     },
-    "ether": {
+    "engine": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "dest_mac": {
+        "error": {
           "type": "string"
         },
-        "dest_macs": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "type": "string"
-          }
+        "error_code": {
+          "type": "integer"
         },
-        "ether_type": {
-          "type": "integer",
-          "description": "Ethernet type value "
-        },
-        "src_mac": {
+        "message": {
           "type": "string"
         },
-        "src_macs": {
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "type": "string"
-          }
+        "module": {
+          "type": "string"
+        },
+        "thread_name": {
+          "type": "string"
         }
       }
     }

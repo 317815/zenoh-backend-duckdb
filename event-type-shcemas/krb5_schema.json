@@ -173,48 +173,95 @@
         }
       }
     },
-    "app_proto": {
-      "type": "string",
-      "description": "Application layer protocol of the flow",
-      "suricata": {
-        "keywords": [
-          "app-layer-protocol"
-        ]
-      }
-    },
-    "frame": {
+    "krb5": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "complete": {
-          "type": "boolean"
+        "cname": {
+          "type": "string",
+          "description": "The client PrincipalName",
+          "suricata": {
+            "keywords": [
+              "krb5.cname"
+            ]
+          }
         },
-        "direction": {
-          "type": "string"
+        "encryption": {
+          "type": "string",
+          "description": "Encryption used (only in AS-REP and TGS-REP)",
+          "suricata": {
+            "$comment": "TODO add keyword"
+          }
         },
-        "id": {
-          "type": "integer"
+        "error_code": {
+          "type": "string",
+          "description": "Error code, if request has failed",
+          "suricata": {
+            "keywords": [
+              "krb5_err_code"
+            ]
+          }
         },
-        "length": {
-          "type": "integer"
+        "failed_request": {
+          "type": "string",
+          "description": "The request type for which the response had an error_code",
+          "suricata": {
+            "$comment": "TODO add keyword"
+          }
         },
-        "payload": {
-          "type": "string"
+        "msg_type": {
+          "type": "string",
+          "description": "The message type: AS-REQ, AS-REP, etc...",
+          "suricata": {
+            "keywords": [
+              "krb5_msg_type"
+            ]
+          }
         },
-        "payload_printable": {
-          "type": "string"
+        "realm": {
+          "type": "string",
+          "description": "The server Realm",
+          "suricata": {
+            "$comment": "TODO add keyword"
+          }
         },
-        "stream_offset": {
-          "type": "integer"
+        "sname": {
+          "type": "string",
+          "description": "The server PrincipalName",
+          "suricata": {
+            "keywords": [
+              "krb5.sname"
+            ]
+          }
         },
-        "tx_id": {
-          "type": "integer"
+        "ticket_encryption": {
+          "type": "string",
+          "description": "Encryption used for ticket",
+          "suricata": {
+            "keywords": [
+              "krb5.ticket_encryption"
+            ]
+          }
         },
-        "type": {
-          "type": "string"
+        "ticket_weak_encryption": {
+          "type": "boolean",
+          "description": "Whether the encryption used for ticket is a weak cipher",
+          "suricata": {
+            "keywords": [
+              "krb5.ticket_encryption"
+            ]
+          }
+        },
+        "weak_encryption": {
+          "type": "boolean",
+          "description": "Whether the encryption used in AS-REP or TGS-REP is a weak cipher",
+          "suricata": {
+            "$comment": "TODO add keyword (rather option for encryption keyword)"
+          }
         }
-      }
+      },
+      "optional": true
     }
   },
-  "description": "FRAME事件Schema，基于Suricata源码分析"
+  "description": "KRB5事件Schema，基于Suricata源码分析"
 }

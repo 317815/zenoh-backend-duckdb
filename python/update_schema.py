@@ -12,101 +12,271 @@ import argparse
 import os
 
 # =============================================================================
-# 事件类型字段定义
+# 多层嵌套函数字段定义 - 支持函数包含函数的架构
 # =============================================================================
 
-# 基础事件头部字段 (来自CreateEveHeader函数)
-CREATE_EVE_HEADER_FIELDS = [
-    "timestamp", "flow_id", "event_type", "src_ip", "dest_ip", 
-    "src_port", "dest_port", "proto", "ip_v", "in_iface", "vlan", 
-    "pcap_cnt", "icmp_type", "icmp_code", "pkt_src"
-]
-
-# 交易ID字段 (来自CreateEveHeaderWithTxId函数)
-CREATE_EVE_HEADER_WITH_TX_ID_FIELDS = ["tx_id"]
-
-# HTTP基础字段 (来自EveHttpLogJSONBasic函数)
-EVE_HTTP_LOG_JSON_BASIC_FIELDS = ["http"]
-
-# HTTP扩展字段 (来自EveHttpLogJSONExtended函数)
-EVE_HTTP_LOG_JSON_EXTENDED_FIELDS = []
-
-# HTTP头部字段 (来自EveHttpLogJSONHeaders函数)
-EVE_HTTP_LOG_JSON_HEADERS_FIELDS = []
-
-# 通用选项字段 (来自EveAddCommonOptions函数)
-EVE_ADD_COMMON_OPTIONS_FIELDS = [
+# 基础函数字段集合
+F_EveAddCommonOptions = [
     "suricata_version", "host", "pcap_filename", "metadata", "ether"
 ]
 
-# Flow对象字段 (来自EveAddFlow函数)
-EVE_ADD_FLOW_FIELDS = ["flow"]
+F_CreateEveFlowId = ["flow_id", "parent_id"]
 
-# 应用协议字段 (来自EveAddAppProto函数)
-EVE_ADD_APP_PROTO_FIELDS = [
-    "app_proto", "app_proto_ts", "app_proto_tc", "app_proto_orig", "app_proto_expected"
+F_CreateEveHeader = [
+    "timestamp",F_CreateEveFlowId, "sensor_id", "in_iface", "pcap_cnt", "event_type",
+    "vlan", "src_ip", "src_port", "dest_ip", "dest_port", "proto", "ip_v",
+    "icmp_type", "icmp_code", "pkt_src",
+    F_EveAddCommonOptions
+]
+F_CreateEveHeaderWithTxId = [F_CreateEveHeader, "tx_id"]
+F_CreateEveHeaderFromFlow = [
+    "timestamp", F_CreateEveFlowId, "in_iface", "event_type",
+     "vlan", "src_ip", "src_port", "dest_ip", "dest_port", "proto", "ip_v",
+     "icmp_type", "icmp_code", "response_icmp_type", "response_icmp_code", "spi"
 ]
 
-# TCP字段 (来自EveFlowLogJSON函数)
-EVE_FLOW_LOG_JSON_FIELDS = ["tcp"]
+F_EvePacket = ["packet", "packet_info"]
+F_EveAddVerdict = ["verdict"]
+F_EveAddMetadata = ["traffic", "metadata"]
+F_SimpleApplayerLogger = ["ftp", "tls", "ssh", "dns", "mdns", "modbus", "enip", "dnp3", "ftp_data", "tftp", "krb5", "quic", "sip", "rfb", "pop3", "mqtt", "pgsql", "websocket", "ldap", "template", "rdp", "bittorrent_dht"]
 
-# 函数字段映射
-FUNCTION_FIELDS = {
-    "CreateEveHeader": CREATE_EVE_HEADER_FIELDS,
-    "CreateEveHeaderWithTxId": CREATE_EVE_HEADER_WITH_TX_ID_FIELDS,
-    "EveHttpLogJSONBasic": EVE_HTTP_LOG_JSON_BASIC_FIELDS,
-    "EveHttpLogJSONExtended": EVE_HTTP_LOG_JSON_EXTENDED_FIELDS,
-    "EveHttpLogJSONHeaders": EVE_HTTP_LOG_JSON_HEADERS_FIELDS,
-    "EveAddCommonOptions": EVE_ADD_COMMON_OPTIONS_FIELDS,
-    "EveAddFlow": EVE_ADD_FLOW_FIELDS,
-    "EveAddAppProto": EVE_ADD_APP_PROTO_FIELDS,
-    "EveFlowLogJSON": EVE_FLOW_LOG_JSON_FIELDS,
-}
 
-# 事件类型函数组合
+# 复合函数字段集合 - 支持多层嵌套包含
+# 基于 SURICATA_EVENT_TYPE_MAPPING.md 中的函数分析
+
+# Flow事件 (output-json-flow.c) - CreateEveHeaderFromFlow + EveFlowLogJSON
+F_EveAddAppProto = ["app_proto", "app_proto_ts", "app_proto_tc", "app_proto_orig", "app_proto_expected"]
+F_EveFlowLogJSON = [F_EveAddAppProto, "flow", F_EveAddCommonOptions, "tcp"]
+F_JsonFlowLogger = [F_CreateEveHeaderFromFlow, F_EveFlowLogJSON]
+
+# =============================================================================
+# 完整事件类型定义 - 每个事件类型一个完整代码块
+# =============================================================================
+
+# ===== NetFlow事件 (output-json-netflow.c) =====
+F_CreateEveHeaderFromNetFlow = [
+    "timestamp", "flow_id", "event_type", "src_ip", "dest_ip", 
+    "src_port", "dest_port", "proto", "in_iface", "vlan", 
+    "icmp_type", "icmp_code", "spi"
+]
+F_NetFlowLogEveToServer = ["app_proto", "netflow"]
+F_NetFlowLogEveToClient = ["app_proto", "netflow"]
+F_JsonNetFlowLogger = [F_CreateEveHeaderFromNetFlow, F_NetFlowLogEveToServer, F_EveAddCommonOptions, 
+                       F_CreateEveHeaderFromNetFlow, F_NetFlowLogEveToClient, F_EveAddCommonOptions]
+
+# ===== HTTP事件 (output-json-http.c) =====
+F_EveHttpLogJSON = ["http"]
+F_JsonHttpLogger = [F_CreateEveHeaderWithTxId, F_EveHttpLogJSON, "xff"]
+
+# ===== TLS事件 (output-json-tls.c) =====
+F_JsonTlsLogger = [F_CreateEveHeader, "tls"]
+
+# ===== DNS事件 (output-json-dns.c) =====
+F_JsonDnsLoggerToServer = [F_CreateEveHeader, "dns"]
+F_JsonDnsLoggerToClient = [F_CreateEveHeader, "dns"]  
+F_SCDnsLogJson = ["dns"]
+F_JsonDnsLogger = [F_JsonDnsLoggerToServer, F_JsonDnsLoggerToClient, F_CreateEveHeader, F_SCDnsLogJson]
+
+# ===== SMTP事件 (output-json-smtp.c) =====
+F_EveEmailLogJson = ["email"]
+F_JsonSmtpLogger = [F_CreateEveHeaderWithTxId, "smtp", F_EveEmailLogJson]
+
+# ===== MQTT事件 (output-json-mqtt.c) =====
+F_SCMqttLoggerLog = ["mqtt"]
+F_JsonMQTTLogger = [F_CreateEveHeader, F_SCMqttLoggerLog]
+
+# ===== NFS事件 (output-json-nfs.c) =====
+F_JsonNFSLogger = [F_CreateEveHeader, "rpc", "nfs"]
+
+# ===== SMB事件 (output-json-smb.c) =====
+F_JsonSMBLogger = [F_CreateEveHeaderWithTxId, "smb"]
+
+# ===== IKE事件 (output-json-ike.c) =====
+F_SCIkeLoggerLog = ["ike"]
+F_JsonIKELogger = [F_CreateEveHeader, F_SCIkeLoggerLog]
+
+# ===== DHCP事件 (output-json-dhcp.c) =====
+F_SCDhcpLoggerLog = ["dhcp"]
+F_JsonDHCPLogger = [F_CreateEveHeader, F_SCDhcpLoggerLog]
+
+# ===== PGSQL事件 (output-json-pgsql.c) =====
+F_SCPgsqlLogger = ["pgsql"]
+F_JsonPgsqlLogger = [F_CreateEveHeader, F_SCPgsqlLogger]
+
+# ===== DCERPC事件 (output-json-dcerpc.c) =====
+F_JsonDCERPCLogger = [F_CreateEveHeader, "dcerpc"]
+
+# ===== MDNS事件 (output-json-mdns.c) =====
+F_SCMdnsLogJson = ["mdns"]
+F_JsonMdnsLogger = [F_CreateEveHeader, F_SCMdnsLogJson]
+
+# ===== 使用JsonGenericLogger的事件类型 (Rust实现) =====
+F_SCHttp2LogJson = ["http2"]  # rust/src/http2/logger.rs:298
+F_SCSshLogJson = ["ssh"]  # rust/src/ssh/logger.rs:83
+F_SCModbusToJson = ["modbus"]  # rust/src/modbus/log.rs:24
+F_SCTftpLogJsonRequest = ["tftp"]  # rust/src/tftp/log.rs:37
+F_EveFTPLogCommand = ["ftp"]  # output-json-ftp.c:49
+F_SCKrb5LogJsonResponse = ["krb5"]  # rust/src/krb/log.rs:77
+F_SCQuicLogJson = ["quic"]  # rust/src/quic/logger.rs:157
+F_SCSipLogJson = ["sip"]  # rust/src/sip/log.rs:60
+F_SCRfbJsonLogger = ["rfb"]  # rust/src/rfb/logger.rs:131
+F_SCWebSocketLoggerLog = ["websocket"]  # rust/src/websocket/logger.rs:51
+F_SCEnipLoggerLog = ["enip"]  # rust/src/enip/logger.rs:1893
+F_SCLdapLoggerLog = ["ldap"]  # rust/src/ldap/logger.rs:355
+F_SCPop3LoggerLog = ["pop3"]  # rust/src/pop3/logger.rs:58
+F_SCRdpToJson = ["rdp"]  # rust/src/rdp/log.rs:27
+F_SCBittorrentDhtLogger = ["bittorrent_dht"]  # rust/src/bittorrent_dht/logger.rs:134
+
+# ===== PacketSubModule事件类型 =====
+
+# ===== Alert事件 (output-json-alert.c) =====
+F_AlertJsonHeader = ["tx_id", "tx_guessed", "alert"]
+F_AlertJsonTunnel = ["tunnel"]
+F_AlertAddFiles = ["files"]
+F_AlertJsonStreamData = ["payload", "payload_length", "payload_printable"]
+F_AlertAddPayload = ["payload", "payload_length", "payload_printable"]
+F_FrameJsonLogOneFrame = ["frame"]
+F_AlertAddFrame = [F_FrameJsonLogOneFrame]
+F_AlertJson = [F_CreateEveHeader, F_AlertJsonHeader, F_AlertJsonTunnel, F_AlertAddFiles, F_EveAddAppProto, "direction", "flow", F_AlertJsonStreamData, F_AlertAddPayload, "stream", F_AlertAddFrame, F_EvePacket, "capture_file", F_EveAddVerdict]
+F_AlertJsonDecoderEvent = [F_CreateEveHeader, F_AlertJsonHeader, F_AlertJsonTunnel, F_EvePacket, "capture_file", F_EveAddVerdict]
+F_JsonAlertLogger = [F_AlertJson, F_AlertJsonDecoderEvent]
+
+# ===== Anomaly事件 (output-json-anomaly.c) =====
+F_AnomalyDecodeEventJson = [F_CreateEveHeader, "anomaly", F_EvePacket]
+F_AnomalyAppLayerDecoderEventJson = [F_CreateEveHeader, F_CreateEveHeaderWithTxId, "anomaly"]
+F_AnomalyJson = [F_AnomalyDecodeEventJson, F_AnomalyAppLayerDecoderEventJson]
+F_JsonAnomalyLogger = [F_AnomalyJson]
+
+# ===== Drop事件 (output-json-drop.c) =====
+F_DropLogJSON = [F_CreateEveHeader, "direction", "drop", F_EveAddVerdict, F_AlertJsonHeader]
+F_JsonDropLogger = [F_DropLogJSON]
+
+# ===== Stream_TCP事件 (output-eve-stream.c) =====
+F_EveStreamLogger = [F_CreateEveHeader, "direction", "stream_tcp", "events", "reason"]
+
+# ===== ARP事件 (output-json-arp.c) =====
+F_JsonArpLogger = [F_CreateEveHeader, "arp"]
+
+# ===== Metadata事件 (output-json-metadata.c) =====
+F_MetadataJson = [F_CreateEveHeader, F_EveAddMetadata]
+F_JsonMetadataLogger = [F_MetadataJson]
+
+# ===== Frame事件 (output-json-frame.c) =====
+F_FrameJsonLogOneFrame = ["frame"]
+F_FrameJsonUdp = [F_CreateEveHeader, "app_proto", F_FrameJsonLogOneFrame]
+F_FrameJson = [F_FrameJsonUdp, F_CreateEveHeader, "app_proto", F_FrameJsonLogOneFrame]
+F_JsonFrameLogger = [F_FrameJson]
+
+# ===== FileSubModule事件类型 =====
+# ===== Fileinfo事件 (output-json-file.c) =====
+F_JsonBuildFileInfoRecord = [F_CreateEveHeader, "http", "smtp", "email", "rpc", "nfs", "smb", F_SimpleApplayerLogger, "app_proto", "fileinfo", "xff"]
+F_FileWriteJsonRecord = [F_JsonBuildFileInfoRecord]
+F_JsonFileLogger = [F_FileWriteJsonRecord]
+
+# ===== StatsSubModule事件类型 =====
+# ===== Stats事件 (output-json-stats.c) =====
+F_JsonStatsLogger = ["timestamp", "event_type", "stats"]
+
+# ===== Engine事件 (util-debug.c) =====
+F_SCLogMessageJSON = ["timestamp", "log_level", "event_type", "engine"]
+
+# ===== Inspectedrules事件 (detect-engine-profile.c) =====
+F_RulesDumpTxMatchArray = [F_CreateEveHeaderWithTxId, "app_proto", "inspectedrules"]
+F_RulesDumpMatchArray = [F_CreateEveHeader, "app_proto", "inspectedrules"]
+
+# 事件类型到函数字段集合的映射 - 支持多层嵌套包含架构
+# 按照Suricata注册顺序: Flow → Tx → Packet → File → Stats
 EVENT_TYPE_FUNCTIONS = {
-    "http": ["CreateEveHeader", "CreateEveHeaderWithTxId", "EveHttpLogJSONBasic", 
-             "EveHttpLogJSONExtended", "EveHttpLogJSONHeaders", "EveAddCommonOptions"],
-    "flow": ["CreateEveHeader", "EveAddFlow", "EveAddAppProto", "EveAddCommonOptions", "EveFlowLogJSON"],
-    "alert": ["CreateEveHeader", "EveAddCommonOptions"],
-    "dns": ["CreateEveHeader", "EveAddCommonOptions"],
-    "tls": ["CreateEveHeader", "EveAddCommonOptions"],
-    "smb": ["CreateEveHeader", "CreateEveHeaderWithTxId", "EveAddCommonOptions"],
-    "pgsql": ["CreateEveHeader", "EveAddCommonOptions"],
-    "mqtt": ["CreateEveHeader", "EveAddCommonOptions"],
-    "nfs": ["CreateEveHeader", "EveAddCommonOptions"],
-    "ike": ["CreateEveHeader", "EveAddCommonOptions"],
-    "dcerpc": ["CreateEveHeader", "EveAddCommonOptions"],
-    "arp": ["CreateEveHeader", "EveAddCommonOptions"],
-    "mdns": ["CreateEveHeader", "EveAddCommonOptions"],
-    "dnp3": ["CreateEveHeader", "EveAddCommonOptions"],
-    "dhcp": ["CreateEveHeader", "EveAddCommonOptions"],
-    "frame": ["CreateEveHeader", "EveAddCommonOptions"],
-    "fileinfo": ["CreateEveHeader", "EveAddCommonOptions"],
-    "drop": ["CreateEveHeader", "EveAddCommonOptions"],
-    "stream_tcp": ["CreateEveHeader", "EveAddCommonOptions"],
-    "inspectedrules": ["CreateEveHeader", "CreateEveHeaderWithTxId", "EveAddCommonOptions"],
-    "netflow": ["EveAddCommonOptions"],
-    "stats": ["EveAddCommonOptions"],
-    "engine": ["EveAddCommonOptions"]
+    # ===== OutputRegisterFlowSubModule (2个) =====
+    "flow": [F_JsonFlowLogger],       # output-json-flow.c:419 (JsonFlowLogger)
+    "netflow": [F_JsonNetFlowLogger], # output-json-netflow.c:282 (JsonNetFlowLogger双记录)
+    
+    # ===== OutputRegisterTxSubModule 系列 (28个) =====
+    
+    # 有独立封装函数的 (12个)
+    "http": [F_JsonHttpLogger],       # output-json-http.c:450
+    "tls": [F_JsonTlsLogger],         # output-json-tls.c:506
+    "dns": [F_JsonDnsLogger],         # output-json-dns.c:407
+    "smtp": [F_JsonSmtpLogger],       # output-json-smtp.c:73
+    "mqtt": [F_JsonMQTTLogger],       # output-json-mqtt.c:68
+    "nfs": [F_JsonNFSLogger],         # output-json-nfs.c:74
+    "smb": [F_JsonSMBLogger],         # output-json-smb.c:62
+    "ike": [F_JsonIKELogger],         # output-json-ike.c:78
+    "dhcp": [F_JsonDHCPLogger],       # output-json-dhcp.c:58
+    "pgsql": [F_JsonPgsqlLogger],     # output-json-pgsql.c:67
+    "dcerpc": [F_JsonDCERPCLogger],   # output-json-dcerpc.c:27
+    "mdns": [F_JsonMdnsLogger],       # output-json-mdns.c:47
+    
+    # 使用JsonGenericLogger的 (16个) - CreateEveHeader + Rust LogTx函数 (JsonGenericLogger:1012)
+    "http2": [F_CreateEveHeader, F_SCHttp2LogJson],     # rust/src/http2/logger.rs:298
+    "ssh": [F_CreateEveHeader, F_SCSshLogJson],         # rust/src/ssh/logger.rs:83
+    "modbus": [F_CreateEveHeader, F_SCModbusToJson],    # rust/src/modbus/log.rs:24
+    "tftp": [F_CreateEveHeader, F_SCTftpLogJsonRequest], # rust/src/tftp/log.rs:37
+    "ftp": [F_CreateEveHeader, F_EveFTPLogCommand],     # output-json-ftp.c:49
+    "krb5": [F_CreateEveHeader, F_SCKrb5LogJsonResponse], # rust/src/krb/log.rs:77
+    "quic": [F_CreateEveHeader, F_SCQuicLogJson],       # rust/src/quic/logger.rs:157
+    "sip": [F_CreateEveHeader, F_SCSipLogJson],         # rust/src/sip/log.rs:60
+    "rfb": [F_CreateEveHeader, F_SCRfbJsonLogger],      # rust/src/rfb/logger.rs:131
+    "websocket": [F_CreateEveHeader, F_SCWebSocketLoggerLog], # rust/src/websocket/logger.rs:51
+    "enip": [F_CreateEveHeader, F_SCEnipLoggerLog],     # rust/src/enip/logger.rs:1893
+    "ldap": [F_CreateEveHeader, F_SCLdapLoggerLog],     # rust/src/ldap/logger.rs:355
+    "pop3": [F_CreateEveHeader, F_SCPop3LoggerLog],     # rust/src/pop3/logger.rs:58
+    "rdp": [F_CreateEveHeader, F_SCRdpToJson],          # rust/src/rdp/log.rs:27
+    "bittorrent_dht": [F_CreateEveHeader, F_SCBittorrentDhtLogger], # rust/src/bittorrent_dht/logger.rs:134
+    
+    # ===== OutputRegisterPacketSubModule (7个) =====
+    "alert": [F_JsonAlertLogger],      # output-json-alert.c:869
+    "anomaly": [F_JsonAnomalyLogger],  # output-json-anomaly.c:282
+    "drop": [F_JsonDropLogger],        # output-json-drop.c:326
+    "stream_tcp": [F_EveStreamLogger], # output-eve-stream.c:300
+    "arp": [F_JsonArpLogger],          # output-json-arp.c:69
+    "metadata": [F_JsonMetadataLogger], # output-json-metadata.c:83
+    "frame": [F_JsonFrameLogger],      # output-json-frame.c:400
+    
+    # ===== OutputRegisterFileSubModule (1个) =====
+    "fileinfo": [F_JsonFileLogger],    # output-json-file.c:230
+    
+    # ===== OutputRegisterStatsSubModule (1个) =====
+    "stats": [F_JsonStatsLogger],      # output-json-stats.c:330 (不使用CreateEveHeader)
+    
+    # ===== 特殊事件类型 (不使用标准注册模式) =====
+    "engine": [F_SCLogMessageJSON],    # util-debug.c:198 (不使用CreateEveHeader)
+    # "inspectedrules": [F_RulesDumpTxMatchArray, F_RulesDumpMatchArray],  # detect-engine-profile.c:34,78 - 暂时注释
 }
+
+def resolve_fields(item):
+    """递归解析字段，支持多层嵌套"""
+    if isinstance(item, str):
+        # 直接字段名
+        return [item]
+    elif isinstance(item, list):
+        # 函数字段集合，递归解析每个元素
+        all_fields = []
+        for sub_item in item:
+            all_fields.extend(resolve_fields(sub_item))
+        return all_fields
+    else:
+        return []
 
 def get_function_fields(function_name):
-    """获取指定函数的字段列表"""
-    return FUNCTION_FIELDS.get(function_name, [])
-
-def get_event_type_functions(event_type):
-    """获取指定事件类型的函数列表"""
-    return EVENT_TYPE_FUNCTIONS.get(event_type, [])
+    """获取指定函数的字段列表 - 通过F_变量名获取"""
+    f_var_name = f"F_{function_name}"
+    if f_var_name in globals():
+        func_fields = globals()[f_var_name]
+        return resolve_fields(func_fields)
+    else:
+        print(f"警告: 未找到函数字段定义 {f_var_name}", file=sys.stderr)
+        return []
 
 def get_event_type_fields(event_type):
     """获取指定事件类型的所有字段列表"""
-    functions = get_event_type_functions(event_type)
-    all_fields = []
+    field_sets = EVENT_TYPE_FUNCTIONS.get(event_type, None)
+    if not field_sets:
+        print(f"警告: 事件类型 {event_type} 没有对应的字段集合", file=sys.stderr)
+        return []
     
-    for function_name in functions:
-        function_fields = get_function_fields(function_name)
-        all_fields.extend(function_fields)
+    # 直接解析字段集合列表
+    all_fields = resolve_fields(field_sets)
     
     # 去重并保持顺序
     seen = set()

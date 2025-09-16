@@ -13,17 +13,36 @@
     "flow_id": {
       "type": "integer"
     },
+    "parent_id": {
+      "type": "integer"
+    },
+    "sensor_id": {
+      "type": "integer"
+    },
+    "in_iface": {
+      "type": "string"
+    },
+    "pcap_cnt": {
+      "type": "integer"
+    },
     "event_type": {
       "type": "string"
+    },
+    "vlan": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "number"
+      }
     },
     "src_ip": {
       "type": "string"
     },
-    "dest_ip": {
-      "type": "string"
-    },
     "src_port": {
       "type": "integer"
+    },
+    "dest_ip": {
+      "type": "string"
     },
     "dest_port": {
       "type": "integer"
@@ -35,19 +54,6 @@
       "type": "integer",
       "description": "IP version of the packet or flow"
     },
-    "in_iface": {
-      "type": "string"
-    },
-    "vlan": {
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "type": "number"
-      }
-    },
-    "pcap_cnt": {
-      "type": "integer"
-    },
     "icmp_type": {
       "type": "integer"
     },
@@ -56,9 +62,6 @@
     },
     "pkt_src": {
       "type": "string"
-    },
-    "tx_id": {
-      "type": "integer"
     },
     "suricata_version": {
       "type": "string"
@@ -169,6 +172,283 @@
           }
         }
       }
+    },
+    "tx_id": {
+      "type": "integer"
+    },
+    "smb": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "access": {
+          "type": "string"
+        },
+        "accessed": {
+          "type": "integer"
+        },
+        "changed": {
+          "type": "integer"
+        },
+        "client_dialects": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "client_guid": {
+          "type": "string"
+        },
+        "command": {
+          "type": "string"
+        },
+        "created": {
+          "type": "integer"
+        },
+        "dcerpc": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "call_id": {
+              "type": "integer"
+            },
+            "interfaces": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "ack_reason": {
+                    "type": "integer"
+                  },
+                  "ack_result": {
+                    "type": "integer"
+                  },
+                  "uuid": {
+                    "type": "string"
+                  },
+                  "version": {
+                    "type": "string"
+                  }
+                },
+                "optional": true
+              }
+            },
+            "opnum": {
+              "type": "integer"
+            },
+            "req": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "frag_cnt": {
+                  "type": "integer"
+                },
+                "stub_data_size": {
+                  "type": "integer"
+                }
+              },
+              "optional": true
+            },
+            "request": {
+              "type": "string"
+            },
+            "res": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "frag_cnt": {
+                  "type": "integer"
+                },
+                "stub_data_size": {
+                  "type": "integer"
+                }
+              },
+              "optional": true
+            },
+            "response": {
+              "type": "string"
+            }
+          },
+          "optional": true
+        },
+        "dialect": {
+          "type": "string"
+        },
+        "directory": {
+          "type": "string"
+        },
+        "disposition": {
+          "type": "string"
+        },
+        "filename": {
+          "type": "string"
+        },
+        "fuid": {
+          "type": "string"
+        },
+        "function": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "kerberos": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "realm": {
+              "type": "string"
+            },
+            "snames": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "optional": true
+        },
+        "level_of_interest": {
+          "type": "string"
+        },
+        "max_read_size": {
+          "type": "integer"
+        },
+        "max_write_size": {
+          "type": "integer"
+        },
+        "modified": {
+          "type": "integer"
+        },
+        "named_pipe": {
+          "type": "string"
+        },
+        "ntlmssp": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "domain": {
+              "type": "string"
+            },
+            "host": {
+              "type": "string"
+            },
+            "user": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string",
+              "optional": true
+            },
+            "warning": {
+              "type": "boolean"
+            }
+          },
+          "optional": true
+        },
+        "rename": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "from": {
+              "type": "string"
+            },
+            "to": {
+              "type": "string"
+            }
+          },
+          "optional": true
+        },
+        "request": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "native_lm": {
+              "type": "string"
+            },
+            "native_os": {
+              "type": "string"
+            }
+          },
+          "optional": true
+        },
+        "request_done": {
+          "type": "boolean"
+        },
+        "response": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "native_lm": {
+              "type": "string"
+            },
+            "native_os": {
+              "type": "string"
+            }
+          },
+          "optional": true
+        },
+        "response_done": {
+          "type": "boolean"
+        },
+        "server_guid": {
+          "type": "string"
+        },
+        "service": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "request": {
+              "type": "string"
+            },
+            "response": {
+              "type": "string"
+            }
+          },
+          "optional": true
+        },
+        "session_id": {
+          "type": "integer"
+        },
+        "set_info": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "class": {
+              "type": "string"
+            },
+            "info_level": {
+              "type": "string"
+            }
+          },
+          "optional": true
+        },
+        "share": {
+          "type": "string"
+        },
+        "share_type": {
+          "type": "string"
+        },
+        "size": {
+          "type": "integer"
+        },
+        "status": {
+          "type": "string"
+        },
+        "status_code": {
+          "type": "string"
+        },
+        "subcmd": {
+          "type": "string"
+        },
+        "tree_id": {
+          "type": "integer"
+        }
+      },
+      "optional": true
     }
   },
   "description": "SMB事件Schema，基于Suricata源码分析"

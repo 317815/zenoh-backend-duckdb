@@ -13,17 +13,36 @@
     "flow_id": {
       "type": "integer"
     },
+    "parent_id": {
+      "type": "integer"
+    },
+    "sensor_id": {
+      "type": "integer"
+    },
+    "in_iface": {
+      "type": "string"
+    },
+    "pcap_cnt": {
+      "type": "integer"
+    },
     "event_type": {
       "type": "string"
+    },
+    "vlan": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "number"
+      }
     },
     "src_ip": {
       "type": "string"
     },
-    "dest_ip": {
-      "type": "string"
-    },
     "src_port": {
       "type": "integer"
+    },
+    "dest_ip": {
+      "type": "string"
     },
     "dest_port": {
       "type": "integer"
@@ -34,19 +53,6 @@
     "ip_v": {
       "type": "integer",
       "description": "IP version of the packet or flow"
-    },
-    "in_iface": {
-      "type": "string"
-    },
-    "vlan": {
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "type": "number"
-      }
-    },
-    "pcap_cnt": {
-      "type": "integer"
     },
     "icmp_type": {
       "type": "integer"
@@ -164,6 +170,211 @@
           "items": {
             "type": "string"
           }
+        }
+      }
+    },
+    "mdns": {
+      "description": "mDNS requests and responses",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "additionals": {
+          "description": "mDNS additional records",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "ptr": {
+                "type": "string",
+                "description": "Value of the requested PTR record",
+                "suricata": {
+                  "keywords": [
+                    "mdns.response.rrname"
+                  ]
+                }
+              },
+              "rrname": {
+                "type": "string",
+                "description": "Resource name of the record being returned",
+                "suricata": {
+                  "keywords": [
+                    "mdns.additionals.rrname",
+                    "mdns.response.rrname"
+                  ]
+                }
+              },
+              "rrname_truncated": {
+                "description": "Name was truncated by Suricata due to length",
+                "type": "boolean",
+                "$comment": "keyword: app-layer-event:mdns.name_too_long (https://redmine.openinfosecfoundation.org/issues/7784)"
+              },
+              "txt": {
+                "type": "array",
+                "description": "Value of the requested TXT record",
+                "minItems": 1,
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "answers": {
+          "description": "mDNS answer records",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "ptr": {
+                "type": "string",
+                "description": "Value of the requested PTR record",
+                "suricata": {
+                  "$comment": "No specific ptr keywords exists",
+                  "keywords": [
+                    "mdns.response.rrname"
+                  ]
+                }
+              },
+              "rrname": {
+                "type": "string",
+                "description": "Resource name of the record being returned",
+                "suricata": {
+                  "keywords": [
+                    "mdns.answers.rrname",
+                    "mdns.response.rrname"
+                  ]
+                }
+              },
+              "rrname_truncated": {
+                "description": "Name was truncated by Suricata due to length",
+                "type": "boolean",
+                "$comment": "keyword: app-layer-event:mdns.name_too_long (https://redmine.openinfosecfoundation.org/issues/7784)"
+              },
+              "txt": {
+                "type": "array",
+                "description": "Value of the requested TXT record",
+                "minItems": 1,
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "authorities": {
+          "description": "mDNS authority records",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "rrname": {
+                "type": "string",
+                "description": "Resource name of the record being returned",
+                "suricata": {
+                  "keywords": [
+                    "mdns.authorities.rrname",
+                    "mdns.response.rrname"
+                  ]
+                }
+              },
+              "rrname_truncated": {
+                "description": "Name was truncated by Suricata due to length",
+                "type": "boolean",
+                "$comment": "keyword: app-layer-event:mdns.name_too_long (https://redmine.openinfosecfoundation.org/issues/7784)"
+              }
+            }
+          }
+        },
+        "flags": {
+          "description": "mDNS message flags",
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "const": "aa",
+                "title": "Authoritative Answer"
+              },
+              {
+                "const": "tc",
+                "title": "Truncated"
+              },
+              {
+                "const": "rd",
+                "title": "Recursion Desired"
+              },
+              {
+                "const": "ra",
+                "title": "Recursion Available"
+              },
+              {
+                "const": "z",
+                "title": "Z (reserved)"
+              },
+              {
+                "const": "ad",
+                "title": "Authentic Data"
+              },
+              {
+                "const": "cd",
+                "title": "Checking Disabled"
+              }
+            ]
+          }
+        },
+        "id": {
+          "description": "mDNS transaction ID",
+          "type": "integer"
+        },
+        "opcode": {
+          "description": "mDNS opcode value",
+          "type": "integer"
+        },
+        "queries": {
+          "description": "mDNS query records",
+          "type": "array",
+          "additionalProperties": false,
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "rrname": {
+                "description": "Resource name being requested",
+                "type": "string",
+                "suricata": {
+                  "keywords": [
+                    "mdns.queries.rrname"
+                  ]
+                }
+              },
+              "rrname_truncated": {
+                "description": "Name was truncated by Suricata due to length",
+                "type": "boolean",
+                "$comment": "keyword: app-layer-event:mdns.name_too_long (https://redmine.openinfosecfoundation.org/issues/7784)"
+              },
+              "rrtype": {
+                "type": "string",
+                "description": "Type of resource being requested"
+              }
+            }
+          }
+        },
+        "rcode": {
+          "description": "mDNS reply (error) code",
+          "type": "integer"
+        },
+        "type": {
+          "description": "Type of message, either a request or response",
+          "type": "string",
+          "enum": [
+            "request",
+            "response"
+          ]
         }
       }
     }

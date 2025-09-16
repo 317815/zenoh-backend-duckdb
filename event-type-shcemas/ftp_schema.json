@@ -173,48 +173,47 @@
         }
       }
     },
-    "app_proto": {
-      "type": "string",
-      "description": "Application layer protocol of the flow",
-      "suricata": {
-        "keywords": [
-          "app-layer-protocol"
-        ]
-      }
-    },
-    "frame": {
+    "ftp": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "complete": {
+        "command": {
+          "type": "string"
+        },
+        "command_data": {
+          "type": "string"
+        },
+        "command_truncated": {
           "type": "boolean"
         },
-        "direction": {
-          "type": "string"
+        "completion_code": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
         },
-        "id": {
+        "dynamic_port": {
           "type": "integer"
         },
-        "length": {
-          "type": "integer"
-        },
-        "payload": {
+        "mode": {
           "type": "string"
         },
-        "payload_printable": {
+        "reply": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "reply_received": {
           "type": "string"
         },
-        "stream_offset": {
-          "type": "integer"
-        },
-        "tx_id": {
-          "type": "integer"
-        },
-        "type": {
-          "type": "string"
+        "reply_truncated": {
+          "type": "boolean"
         }
       }
     }
   },
-  "description": "FRAME事件Schema，基于Suricata源码分析"
+  "description": "FTP事件Schema，基于Suricata源码分析"
 }

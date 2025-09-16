@@ -13,17 +13,36 @@
     "flow_id": {
       "type": "integer"
     },
+    "parent_id": {
+      "type": "integer"
+    },
+    "sensor_id": {
+      "type": "integer"
+    },
+    "in_iface": {
+      "type": "string"
+    },
+    "pcap_cnt": {
+      "type": "integer"
+    },
     "event_type": {
       "type": "string"
+    },
+    "vlan": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "number"
+      }
     },
     "src_ip": {
       "type": "string"
     },
-    "dest_ip": {
-      "type": "string"
-    },
     "src_port": {
       "type": "integer"
+    },
+    "dest_ip": {
+      "type": "string"
     },
     "dest_port": {
       "type": "integer"
@@ -34,19 +53,6 @@
     "ip_v": {
       "type": "integer",
       "description": "IP version of the packet or flow"
-    },
-    "in_iface": {
-      "type": "string"
-    },
-    "vlan": {
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "type": "number"
-      }
-    },
-    "pcap_cnt": {
-      "type": "integer"
     },
     "icmp_type": {
       "type": "integer"
@@ -166,6 +172,353 @@
           }
         }
       }
+    },
+    "tls": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "certificate": {
+          "type": "string",
+          "suricata": {
+            "keywords": [
+              "tls.certs"
+            ]
+          }
+        },
+        "chain": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          },
+          "suricata": {
+            "keywords": [
+              "tls.certs",
+              "tls.cert_chain_len"
+            ]
+          }
+        },
+        "client": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "certificate": {
+              "type": "string",
+              "suricata": {
+                "keywords": [
+                  "tls.certs"
+                ]
+              }
+            },
+            "chain": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              },
+              "suricata": {
+                "keywords": [
+                  "tls.certs",
+                  "tls.cert_chain_len"
+                ]
+              }
+            },
+            "fingerprint": {
+              "type": "string",
+              "suricata": {
+                "keywords": [
+                  "tls.cert_fingerprint",
+                  "tls.fingerprint"
+                ]
+              }
+            },
+            "issuerdn": {
+              "type": "string",
+              "suricata": {
+                "keywords": [
+                  "tls.cert_issuer",
+                  "tls.issuerdn"
+                ]
+              }
+            },
+            "notafter": {
+              "$ref": "#/$defs/tls_date",
+              "suricata": {
+                "keywords": [
+                  "tls_cert_notafter",
+                  "tls_cert_expired",
+                  "tls_cert_valid"
+                ]
+              }
+            },
+            "notbefore": {
+              "$ref": "#/$defs/tls_date",
+              "suricata": {
+                "keywords": [
+                  "tls_cert_notbefore",
+                  "tls_cert_expired",
+                  "tls_cert_valid"
+                ]
+              }
+            },
+            "serial": {
+              "type": "string",
+              "suricata": {
+                "keywords": [
+                  "tls.cert_serial"
+                ]
+              }
+            },
+            "subject": {
+              "type": "string",
+              "suricata": {
+                "keywords": [
+                  "tls.cert_subject",
+                  "tls.subject"
+                ]
+              }
+            },
+            "subjectaltname": {
+              "type": "array",
+              "description": "TLS Subject Alternative Name field",
+              "suricata": {
+                "keywords": [
+                  "tls.subjectaltname"
+                ]
+              },
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "client_alpns": {
+          "type": "array",
+          "description": "TLS client ALPN field(s)",
+          "suricata": {
+            "keywords": [
+              "tls.alpn"
+            ]
+          },
+          "items": {
+            "type": "string"
+          }
+        },
+        "client_handshake": {
+          "type": "object",
+          "properties": {
+            "ciphers": {
+              "description": "TLS client cipher(s)",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "integer"
+              }
+            },
+            "exts": {
+              "description": "TLS client extension(s)",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "integer"
+              }
+            },
+            "sig_algs": {
+              "description": "TLS client signature algorithm(s)",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "integer"
+              }
+            },
+            "version": {
+              "description": "TLS version in client hello",
+              "type": "string"
+            }
+          }
+        },
+        "fingerprint": {
+          "type": "string",
+          "suricata": {
+            "keywords": [
+              "tls.cert_fingerprint",
+              "tls.fingerprint"
+            ]
+          }
+        },
+        "from_proto": {
+          "type": "string"
+        },
+        "issuerdn": {
+          "type": "string",
+          "suricata": {
+            "keywords": [
+              "tls.cert_issuer",
+              "tls.issuerdn"
+            ]
+          }
+        },
+        "ja3": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "hash": {
+              "type": "string",
+              "suricata": {
+                "keywords": [
+                  "ja3.hash"
+                ]
+              }
+            },
+            "string": {
+              "type": "string",
+              "suricata": {
+                "keywords": [
+                  "ja3s.string"
+                ]
+              }
+            }
+          }
+        },
+        "ja3s": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "hash": {
+              "type": "string",
+              "suricata": {
+                "keywords": [
+                  "ja3s.hash"
+                ]
+              }
+            },
+            "string": {
+              "type": "string",
+              "suricata": {
+                "keywords": [
+                  "ja3s.string"
+                ]
+              }
+            }
+          }
+        },
+        "ja4": {
+          "type": "string",
+          "suricata": {
+            "keywords": [
+              "ja4.hash"
+            ]
+          }
+        },
+        "notafter": {
+          "$ref": "#/$defs/tls_date",
+          "suricata": {
+            "keywords": [
+              "tls_cert_notafter",
+              "tls_cert_expired",
+              "tls_cert_valid"
+            ]
+          }
+        },
+        "notbefore": {
+          "$ref": "#/$defs/tls_date",
+          "suricata": {
+            "keywords": [
+              "tls_cert_notbefore",
+              "tls_cert_expired",
+              "tls_cert_valid"
+            ]
+          }
+        },
+        "serial": {
+          "type": "string",
+          "suricata": {
+            "keywords": [
+              "tls.cert_serial"
+            ]
+          }
+        },
+        "server_alpns": {
+          "type": "array",
+          "description": "TLS server ALPN field(s)",
+          "suricata": {
+            "keywords": [
+              "tls.alpn"
+            ]
+          },
+          "items": {
+            "type": "string"
+          }
+        },
+        "server_handshake": {
+          "type": "object",
+          "properties": {
+            "cipher": {
+              "description": "TLS server's chosen cipher",
+              "type": "integer"
+            },
+            "exts": {
+              "description": "TLS server extension(s)",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "integer"
+              }
+            },
+            "version": {
+              "description": "TLS version in server hello",
+              "type": "string"
+            }
+          }
+        },
+        "session_resumed": {
+          "type": "boolean"
+        },
+        "sni": {
+          "type": "string",
+          "suricata": {
+            "keywords": [
+              "tls.sni"
+            ]
+          }
+        },
+        "subject": {
+          "type": "string",
+          "suricata": {
+            "keywords": [
+              "tls.cert_subject",
+              "tls.subject"
+            ]
+          }
+        },
+        "subjectaltname": {
+          "type": "array",
+          "description": "TLS Subject Alternative Name field",
+          "suricata": {
+            "keywords": [
+              "tls.subjectaltname"
+            ]
+          },
+          "items": {
+            "type": "string"
+          }
+        },
+        "version": {
+          "type": "string",
+          "suricata": {
+            "keywords": [
+              "tls.version"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "tls_date": {
+      "type": "string",
+      "$comment": "Definition for TLS date formats",
+      "pattern": "^[1-2]\\d{3}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
     }
   },
   "description": "TLS事件Schema，基于Suricata源码分析"

@@ -13,17 +13,36 @@
     "flow_id": {
       "type": "integer"
     },
+    "parent_id": {
+      "type": "integer"
+    },
+    "sensor_id": {
+      "type": "integer"
+    },
+    "in_iface": {
+      "type": "string"
+    },
+    "pcap_cnt": {
+      "type": "integer"
+    },
     "event_type": {
       "type": "string"
+    },
+    "vlan": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "number"
+      }
     },
     "src_ip": {
       "type": "string"
     },
-    "dest_ip": {
-      "type": "string"
-    },
     "src_port": {
       "type": "integer"
+    },
+    "dest_ip": {
+      "type": "string"
     },
     "dest_port": {
       "type": "integer"
@@ -34,19 +53,6 @@
     "ip_v": {
       "type": "integer",
       "description": "IP version of the packet or flow"
-    },
-    "in_iface": {
-      "type": "string"
-    },
-    "vlan": {
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "type": "number"
-      }
-    },
-    "pcap_cnt": {
-      "type": "integer"
     },
     "icmp_type": {
       "type": "integer"
@@ -166,6 +172,41 @@
           }
         }
       }
+    },
+    "arp": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "dest_ip": {
+          "type": "string",
+          "description": "Logical address of the intended receiver"
+        },
+        "dest_mac": {
+          "type": "string",
+          "description": "Physical address of the intended receiver"
+        },
+        "hw_type": {
+          "type": "string",
+          "description": "Network link protocol type"
+        },
+        "opcode": {
+          "type": "string",
+          "description": "Specifies the operation that the sender is performing"
+        },
+        "proto_type": {
+          "type": "string",
+          "description": "Internetwork protocol for which the ARP request is intended"
+        },
+        "src_ip": {
+          "type": "string",
+          "description": "Logical address of the sender"
+        },
+        "src_mac": {
+          "type": "string",
+          "description": "Physical address of the sender"
+        }
+      },
+      "optional": true
     }
   },
   "description": "ARP事件Schema，基于Suricata源码分析"

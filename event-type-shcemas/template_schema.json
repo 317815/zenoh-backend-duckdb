@@ -57,8 +57,17 @@
     "pkt_src": {
       "type": "string"
     },
-    "tx_id": {
-      "type": "integer"
+    "template": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "request": {
+          "type": "string"
+        },
+        "response": {
+          "type": "string"
+        }
+      }
     },
     "suricata_version": {
       "type": "string"
@@ -171,5 +180,5 @@
       }
     }
   },
-  "description": "INSPECTEDRULES事件Schema，基于Suricata源码分析"
+  "description": "TEMPLATE事件Schema，基于Suricata源码分析"
 }

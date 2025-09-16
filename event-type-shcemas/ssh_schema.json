@@ -173,48 +173,61 @@
         }
       }
     },
-    "app_proto": {
-      "type": "string",
-      "description": "Application layer protocol of the flow",
-      "suricata": {
-        "keywords": [
-          "app-layer-protocol"
-        ]
-      }
-    },
-    "frame": {
+    "ssh": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "complete": {
-          "type": "boolean"
+        "client": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "hassh": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "hash": {
+                  "type": "string"
+                },
+                "string": {
+                  "type": "string"
+                }
+              }
+            },
+            "proto_version": {
+              "type": "string"
+            },
+            "software_version": {
+              "type": "string"
+            }
+          }
         },
-        "direction": {
-          "type": "string"
-        },
-        "id": {
-          "type": "integer"
-        },
-        "length": {
-          "type": "integer"
-        },
-        "payload": {
-          "type": "string"
-        },
-        "payload_printable": {
-          "type": "string"
-        },
-        "stream_offset": {
-          "type": "integer"
-        },
-        "tx_id": {
-          "type": "integer"
-        },
-        "type": {
-          "type": "string"
+        "server": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "hassh": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "hash": {
+                  "type": "string"
+                },
+                "string": {
+                  "type": "string"
+                }
+              }
+            },
+            "proto_version": {
+              "type": "string"
+            },
+            "software_version": {
+              "type": "string"
+            }
+          }
         }
-      }
+      },
+      "optional": true
     }
   },
-  "description": "FRAME事件Schema，基于Suricata源码分析"
+  "description": "SSH事件Schema，基于Suricata源码分析"
 }

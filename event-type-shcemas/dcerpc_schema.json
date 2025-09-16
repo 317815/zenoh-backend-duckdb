@@ -13,17 +13,36 @@
     "flow_id": {
       "type": "integer"
     },
+    "parent_id": {
+      "type": "integer"
+    },
+    "sensor_id": {
+      "type": "integer"
+    },
+    "in_iface": {
+      "type": "string"
+    },
+    "pcap_cnt": {
+      "type": "integer"
+    },
     "event_type": {
       "type": "string"
+    },
+    "vlan": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "number"
+      }
     },
     "src_ip": {
       "type": "string"
     },
-    "dest_ip": {
-      "type": "string"
-    },
     "src_port": {
       "type": "integer"
+    },
+    "dest_ip": {
+      "type": "string"
     },
     "dest_port": {
       "type": "integer"
@@ -34,19 +53,6 @@
     "ip_v": {
       "type": "integer",
       "description": "IP version of the packet or flow"
-    },
-    "in_iface": {
-      "type": "string"
-    },
-    "vlan": {
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "type": "number"
-      }
-    },
-    "pcap_cnt": {
-      "type": "integer"
     },
     "icmp_type": {
       "type": "integer"
@@ -164,6 +170,91 @@
           "items": {
             "type": "string"
           }
+        }
+      }
+    },
+    "dcerpc": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "activityuuid": {
+          "type": "string"
+        },
+        "call_id": {
+          "type": "integer"
+        },
+        "interfaces": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "ack_result": {
+                "type": "integer"
+              },
+              "uuid": {
+                "type": "string",
+                "suricata": {
+                  "keywords": [
+                    "dcerpc.iface"
+                  ]
+                }
+              },
+              "version": {
+                "type": "string",
+                "suricata": {
+                  "keywords": [
+                    "dcerpc.iface"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "req": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "frag_cnt": {
+              "type": "integer"
+            },
+            "opnum": {
+              "type": "integer",
+              "suricata": {
+                "keywords": [
+                  "dcerpc.opnum"
+                ]
+              }
+            },
+            "stub_data_size": {
+              "type": "integer"
+            }
+          }
+        },
+        "request": {
+          "type": "string"
+        },
+        "res": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "frag_cnt": {
+              "type": "integer"
+            },
+            "stub_data_size": {
+              "type": "integer"
+            }
+          }
+        },
+        "response": {
+          "type": "string"
+        },
+        "rpc_version": {
+          "type": "string"
+        },
+        "seqnum": {
+          "type": "integer"
         }
       }
     }

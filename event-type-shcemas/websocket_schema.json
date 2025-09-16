@@ -173,48 +173,27 @@
         }
       }
     },
-    "app_proto": {
-      "type": "string",
-      "description": "Application layer protocol of the flow",
-      "suricata": {
-        "keywords": [
-          "app-layer-protocol"
-        ]
-      }
-    },
-    "frame": {
+    "websocket": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "complete": {
+        "fin": {
           "type": "boolean"
         },
-        "direction": {
+        "mask": {
+          "type": "integer"
+        },
+        "opcode": {
           "type": "string"
         },
-        "id": {
-          "type": "integer"
-        },
-        "length": {
-          "type": "integer"
-        },
-        "payload": {
+        "payload_base64": {
           "type": "string"
         },
         "payload_printable": {
-          "type": "string"
-        },
-        "stream_offset": {
-          "type": "integer"
-        },
-        "tx_id": {
-          "type": "integer"
-        },
-        "type": {
           "type": "string"
         }
       }
     }
   },
-  "description": "FRAME事件Schema，基于Suricata源码分析"
+  "description": "WEBSOCKET事件Schema，基于Suricata源码分析"
 }
