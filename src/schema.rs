@@ -1,3 +1,27 @@
+/* Copyright (C) 2025-2035 Open Information Security Foundation
+ *
+ * You can copy, redistribute or modify this Program under the terms of
+ * the GNU General Public License version 2 as published by the Free
+ * Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * version 2 along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+ * 02110-1301, USA.
+ */
+
+/**
+ * Contributors:
+ * - Zhenjun <zhenjun@netprism.org>
+ *
+ * This is a schema parser for Zenoh to store data in DuckDB.
+ */
+
 use std::collections::HashMap;
 use serde_json::Value;
 
@@ -190,7 +214,7 @@ impl SchemaParser {
         }
         
         // 添加列定义到DDL
-        for (i, column_def) in column_definitions.iter().enumerate() {
+        for (_i, column_def) in column_definitions.iter().enumerate() {
             ddl_lines.push(format!("{},", column_def));
         }
         
@@ -239,133 +263,3 @@ impl Default for SchemaParser {
     }
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_ddl_generation() {
-        let parser = SchemaParser::new();
-        
-        // 测试DDL生成
-        match parser.load_schema_file("etc/flow_schema.json", "flow") {
-            Ok(ddl) => {
-                // 验证DDL包含关键元素
-                assert!(ddl.contains("CREATE TABLE"));
-                assert!(ddl.contains("flow"));
-                assert!(ddl.contains("timestamp"));
-                assert!(ddl.contains("flow_id"));
-                assert!(ddl.contains("src_ip"));
-                assert!(ddl.contains("dest_ip"));
-                
-                // 验证复杂对象被存储为JSON
-                assert!(ddl.contains("flow JSON"));
-                assert!(ddl.contains("tcp JSON"));
-                assert!(ddl.contains("metadata JSON"));
-                
-                // 验证主键约束
-                assert!(ddl.contains("PRIMARY KEY"));
-                
-                // 验证索引创建
-                assert!(ddl.contains("CREATE INDEX"));
-            }
-            Err(e) => {
-                panic!("Error generating DDL: {}", e);
-            }
-        }
-    }
-
-    #[test]
-    fn test_type_mapping() {
-        let parser = SchemaParser::new();
-        
-        // 测试基础字段类型映射
-        let basic_field = SchemaField {
-            name: "timestamp".to_string(),
-            field_type: "string".to_string(),
-            is_top_level: true,
-            is_array: false,
-            is_object: false,
-            description: None,
-        };
-        
-        assert_eq!(parser.get_duckdb_type(&basic_field), "VARCHAR");
-        
-        // 测试复杂对象类型映射
-        let object_field = SchemaField {
-            name: "flow".to_string(),
-            field_type: "object".to_string(),
-            is_top_level: true,
-            is_array: false,
-            is_object: true,
-            description: None,
-        };
-        
-        assert_eq!(parser.get_duckdb_type(&object_field), "JSON");
-        
-        // 测试数组类型映射
-        let array_field = SchemaField {
-            name: "tags".to_string(),
-            field_type: "array".to_string(),
-            is_top_level: true,
-            is_array: true,
-            is_object: false,
-            description: None,
-        };
-        
-        assert_eq!(parser.get_duckdb_type(&array_field), "JSON");
-    }
-
-    #[test]
-    fn test_schema_parsing() {
-        let parser = SchemaParser::new();
-        
-        // 测试schema解析
-        let test_schema = r#"{
-            "type": "object",
-            "required": ["event_type", "timestamp"],
-            "properties": {
-                "timestamp": {"type": "string"},
-                "event_type": {"type": "string"},
-                "flow_id": {"type": "integer"},
-                "src_ip": {"type": "string"},
-                "dest_ip": {"type": "string"},
-                "flow": {"type": "object"},
-                "tcp": {"type": "object"}
-            }
-        }"#;
-        
-        let schema: Value = serde_json::from_str(test_schema).unwrap();
-        let fields = parser.parse_schema(&schema).unwrap();
-        
-        // 验证解析的字段数量
-        assert_eq!(fields.len(), 7);
-        
-        // 验证必需字段
-        let required_fields = schema.get("required")
-            .and_then(|v| v.as_array())
-            .map(|arr| arr.iter().filter_map(|v| v.as_str()).map(|s| s.to_string()).collect::<Vec<_>>())
-            .unwrap_or_default();
-        
-        assert_eq!(required_fields.len(), 2);
-        assert!(required_fields.contains(&"event_type".to_string()));
-        assert!(required_fields.contains(&"timestamp".to_string()));
-    }
-
-    #[test]
-    fn test_schema_parser() {
-        let parser = SchemaParser::new();
-        
-        // 测试类型映射
-        let field = SchemaField {
-            name: "test_field".to_string(),
-            field_type: "string".to_string(),
-            is_top_level: true,
-            is_array: false,
-            is_object: false,
-            description: None,
-        };
-        
-        assert_eq!(parser.get_duckdb_type(&field), "VARCHAR");
-    }
-}

@@ -16,14 +16,13 @@
  */
 
 /**
- * \file
- *
- * \author Zhenjun <zhenjun@netprism.org>
+ * Contributors:
+ * - Zhenjun <zhenjun@netprism.org>
  *
  * This is a backend for Zenoh to store data in DuckDB.
  */
 
-mod storage;
-mod volume;
-mod plugin;
-mod schema;
+pub mod storage;
+pub mod volume;
+pub mod plugin;
+pub mod schema;

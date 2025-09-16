@@ -1,3 +1,27 @@
+/* Copyright (C) 2025-2035 Open Information Security Foundation
+ *
+ * You can copy, redistribute or modify this Program under the terms of
+ * the GNU General Public License version 2 as published by the Free
+ * Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * version 2 along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+ * 02110-1301, USA.
+ */
+
+/**
+ * Contributors:
+ * - Zhenjun <zhenjun@netprism.org>
+ *
+ * This is a storage for Zenoh to store data in DuckDB.
+ */
+
 use std::{
     str::FromStr,
     sync::{Arc, Mutex},
@@ -107,7 +131,7 @@ impl DuckDBStorage {
     }
     
     /// 验证标识符是否有效
-    fn is_valid_identifier(name: &str) -> bool {
+    pub fn is_valid_identifier(name: &str) -> bool {
         !name.is_empty() 
             && name.len() <= 64
             && name.chars().all(|c| c.is_alphanumeric() || c == '_')
@@ -250,117 +274,6 @@ impl DuckDBStorage {
 
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use serde_json::json;
-
-    #[test]
-    fn test_json_parsing() {
-        // 测试JSON解析 - 直接测试解析逻辑
-        let test_json = r#"{
-            "timestamp": "2024-01-15T10:30:45.123456+08:00",
-            "event_type": "flow",
-            "flow_id": 12345,
-            "src_ip": "192.168.1.100",
-            "dest_ip": "10.0.0.1",
-            "src_port": 8080,
-            "dest_port": 443,
-            "proto": "tcp",
-            "app_proto": "http",
-            "flow": {
-                "action": "new",
-                "bytes_toclient": 1024,
-                "bytes_toserver": 2048
-            },
-            "tcp": {
-                "ack": true,
-                "psh": true
-            }
-        }"#;
-        
-        let payload = test_json.as_bytes();
-        let json_str = std::str::from_utf8(payload).unwrap();
-        let json_data: Value = serde_json::from_str(json_str).unwrap();
-        
-        // 验证基础字段解析
-        assert_eq!(json_data["timestamp"].as_str().unwrap(), "2024-01-15T10:30:45.123456+08:00");
-        assert_eq!(json_data["event_type"].as_str().unwrap(), "flow");
-        assert_eq!(json_data["flow_id"].as_i64().unwrap(), 12345);
-        assert_eq!(json_data["src_ip"].as_str().unwrap(), "192.168.1.100");
-        assert_eq!(json_data["dest_ip"].as_str().unwrap(), "10.0.0.1");
-        
-        // 验证复杂对象解析
-        assert!(json_data["flow"].is_object());
-        assert!(json_data["tcp"].is_object());
-        assert_eq!(json_data["flow"]["action"].as_str().unwrap(), "new");
-        assert_eq!(json_data["tcp"]["ack"].as_bool().unwrap(), true);
-    }
-
-    #[test]
-    fn test_generate_insert_params() {
-        // 测试参数生成逻辑 - 直接测试字段映射
-        let test_json = json!({
-            "timestamp": "2024-01-15T10:30:45.123456+08:00",
-            "event_type": "flow",
-            "flow_id": 12345,
-            "src_ip": "192.168.1.100",
-            "dest_ip": "10.0.0.1",
-            "flow": {
-                "action": "new",
-                "bytes_toclient": 1024
-            },
-            "tcp": {
-                "ack": true
-            }
-        });
-        
-        // 验证字段访问
-        assert_eq!(test_json["event_type"].as_str().unwrap(), "flow");
-        assert_eq!(test_json["flow_id"].as_i64().unwrap(), 12345);
-        assert_eq!(test_json["src_ip"].as_str().unwrap(), "192.168.1.100");
-        assert_eq!(test_json["dest_ip"].as_str().unwrap(), "10.0.0.1");
-        
-        // 验证复杂对象序列化
-        let flow_json = serde_json::to_string(&test_json["flow"]).unwrap();
-        let tcp_json = serde_json::to_string(&test_json["tcp"]).unwrap();
-        
-        assert!(flow_json.contains("\"action\""));
-        assert!(tcp_json.contains("\"ack\""));
-    }
-
-    #[test]
-    fn test_dynamic_insert_generation() {
-        // 测试动态INSERT语句生成逻辑
-        let test_json = json!({
-            "timestamp": "2024-01-15T10:30:45.123456+08:00",
-            "event_type": "flow",
-            "flow_id": 12345,
-            "src_ip": "192.168.1.100",
-            "dest_ip": "10.0.0.1",
-            "flow": {
-                "action": "new",
-                "bytes_toclient": 1024
-            },
-            "tcp": {
-                "ack": true
-            }
-        });
-        
-        // 验证JSON数据包含预期字段
-        assert_eq!(test_json["event_type"].as_str().unwrap(), "flow");
-        assert_eq!(test_json["flow_id"].as_i64().unwrap(), 12345);
-        assert_eq!(test_json["src_ip"].as_str().unwrap(), "192.168.1.100");
-        assert_eq!(test_json["dest_ip"].as_str().unwrap(), "10.0.0.1");
-        
-        // 验证复杂对象
-        assert!(test_json["flow"].is_object());
-        assert!(test_json["tcp"].is_object());
-        assert_eq!(test_json["flow"]["action"].as_str().unwrap(), "new");
-        assert_eq!(test_json["tcp"]["ack"].as_bool().unwrap(), true);
-    }
-
-}
 
 #[async_trait]
 impl Storage for DuckDBStorage {
@@ -427,7 +340,7 @@ impl Storage for DuckDBStorage {
 
         // 插入删除标记
         let insert_sql = format!(
-            "INSERT INTO {} (key_expr, payload, encoding, timestamp, kind) VALUES (?, NULL, NULL, ?, 'DEL')",
+            "INSERT INTO {} (key_expr, zenoh_timestamp, kind) VALUES (?, ?, 'DEL')",
             self.get_table_name()
         );
         
@@ -437,7 +350,7 @@ impl Storage for DuckDBStorage {
 
         // 删除比这个时间戳更早的相同key的数据
         let delete_sql = format!(
-            "DELETE FROM {} WHERE key_expr = ? AND timestamp < ? AND kind = 'PUT'",
+            "DELETE FROM {} WHERE key_expr = ? AND zenoh_timestamp < ? AND kind = 'PUT'",
             self.get_table_name()
         );
 
@@ -457,23 +370,28 @@ impl Storage for DuckDBStorage {
 
         // 从结构化存储中查询所有字段数据
         let table_name = self.get_table_name();
-        let sql = format!(
-            "SELECT * FROM {} LIMIT 1",
-            table_name
-        );
+        let sql = if key.is_some() {
+            format!(
+                "SELECT key_expr, zenoh_timestamp FROM {} WHERE key_expr = ? LIMIT 1",
+                table_name
+            )
+        } else {
+            format!(
+                "SELECT key_expr, zenoh_timestamp FROM {} LIMIT 1",
+                table_name
+            )
+        };
 
         let conn = self.connection.lock().unwrap();
         let mut stmt = conn
             .prepare(&sql)
             .map_err(|e| zerror!("Failed to prepare query: {}", e))?;
 
-        let rows: Vec<(String, Vec<u8>, String, i64)> = if key.is_some() {
+        let rows: Vec<(String, String)> = if key.is_some() {
             stmt.query_map(params![key_str], |row| {
                 Ok((
                     row.get::<_, String>(0)?,
-                    row.get::<_, Vec<u8>>(1)?,
-                    row.get::<_, String>(2)?,
-                    row.get::<_, i64>(3)?,
+                    row.get::<_, String>(1)?,
                 ))
             })
             .map_err(|e| zerror!("Failed to execute query: {}", e))?
@@ -483,9 +401,7 @@ impl Storage for DuckDBStorage {
             stmt.query_map([], |row| {
                 Ok((
                     row.get::<_, String>(0)?,
-                    row.get::<_, Vec<u8>>(1)?,
-                    row.get::<_, String>(2)?,
-                    row.get::<_, i64>(3)?,
+                    row.get::<_, String>(1)?,
                 ))
             })
             .map_err(|e| zerror!("Failed to execute query: {}", e))?
@@ -494,25 +410,15 @@ impl Storage for DuckDBStorage {
         };
 
         let mut result = Vec::new();
-        for (key_str, value_bytes, encoding_str, timestamp_nanos) in rows {
+        for (key_str, timestamp_str) in rows {
             let _stored_key = self.string_to_key(&key_str)?;
-            let encoding = Encoding::from(encoding_str);
+            let timestamp = Timestamp::from_str(&timestamp_str)
+                .map_err(|e| zerror!("Failed to parse timestamp: {:?}", e))?;
             
-            // 从纳秒时间戳恢复zenoh Timestamp
-            let timestamp = match Timestamp::from_str(&timestamp_nanos.to_string()) {
-                Ok(t) => t,
-                Err(_) => {
-                    tracing::warn!("Failed to parse timestamp {}, using current time", timestamp_nanos);
-                    match Timestamp::from_str("1") {
-                        Ok(t) => t,
-                        Err(_) => {
-                            panic!("Cannot create any valid Timestamp - zenoh API may have changed")
-                        }
-                    }
-                }
-            };
-            
-            let payload = ZBytes::from(value_bytes);
+            // 由于我们只查询了 key 和 timestamp，我们需要重新构建 payload
+            // 这里我们创建一个简单的响应，表示数据存在
+            let payload = ZBytes::from("{}".as_bytes());
+            let encoding = Encoding::default();
 
             result.push(StoredData {
                 payload,

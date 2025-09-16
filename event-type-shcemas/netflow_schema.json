@@ -1,0 +1,121 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "event_type",
+    "timestamp"
+  ],
+  "properties": {
+    "suricata_version": {
+      "type": "string"
+    },
+    "host": {
+      "type": "string",
+      "$comment": "May change to sensor_name in the future, or become user configurable: https://redmine.openinfosecfoundation.org/issues/4919",
+      "description": "the sensor-name, if configured"
+    },
+    "pcap_filename": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "entropy": {
+          "type": "object",
+          "suricata": {
+            "keywords": [
+              "entropy"
+            ]
+          }
+        },
+        "flowbits": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          },
+          "suricata": {
+            "keywords": [
+              "flowbits"
+            ]
+          }
+        },
+        "flowints": {
+          "type": "object",
+          "suricata": {
+            "keywords": [
+              "flowint"
+            ]
+          }
+        },
+        "flowvars": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "gid": {
+                "type": "string"
+              },
+              "key": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "pktvars": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "uid": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "optional": true
+    },
+    "ether": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "dest_mac": {
+          "type": "string"
+        },
+        "dest_macs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "ether_type": {
+          "type": "integer",
+          "description": "Ethernet type value "
+        },
+        "src_mac": {
+          "type": "string"
+        },
+        "src_macs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "description": "NETFLOW事件Schema，基于Suricata源码分析"
+}

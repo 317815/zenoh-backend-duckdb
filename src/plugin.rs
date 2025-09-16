@@ -1,3 +1,27 @@
+/* Copyright (C) 2025-2035 Open Information Security Foundation
+ *
+ * You can copy, redistribute or modify this Program under the terms of
+ * the GNU General Public License version 2 as published by the Free
+ * Software Foundation.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * version 2 along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
+ * 02110-1301, USA.
+ */
+
+/**
+ * Contributors:
+ * - Zhenjun <zhenjun@netprism.org>
+ *
+ * This is a plugin for Zenoh to store data in DuckDB.
+ */
+
 use zenoh::{
     internal::zerror,
     try_init_log_from_env, 
@@ -11,7 +35,7 @@ use zenoh_plugin_trait::{plugin_long_version, plugin_version, Plugin};
 
 use crate::volume::DuckDBVolume;
 
-struct DuckDBBackend {}
+pub struct DuckDBBackend {}
 
 #[cfg(feature = "dynamic_plugin")]
 zenoh_plugin_trait::declare_plugin!(DuckDBBackend);
@@ -103,3 +127,4 @@ impl DuckDBBackend {
         Ok(())
     }
 }
+
