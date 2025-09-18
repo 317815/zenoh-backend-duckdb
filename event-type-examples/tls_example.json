@@ -1,0 +1,33 @@
+{
+  "timestamp": "2023-01-01T12:00:00.000+00:00",
+  "flow_id": 22222,
+  "event_type": "tls",
+  "src_ip": "192.168.1.100",
+  "dest_ip": "93.184.216.34",
+  "src_port": 45678,
+  "dest_port": 443,
+  "proto": "TCP",
+  "ip_v": 4,
+  "in_iface": "eth0",
+  "tls": {
+    "subject": "CN=example.com,O=Example Inc,C=US",
+    "issuerdn": "CN=DigiCert Global Root CA,OU=www.digicert.com,O=DigiCert Inc,C=US",
+    "fingerprint": "a1b2c3d4e5f6789012345678901234567890abcd",
+    "sni": "example.com",
+    "notbefore": "2022-01-01T00:00:00.000+00:00",
+    "notafter": "2024-01-01T00:00:00.000+00:00",
+    "version": "TLS 1.3",
+    "serial": "1234567890ABCDEF",
+    "chain": [
+      {
+        "subject": "CN=example.com,O=Example Inc,C=US",
+        "issuerdn": "CN=DigiCert Global Root CA,OU=www.digicert.com,O=DigiCert Inc,C=US",
+        "fingerprint": "a1b2c3d4e5f6789012345678901234567890abcd",
+        "notbefore": "2022-01-01T00:00:00.000+00:00",
+        "notafter": "2024-01-01T00:00:00.000+00:00"
+      }
+    ]
+  },
+  "suricata_version": "7.0.0",
+  "host": "suricata-server"
+}

@@ -25,7 +25,7 @@
 use std::collections::HashMap;
 use serde_json::Value;
 
-/// JSON Schema字段信息
+/// JSON Schema field information
 #[derive(Debug, Clone)]
 pub struct SchemaField {
     pub name: String,
@@ -36,9 +36,9 @@ pub struct SchemaField {
     pub description: Option<String>,
 }
 
-/// Schema解析器 - 高性能的Rust实现
+/// Schema parser - High performance Rust implementation
 pub struct SchemaParser {
-    /// 字段类型到DuckDB类型的映射
+    /// Field type to DuckDB type mapping
     type_mapping: HashMap<String, String>,
 }
 
@@ -57,12 +57,12 @@ impl SchemaParser {
         }
     }
 
-    /// 解析JSON Schema并扁平化字段
+    /// Parse JSON Schema and flatten fields
     pub fn parse_schema(&self, schema: &Value) -> Result<Vec<SchemaField>, String> {
         let mut fields = Vec::new();
         let mut stack = Vec::new();
         
-        // 从根schema开始
+        // Start from root schema
         if let Some(properties) = schema.get("properties") {
             stack.push((properties, Vec::new()));
         }
@@ -72,7 +72,7 @@ impl SchemaParser {
                 for (name, field_schema) in properties {
                     let is_top_level = path.is_empty();
                     
-                    // 处理$ref引用
+                    // Handle $ref references
                     let resolved_schema = if let Some(ref_path) = field_schema.get("$ref") {
                         self.resolve_ref(schema, ref_path.as_str().unwrap())?
                     } else {
@@ -97,7 +97,7 @@ impl SchemaParser {
                         description,
                     });
 
-                    // 继续处理嵌套结构
+                    // Continue processing nested structures
                     if is_object && resolved_schema.get("properties").is_some() {
                         let mut new_path = path.clone();
                         new_path.push(name.clone());
@@ -118,13 +118,13 @@ impl SchemaParser {
         Ok(fields)
     }
 
-    /// 解析$ref引用
+    /// Parse $ref references
     fn resolve_ref<'a>(&self, schema: &'a Value, ref_path: &str) -> Result<&'a Value, String> {
         if !ref_path.starts_with("#/") {
             return Err(format!("Unsupported reference: {}", ref_path));
         }
 
-        let path = &ref_path[2..]; // 移除 "#/"
+        let path = &ref_path[2..]; // Remove "#/"
         let parts: Vec<&str> = path.split('/').collect();
         
         let mut current = schema;
@@ -136,13 +136,13 @@ impl SchemaParser {
         Ok(current)
     }
 
-    /// 提取字段类型
+    /// Extract field type
     fn extract_field_type(&self, field_schema: &Value) -> String {
         if let Some(field_type) = field_schema.get("type") {
             match field_type {
                 Value::String(s) => s.clone(),
                 Value::Array(arr) => {
-                    // 处理联合类型，取第一个非null类型
+                    // Handle union types, take the first non-null type
                     arr.iter()
                         .filter_map(|v| v.as_str())
                         .find(|&t| t != "null")
@@ -156,19 +156,19 @@ impl SchemaParser {
         }
     }
 
-    /// 获取DuckDB类型
+    /// Get DuckDB type
     pub fn get_duckdb_type(&self, field: &SchemaField) -> String {
-        // 边界规则1: 所有JSON数组存储为JSON类型
+        // Boundary rule 1: All JSON arrays stored as JSON type
         if field.is_array {
             return "JSON".to_string();
         }
         
-        // 边界规则2: 一级对象字段存储为JSON类型
+        // Boundary rule 2: First-level object fields stored as JSON type
         if field.is_top_level && field.is_object {
             return "JSON".to_string();
         }
         
-        // 边界规则3: 其他字段按schema类型映射
+        // Boundary rule 3: Other fields mapped according to schema type
         let base_type = field.field_type.replace("[]", "");
         let duckdb_type = self.type_mapping.get(&base_type)
             .unwrap_or(&"VARCHAR".to_string())
@@ -177,29 +177,29 @@ impl SchemaParser {
         duckdb_type
     }
 
-    /// 生成DDL
+    /// Generate DDL
     pub fn generate_ddl(&self, fields: &[SchemaField], table_name: &str, required_fields: &[String]) -> String {
         let mut ddl_lines = Vec::new();
         
-        // 生成DDL语句
+        // Generate DDL statement
         
-        // 开始CREATE TABLE语句
+        // Start CREATE TABLE statement
         ddl_lines.push(format!("CREATE TABLE IF NOT EXISTS {} (", table_name));
         
-        // 只处理一级字段
+        // Only process first-level fields
         let top_level_fields: Vec<&SchemaField> = fields.iter()
             .filter(|f| f.is_top_level)
             .collect();
         
-        // 生成列定义
+        // Generate column definitions
         let mut column_definitions = Vec::new();
         
-        // 首先添加Zenoh必需的字段
+        // First add Zenoh required fields
         column_definitions.push("    zenoh_timestamp VARCHAR NOT NULL".to_string());
         column_definitions.push("    key_expr VARCHAR NOT NULL".to_string());
         column_definitions.push("    kind VARCHAR NOT NULL".to_string());
         
-        // 然后添加JSON Schema字段
+        // Then add JSON Schema fields
         for field in &top_level_fields {
             let duckdb_type = self.get_duckdb_type(field);
             let is_required = required_fields.contains(&field.name);
@@ -213,44 +213,44 @@ impl SchemaParser {
             column_definitions.push(column_def);
         }
         
-        // 添加列定义到DDL
+        // Add column definitions to DDL
         for (_i, column_def) in column_definitions.iter().enumerate() {
             ddl_lines.push(format!("{},", column_def));
         }
         
-        // 添加主键约束 - 使用Zenoh的zenoh_timestamp作为主键
+        // Add primary key constraint - use Zenoh's zenoh_timestamp as primary key
         ddl_lines.push(format!("    PRIMARY KEY (zenoh_timestamp)"));
 
-        // 结束CREATE TABLE语句
+        // End CREATE TABLE statement
         ddl_lines.push(");".to_string());
         
-        // 添加索引
+        // Add indexes
         ddl_lines.push(String::new());
         ddl_lines.push(format!("CREATE INDEX IF NOT EXISTS idx_{}_zenoh_timestamp ON {} (zenoh_timestamp);", table_name, table_name));
 
         ddl_lines.join("\n")
     }
 
-    /// 从文件加载schema并生成DDL
+    /// Load schema from file and generate DDL
     pub fn load_schema_file(&self, schema_file: &str, table_name: &str) -> Result<String, String> {
-        // 读取schema文件
+        // Read schema file
         let schema_content = std::fs::read_to_string(schema_file)
             .map_err(|e| format!("Failed to read schema file {}: {}", schema_file, e))?;
         
-        // 解析JSON
+        // Parse JSON
         let schema: Value = serde_json::from_str(&schema_content)
             .map_err(|e| format!("Failed to parse JSON schema: {}", e))?;
         
-        // 获取必需字段
+        // Get required fields
         let required_fields = schema.get("required")
             .and_then(|v| v.as_array())
             .map(|arr| arr.iter().filter_map(|v| v.as_str()).map(|s| s.to_string()).collect::<Vec<_>>())
             .unwrap_or_default();
         
-        // 解析schema
+        // Parse schema
         let fields = self.parse_schema(&schema)?;
         
-        // 生成DDL
+        // Generate DDL
         let ddl = self.generate_ddl(&fields, table_name, &required_fields);
         
         Ok(ddl)

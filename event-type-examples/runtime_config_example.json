@@ -1,0 +1,79 @@
+{
+  "volume_config": {
+    "name": "evelog_volume",
+    "volume_cfg": {
+      "db_path": "/var/lib/zenoh-backend-duckdb/evelog.db",
+      "db_schema": "evelog",
+      "auto_create_schema": true,
+      "table_engine": "duckdb"
+    }
+  },
+  "storage_configs": [
+    {
+      "name": "http_storage",
+      "key_expr": "http/**",
+      "strip_prefix": null,
+      "complete": false,
+      "volume_id": "evelog_volume",
+      "volume_cfg": {
+        "db_schema": "evelog",
+        "db_table": "http",
+        "db_table_desc": "event-type-shcemas/http_schema.json",
+        "auto_create_table": true,
+        "table_engine": "duckdb"
+      },
+      "garbage_collection_config": {
+        "enabled": true,
+        "interval_seconds": 3600,
+        "max_age_seconds": 86400
+      },
+      "replication": {
+        "enabled": false
+      }
+    },
+    {
+      "name": "flow_storage",
+      "key_expr": "flow/**",
+      "strip_prefix": null,
+      "complete": false,
+      "volume_id": "evelog_volume",
+      "volume_cfg": {
+        "db_schema": "evelog",
+        "db_table": "flow",
+        "db_table_desc": "event-type-shcemas/flow_schema.json",
+        "auto_create_table": true,
+        "table_engine": "duckdb"
+      },
+      "garbage_collection_config": {
+        "enabled": true,
+        "interval_seconds": 3600,
+        "max_age_seconds": 86400
+      },
+      "replication": {
+        "enabled": false
+      }
+    },
+    {
+      "name": "alert_storage",
+      "key_expr": "alert/**",
+      "strip_prefix": null,
+      "complete": false,
+      "volume_id": "evelog_volume",
+      "volume_cfg": {
+        "db_schema": "evelog",
+        "db_table": "alert",
+        "db_table_desc": "event-type-shcemas/alert_schema.json",
+        "auto_create_table": true,
+        "table_engine": "duckdb"
+      },
+      "garbage_collection_config": {
+        "enabled": true,
+        "interval_seconds": 3600,
+        "max_age_seconds": 86400
+      },
+      "replication": {
+        "enabled": false
+      }
+    }
+  ]
+}

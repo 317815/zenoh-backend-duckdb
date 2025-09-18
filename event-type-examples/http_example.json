@@ -1,0 +1,33 @@
+{
+  "timestamp": "2023-01-01T12:00:00.000+00:00",
+  "flow_id": 12345,
+  "event_type": "http",
+  "src_ip": "192.168.1.100",
+  "dest_ip": "10.0.0.1",
+  "src_port": 45678,
+  "dest_port": 80,
+  "proto": "TCP",
+  "ip_v": 4,
+  "in_iface": "eth0",
+  "http": {
+    "hostname": "example.com",
+    "url": "/api/v1/users",
+    "http_user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
+    "http_method": "GET",
+    "protocol": "HTTP/1.1",
+    "status": 200,
+    "length": 1024,
+    "request_headers": {
+      "Accept": "application/json",
+      "Authorization": "Bearer token123",
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+    },
+    "response_headers": {
+      "Content-Type": "application/json",
+      "Content-Length": "1024",
+      "Server": "nginx/1.18.0"
+    }
+  },
+  "suricata_version": "7.0.0",
+  "host": "suricata-server"
+}

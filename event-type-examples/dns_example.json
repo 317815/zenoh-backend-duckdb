@@ -1,0 +1,43 @@
+{
+  "timestamp": "2023-01-01T12:00:00.000+00:00",
+  "flow_id": 11111,
+  "event_type": "dns",
+  "src_ip": "192.168.1.50",
+  "dest_ip": "8.8.8.8",
+  "src_port": 12345,
+  "dest_port": 53,
+  "proto": "UDP",
+  "ip_v": 4,
+  "in_iface": "eth0",
+  "dns": {
+    "type": "query",
+    "version": 2,
+    "id": 12345,
+    "flags": "0100",
+    "qr": false,
+    "rd": true,
+    "ra": false,
+    "aa": false,
+    "tc": false,
+    "cd": false,
+    "ad": false,
+    "opcode": "QUERY",
+    "rcode": "NOERROR",
+    "rrname": "example.com",
+    "rrtype": "A",
+    "rrclass": "IN",
+    "answers": [
+      {
+        "rrname": "example.com",
+        "rrtype": "A",
+        "rrclass": "IN",
+        "ttl": 300,
+        "rdata": "93.184.216.34"
+      }
+    ],
+    "authorities": [],
+    "additional": []
+  },
+  "suricata_version": "7.0.0",
+  "host": "suricata-server"
+}

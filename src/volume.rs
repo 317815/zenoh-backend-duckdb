@@ -23,6 +23,8 @@
  */
 
 use async_trait::async_trait;
+use duckdb::Connection;
+use std::sync::{Arc, Mutex};
 use zenoh::{
     internal::zerror,
     Result as ZResult,
@@ -34,26 +36,28 @@ use zenoh_backend_traits::{
 
 use crate::storage::DuckDBStorage;
 
-// 配置常量
+// Configuration constants
 const PROP_DB_PATH: &str = "db_path";
+const PROP_INIT_SQL: &str = "init_sql";
 
-/// DuckDB Volume - 管理DuckDB数据库配置
+/// DuckDB Volume - Manages DuckDB database instance
 /// 
-/// 职责：
-/// 1. 管理数据库文件路径配置
-/// 2. 为Storage提供数据库路径
-/// 3. 不管理连接，每个Storage独立连接
+/// Responsibilities:
+/// 1. Manage database connection (especially shared connection in memory mode)
+/// 2. Execute initialization SQL scripts
+/// 3. Provide shared database connection to Storage
+/// 4. Ensure Storage within Volume share the same database instance
 pub struct DuckDBVolume {
-    /// Volume配置状态
+    /// Volume configuration status
     admin_status: VolumeConfig,
-    /// 数据库文件路径
-    db_path: String,
+    /// Shared database connection
+    connection: Arc<Mutex<Connection>>,
 }
 
 impl DuckDBVolume {
-    /// 创建新的DuckDB Volume
+    /// Create a new DuckDB Volume
     pub fn new(config: VolumeConfig) -> ZResult<Self> {
-        // 解析数据库路径
+        // Parse database path
         let db_path = config
             .rest
             .get(PROP_DB_PATH)
@@ -61,33 +65,88 @@ impl DuckDBVolume {
             .unwrap_or(":memory:")
             .to_string();
 
-        tracing::info!("Initializing DuckDB Volume with database: {}", db_path);
+        // Parse initialization SQL script path
+        let init_sql = config
+            .rest
+            .get(PROP_INIT_SQL)
+            .and_then(|v| v.as_str())
+            .map(|s| s.to_string());
+
+        tracing::info!("Initializing DuckDB Volume with database: {}, init_sql: {:?}", db_path, init_sql);
+
+        // Create database connection
+        let connection = Connection::open(&db_path)
+            .map_err(|e| zerror!("Failed to open DuckDB database '{}': {}", db_path, e))?;
+
+        // Configure DuckDB optimization settings
+        Self::configure_duckdb(&connection)?;
+
+        // Execute initialization SQL script if configured
+        if let Some(init_sql_path) = &init_sql {
+            Self::execute_duckdb_init_sql(&connection, init_sql_path)?;
+        }
 
         Ok(DuckDBVolume {
             admin_status: config,
-            db_path,
+            connection: Arc::new(Mutex::new(connection)),
         })
+    }
+    
+    /// Configure DuckDB optimization settings
+    fn configure_duckdb(connection: &Connection) -> ZResult<()> {
+        // Enable multi-threading (use system CPU cores)
+        connection.execute("PRAGMA threads = 4", [])
+            .map_err(|e| zerror!("Failed to set threads pragma: {}", e))?;
+        
+        // Set memory limit (configurable)
+        connection.execute("PRAGMA memory_limit = '1GB'", [])
+            .map_err(|e| zerror!("Failed to set memory limit: {}", e))?;
+        
+        tracing::debug!("DuckDB configuration completed");
+        Ok(())
+    }
+
+    /// Execute initialization SQL script during Volume initialization
+    fn execute_duckdb_init_sql(connection: &Connection, init_sql_path: &str) -> ZResult<()> {
+        tracing::info!("Executing volume initialization SQL script: {}", init_sql_path);
+        
+        // Read SQL script file
+        let sql_content = std::fs::read_to_string(init_sql_path)
+            .map_err(|e| zerror!("Failed to read volume init SQL file '{}': {}", init_sql_path, e))?;
+        
+        // Split SQL statements by semicolon and execute
+        for statement in sql_content.split(';') {
+            let statement = statement.trim();
+            if !statement.is_empty() {
+                tracing::debug!("Executing volume init SQL: {}", statement);
+                connection.execute(statement, [])
+                    .map_err(|e| zerror!("Failed to execute volume init SQL statement '{}': {}", statement, e))?;
+            }
+        }
+        
+        tracing::info!("Successfully executed volume initialization SQL script: {}", init_sql_path);
+        Ok(())
     }
 }
 
 #[async_trait]
 impl Volume for DuckDBVolume {
-    /// 返回Volume的管理状态
+    /// Return Volume's management status
     fn get_admin_status(&self) -> serde_json::Value {
         self.admin_status.to_json_value()
     }
 
-    /// 声明DuckDB backend的能力
+    /// Declare DuckDB backend capabilities
     fn get_capability(&self) -> Capability {
         Capability {
-            persistence: Persistence::Durable,  // 持久化存储
-            history: History::All,              // 保留所有历史记录
+            persistence: Persistence::Durable,  // Persistent storage
+            history: History::All,              // Keep all history records
         }
     }
 
-    /// 创建新的Storage实例
+    /// Create new Storage instance
     async fn create_storage(&self, config: StorageConfig) -> ZResult<Box<dyn Storage>> {
-        // 从volume配置中读取schema和table（必需）
+        // Read schema and table from volume configuration (required)
         let volume_cfg = config.volume_cfg.as_object()
             .ok_or_else(|| zerror!("Volume configuration is required"))?;
         
@@ -101,7 +160,7 @@ impl Volume for DuckDBVolume {
             .ok_or_else(|| zerror!("db_table is required in volume configuration"))?
             .to_string();
         
-        // 解析volume配置中的table_desc文件路径（可选）
+        // Parse table_desc file path from volume configuration (optional)
         let table_desc = volume_cfg.get("db_table_desc")
             .and_then(|v| v.as_str())
             .map(|s| s.to_string());
@@ -111,6 +170,6 @@ impl Volume for DuckDBVolume {
             config.key_expr, schema, table, table_desc
         );
 
-        DuckDBStorage::new(config, &self.db_path, schema, table, table_desc)
+        DuckDBStorage::new(config, schema, table, table_desc, self.connection.clone())
     }
 }

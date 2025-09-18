@@ -6,7 +6,9 @@
         // DuckDB volume - 只管理数据库连接
         duckdb: {
           // DuckDB database file path (optional, defaults to :memory:)
-          db_path: "./duckdb.db"
+          db_path: "./duckdb.db",
+          // 初始化SQL脚本文件路径 (optional)
+          init_sql: "etc/init.sql"
         }
       },
       storages: {
