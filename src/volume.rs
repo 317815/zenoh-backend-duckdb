@@ -114,17 +114,13 @@ impl DuckDBVolume {
         let sql_content = std::fs::read_to_string(init_sql_path)
             .map_err(|e| zerror!("Failed to read volume init SQL file '{}': {}", init_sql_path, e))?;
         
-        // Split SQL statements by semicolon and execute
-        for statement in sql_content.split(';') {
-            let statement = statement.trim();
-            if !statement.is_empty() {
-                tracing::debug!("Executing volume init SQL: {}", statement);
-                connection.execute(statement, [])
-                    .map_err(|e| zerror!("Failed to execute volume init SQL statement '{}': {}", statement, e))?;
-            }
-        }
+        // DuckDB can execute multiple SQL statements in one call
+        // No need to split by semicolon manually
+        tracing::debug!("Executing volume init SQL script: {}\n{}", init_sql_path, sql_content);
+        connection.execute_batch(&sql_content)
+            .map_err(|e| zerror!("Failed to execute volume init SQL batch from '{}': {}", init_sql_path, e))?;
         
-        tracing::info!("Successfully executed volume initialization SQL script: {}", init_sql_path);
+        tracing::info!("Successfully executed volume init SQL script: {}", init_sql_path);
         Ok(())
     }
 }
