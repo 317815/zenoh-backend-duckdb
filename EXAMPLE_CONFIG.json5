@@ -3,34 +3,33 @@
     // configuration of "storage_manager" plugin:
     storage_manager: {
       volumes: {
-        // DuckDB volume - 只管理数据库连接
+        // DuckDB volume - manages database connections
         duckdb: {
           // DuckDB database file path (optional, defaults to :memory:)
           db_path: "./duckdb.db",
-          // 初始化SQL脚本文件路径 (optional)
+          // Initialization SQL script file path (optional)
           init_sql: "etc/init.sql"
         }
       },
       storages: {
-        // Suricata flow events - 使用JSON Schema文件自动生成表结构
+        // Suricata flow events - auto-generate table structure from JSON Schema file
         flow: {
-          key_expr: "zenoh/duckdb/evelog.flow",     // 支持通配符，如 evelog.*
+          key_expr: "zenoh/duckdb/evelog.flow",        // supports wildcards like evelog.*
           volume: {
             id: "duckdb",
-            db_schema: "evelog",                       // DuckDB数据库schema（命名空间）- 必需
-            db_table: "flow",                          // DuckDB表名 - 必需
-            db_table_desc: "etc/flow_schema.json"          // JSON Schema文件路径 - 可选
+            db_schema: "evelog",                       // DuckDB database schema (namespace) - required
+            db_table: "flow",                          // DuckDB table name - required
+            db_table_desc: "etc/flow_schema.json"      // JSON Schema file path - optional
           }
         },
 
-        // Application logs - 使用默认存储策略
+        // Application logs - use default storage strategy
         app: {
-          key_expr: "zenoh/duckdb/app.*",           // 支持通配符
+          key_expr: "zenoh/duckdb/app.*",              // supports wildcards
           volume: {
             id: "duckdb",
-            db_schema: "app",                          // DuckDB数据库schema（命名空间）- 必需
-            db_table: "logs"                           // DuckDB表名 - 必需
-            // 不配置column则使用默认存储策略
+            db_schema: "app",                          // DuckDB database schema (namespace) - required
+            db_table: "logs"                           // DuckDB table name - required
           }
         }
       }

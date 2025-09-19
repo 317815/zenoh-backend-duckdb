@@ -1,0 +1,438 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "event_type",
+    "timestamp"
+  ],
+  "properties": {
+    "timestamp": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d+[+\\-]\\d+$"
+    },
+    "flow_id": {
+      "type": "integer"
+    },
+    "parent_id": {
+      "type": "integer"
+    },
+    "in_iface": {
+      "type": "string"
+    },
+    "event_type": {
+      "type": "string"
+    },
+    "vlan": {
+      "type": "array",
+      "suricata": {
+        "keywords": [
+          "vlan.layers"
+        ]
+      },
+      "minItems": 1,
+      "items": {
+        "type": "number",
+        "suricata": {
+          "keywords": [
+            "vlan.id"
+          ]
+        }
+      }
+    },
+    "src_ip": {
+      "type": "string"
+    },
+    "src_port": {
+      "type": "integer"
+    },
+    "dest_ip": {
+      "type": "string"
+    },
+    "dest_port": {
+      "type": "integer"
+    },
+    "proto": {
+      "type": "string"
+    },
+    "ip_v": {
+      "type": "integer",
+      "description": "IP version of the packet or flow"
+    },
+    "icmp_type": {
+      "type": "integer",
+      "suricata": {
+        "keywords": [
+          "itype"
+        ]
+      }
+    },
+    "icmp_code": {
+      "type": "integer",
+      "suricata": {
+        "keywords": [
+          "icode"
+        ]
+      }
+    },
+    "response_icmp_type": {
+      "type": "integer"
+    },
+    "response_icmp_code": {
+      "type": "integer"
+    },
+    "spi": {
+      "type": "integer"
+    },
+    "app_proto": {
+      "type": "string",
+      "description": "Application layer protocol of the flow",
+      "suricata": {
+        "keywords": [
+          "app-layer-protocol"
+        ]
+      }
+    },
+    "app_proto_ts": {
+      "type": "string",
+      "description": "Application layer protocol detected to server in case of mismatch",
+      "suricata": {
+        "keywords": [
+          "app-layer-protocol"
+        ]
+      }
+    },
+    "app_proto_tc": {
+      "type": "string",
+      "description": "Application layer protocol detected to client in case of mismatch",
+      "suricata": {
+        "keywords": [
+          "app-layer-protocol"
+        ]
+      }
+    },
+    "app_proto_orig": {
+      "type": "string",
+      "description": "Original application layer protocol of the flow after a protocol change",
+      "suricata": {
+        "keywords": [
+          "app-layer-protocol"
+        ]
+      }
+    },
+    "app_proto_expected": {
+      "type": "string",
+      "description": "In case of a protocol change to a specific protocol, and this specific protocol was not recognised, this field will have the value of the expected protocol",
+      "suricata": {
+        "$comment": "TODO implement keyword app-layer-protocol option"
+      }
+    },
+    "flow": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "type": "string"
+        },
+        "age": {
+          "type": "integer",
+          "suricata": {
+            "keywords": [
+              "flow.age"
+            ]
+          }
+        },
+        "alerted": {
+          "type": "boolean"
+        },
+        "bypass": {
+          "type": "string"
+        },
+        "bypassed": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "bytes_toclient": {
+              "type": "integer"
+            },
+            "bytes_toserver": {
+              "type": "integer"
+            },
+            "pkts_toclient": {
+              "type": "integer"
+            },
+            "pkts_toserver": {
+              "type": "integer"
+            }
+          }
+        },
+        "bytes_toclient": {
+          "type": "integer",
+          "suricata": {
+            "keywords": [
+              "flow.bytes",
+              "flow.bytes_toclient"
+            ]
+          }
+        },
+        "bytes_toserver": {
+          "type": "integer",
+          "suricata": {
+            "keywords": [
+              "flow.bytes",
+              "flow.bytes_toserver"
+            ]
+          }
+        },
+        "dest_ip": {
+          "type": "string"
+        },
+        "dest_port": {
+          "type": "integer"
+        },
+        "elephant": {
+          "type": "boolean"
+        },
+        "emergency": {
+          "type": "boolean"
+        },
+        "end": {
+          "type": "string"
+        },
+        "exception_policy": {
+          "type": "array",
+          "properties": {
+            "policy": {
+              "type": "string",
+              "description": "Which exception policy was applied"
+            },
+            "target": {
+              "type": "string",
+              "description": "What triggered the exception"
+            }
+          },
+          "description": "The exception policy(ies) triggered by the flow. Not logged if none was triggered"
+        },
+        "pkts_toclient": {
+          "type": "integer",
+          "suricata": {
+            "keywords": [
+              "flow.pkts",
+              "flow.pkts_toclient"
+            ]
+          }
+        },
+        "pkts_toserver": {
+          "type": "integer",
+          "suricata": {
+            "keywords": [
+              "flow.pkts",
+              "flow.pkts_toserver"
+            ]
+          }
+        },
+        "reason": {
+          "type": "string"
+        },
+        "src_ip": {
+          "type": "string"
+        },
+        "src_port": {
+          "type": "integer"
+        },
+        "start": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string",
+          "suricata": {
+            "keywords": [
+              "flow"
+            ]
+          }
+        },
+        "tx_cnt": {
+          "type": "integer"
+        },
+        "wrong_thread": {
+          "type": "boolean"
+        }
+      }
+    },
+    "suricata_version": {
+      "type": "string"
+    },
+    "host": {
+      "type": "string",
+      "$comment": "May change to sensor_name in the future, or become user configurable: https://redmine.openinfosecfoundation.org/issues/4919",
+      "description": "the sensor-name, if configured"
+    },
+    "pcap_filename": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "entropy": {
+          "type": "object",
+          "additionalProperties": true,
+          "suricata": {
+            "keywords": [
+              "entropy"
+            ]
+          }
+        },
+        "flowbits": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          },
+          "suricata": {
+            "keywords": [
+              "flowbits"
+            ]
+          }
+        },
+        "flowints": {
+          "type": "object",
+          "additionalProperties": true,
+          "suricata": {
+            "keywords": [
+              "flowint"
+            ]
+          }
+        },
+        "flowvars": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "gid": {
+                "type": "string"
+              },
+              "key": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "pktvars": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "uid": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "optional": true
+    },
+    "ether": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "dest_mac": {
+          "type": "string"
+        },
+        "dest_macs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "ether_type": {
+          "type": "integer",
+          "description": "Ethernet type value "
+        },
+        "src_mac": {
+          "type": "string"
+        },
+        "src_macs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "tcp": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "ack": {
+          "type": "boolean"
+        },
+        "cwr": {
+          "type": "boolean"
+        },
+        "ecn": {
+          "type": "boolean"
+        },
+        "fin": {
+          "type": "boolean"
+        },
+        "psh": {
+          "type": "boolean"
+        },
+        "rst": {
+          "type": "boolean"
+        },
+        "state": {
+          "type": "string"
+        },
+        "syn": {
+          "type": "boolean"
+        },
+        "tc_gap": {
+          "type": "boolean"
+        },
+        "tc_max_regions": {
+          "type": "integer"
+        },
+        "tc_urgent_oob_data": {
+          "type": "integer",
+          "description": "Number of Out-of-Band bytes sent by server using TCP urgent packets"
+        },
+        "tcp_flags": {
+          "type": "string"
+        },
+        "tcp_flags_tc": {
+          "type": "string"
+        },
+        "tcp_flags_ts": {
+          "type": "string"
+        },
+        "ts_gap": {
+          "type": "boolean"
+        },
+        "ts_max_regions": {
+          "type": "integer"
+        },
+        "ts_urgent_oob_data": {
+          "type": "integer",
+          "description": "Number of Out-of-Band bytes sent by client using TCP urgent packets"
+        },
+        "urg": {
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "description": "FLOW事件Schema，基于Suricata源码分析"
+}

@@ -37,11 +37,11 @@ tracing = "0.1"
 [build-dependencies]
 rustc_version = "0.4.0"
 
-[dev-dependencies]
-tempfile = "3.8.0"
-tokio-test = "0.4.3"
-
 [package.metadata.deb]
+assets = [
+  ["event-type-schemas/*", "/var/zenohd/event-type-schemas/", "644"],
+  ["etc/*", "/var/zenohd/etc/", "644"]
+]
 copyright = "2025 NetPrism Technology"
 depends = "zenoh-plugin-storage-manager (=1.5.1)"
 license-file = ["LICENSE", "0"]
