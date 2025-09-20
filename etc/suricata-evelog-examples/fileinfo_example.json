@@ -1,0 +1,89 @@
+{
+  "dest_ip": "203.0.113.1",
+  "dest_port": 34167,
+  "ether": {
+    "dest_mac": "example_dest_mac",
+    "dest_macs": [
+      "example_dest_macs_item_0",
+      "example_dest_macs_item_1",
+      "example_dest_macs_item_2",
+      "example_dest_macs_item_3",
+      "example_dest_macs_item_4"
+    ],
+    "ether_type": 578440,
+    "src_mac": "example_src_mac",
+    "src_macs": [
+      "example_src_macs_item_0",
+      "example_src_macs_item_1",
+      "example_src_macs_item_2",
+      "example_src_macs_item_3"
+    ]
+  },
+  "event_type": "fileinfo",
+  "fileinfo": {
+    "end": 17538,
+    "file_id": 9882154,
+    "filename": "capture.pcap",
+    "gaps": false,
+    "magic": "example_magic",
+    "md5": "example_md5",
+    "sha1": "example_sha1",
+    "sha256": "example_sha256",
+    "sid": [
+      5809835,
+      1287605,
+      9425786,
+      8223819,
+      4007598
+    ],
+    "size": 1853,
+    "start": 962643,
+    "state": "example_state",
+    "stored": true,
+    "storing": true,
+    "tx_id": 5042786
+  },
+  "flow_id": 1107102,
+  "host": "auth.service.io",
+  "icmp_code": 647847,
+  "icmp_type": 63386,
+  "in_iface": "example_in_iface",
+  "ip_v": 391329,
+  "metadata": {
+    "entropy": {},
+    "flowbits": [
+      "example_flowbits_item_0",
+      "example_flowbits_item_1",
+      "example_flowbits_item_2",
+      "example_flowbits_item_3"
+    ],
+    "flowints": {},
+    "flowvars": [
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      }
+    ],
+    "pktvars": [
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      }
+    ]
+  },
+  "parent_id": 7918793,
+  "pcap_cnt": 141,
+  "pcap_filename": "capture.pcap",
+  "pkt_src": "example_pkt_src",
+  "proto": "ICMP6",
+  "src_ip": "172.16.0.1",
+  "src_port": 1623,
+  "suricata_version": "7.0.0",
+  "timestamp": "2023-01-01T12:00:00+00:00",
+  "tx_id": 1198826,
+  "vlan": [
+    71269,
+    741521
+  ]
+}

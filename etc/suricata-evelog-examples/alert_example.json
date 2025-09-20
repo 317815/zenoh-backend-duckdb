@@ -1,0 +1,209 @@
+{
+  "alert": {
+    "action": "rejected",
+    "category": "Potentially Bad Traffic",
+    "context": {},
+    "gid": 8536477,
+    "metadata": {
+      "affected_product": [
+        "example_affected_product_item_0",
+        "example_affected_product_item_1",
+        "example_affected_product_item_2",
+        "example_affected_product_item_3",
+        "example_affected_product_item_4"
+      ],
+      "attack_target": [
+        "example_attack_target_item_0",
+        "example_attack_target_item_1",
+        "example_attack_target_item_2"
+      ],
+      "created_at": [
+        "example_created_at_item_0"
+      ],
+      "deployment": [
+        "example_deployment_item_0",
+        "example_deployment_item_1"
+      ],
+      "former_category": [
+        "Misc Attack",
+        "Misc Attack",
+        "Potentially Bad Traffic",
+        "Potentially Bad Traffic"
+      ],
+      "malware_family": [
+        "example_malware_family_item_0",
+        "example_malware_family_item_1",
+        "example_malware_family_item_2"
+      ],
+      "policy": [
+        "example_policy_item_0"
+      ],
+      "signature_severity": [
+        "ET SCAN Potential Security Event"
+      ],
+      "tag": [
+        "example_tag_item_0",
+        "example_tag_item_1",
+        "example_tag_item_2",
+        "example_tag_item_3"
+      ],
+      "updated_at": [
+        "example_updated_at_item_0"
+      ]
+    },
+    "references": [
+      "example_references_item_0",
+      "example_references_item_1",
+      "example_references_item_2"
+    ],
+    "rev": 6,
+    "rule": "example_rule",
+    "severity": 3,
+    "signature": "ET SCAN Potential Security Event",
+    "signature_id": 1728977,
+    "source": {
+      "ip": "10.10.10.1",
+      "port": 36166
+    },
+    "target": {
+      "ip": "10.0.0.1",
+      "port": 64798
+    },
+    "xff": "example_xff"
+  },
+  "dest_ip": "172.20.0.100",
+  "dest_port": 6721,
+  "ether": {
+    "dest_mac": "example_dest_mac",
+    "dest_macs": [
+      "example_dest_macs_item_0"
+    ],
+    "ether_type": 588508,
+    "src_mac": "example_src_mac",
+    "src_macs": [
+      "example_src_macs_item_0",
+      "example_src_macs_item_1"
+    ]
+  },
+  "event_type": "alert",
+  "files": [
+    {
+      "end": 578856,
+      "file_id": 5918715,
+      "filename": "capture.pcap",
+      "gaps": false,
+      "magic": "example_magic",
+      "md5": "example_md5",
+      "sha1": "example_sha1",
+      "sha256": "example_sha256",
+      "sid": [
+        4226067,
+        2166941,
+        1768805,
+        4823498,
+        5855124
+      ],
+      "size": 1407,
+      "start": 896865,
+      "state": "example_state",
+      "stored": true,
+      "storing": true,
+      "tx_id": 7377459
+    }
+  ],
+  "flow_id": 2867825,
+  "host": "web.example.org",
+  "icmp_code": 98246,
+  "icmp_type": 31244,
+  "in_iface": "example_in_iface",
+  "ip_v": 33326,
+  "metadata": {
+    "entropy": {},
+    "flowbits": [
+      "example_flowbits_item_0",
+      "example_flowbits_item_1"
+    ],
+    "flowints": {},
+    "flowvars": [
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      }
+    ],
+    "pktvars": [
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      }
+    ]
+  },
+  "packet": "example_packet",
+  "packet_info": {
+    "linktype": 967096,
+    "linktype_name": "example_linktype_name"
+  },
+  "parent_id": 1419610,
+  "payload": "example_payload",
+  "payload_printable": "example_payload_printable",
+  "pcap_cnt": 760,
+  "pcap_filename": "capture.pcap",
+  "pkt_src": "example_pkt_src",
+  "proto": "ICMP6",
+  "src_ip": "10.0.0.1",
+  "src_port": 45372,
+  "stream": 396922,
+  "suricata_version": "7.0.0",
+  "timestamp": "2023-01-01T12:00:00+00:00",
+  "verdict": {
+    "action": "dropped",
+    "reject": [
+      "example_reject_item_0",
+      "example_reject_item_1",
+      "example_reject_item_2",
+      "example_reject_item_3"
+    ],
+    "reject-target": "example_reject-target"
+  },
+  "vlan": [
+    256787,
+    234053,
+    146316
+  ]
+}

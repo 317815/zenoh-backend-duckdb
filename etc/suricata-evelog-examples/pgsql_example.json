@@ -1,0 +1,219 @@
+{
+  "dest_ip": "192.0.2.1",
+  "dest_port": 30730,
+  "ether": {
+    "dest_mac": "example_dest_mac",
+    "dest_macs": [
+      "example_dest_macs_item_0",
+      "example_dest_macs_item_1"
+    ],
+    "ether_type": 295968,
+    "src_mac": "example_src_mac",
+    "src_macs": [
+      "example_src_macs_item_0",
+      "example_src_macs_item_1",
+      "example_src_macs_item_2"
+    ]
+  },
+  "event_type": "pgsql",
+  "flow_id": 4887183,
+  "host": "test.local",
+  "icmp_code": 498424,
+  "icmp_type": 68540,
+  "in_iface": "example_in_iface",
+  "ip_v": 31734,
+  "metadata": {
+    "entropy": {},
+    "flowbits": [
+      "example_flowbits_item_0",
+      "example_flowbits_item_1",
+      "example_flowbits_item_2"
+    ],
+    "flowints": {},
+    "flowvars": [
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      }
+    ],
+    "pktvars": [
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      }
+    ]
+  },
+  "parent_id": 4754647,
+  "pcap_cnt": 148,
+  "pcap_filename": "capture.pcap",
+  "pgsql": {
+    "request": {
+      "copy_data_in": {
+        "data_size": 8422,
+        "msg_count": 106
+      },
+      "message": "example_message",
+      "password": "example_password",
+      "password_redacted": false,
+      "process_id": 2794848,
+      "protocol_version": "ICMP",
+      "sasl_authentication_mechanism": "example_sasl_authentication_mechanism",
+      "sasl_param": "example_sasl_param",
+      "sasl_response": "example_sasl_response",
+      "secret_key": 583165,
+      "simple_query": "example_simple_query",
+      "startup_parameters": {
+        "optional_parameters": [
+          {
+            "application_name": "example_application_name",
+            "client_encoding": "example_client_encoding",
+            "database": "example_database",
+            "datestyle": "example_datestyle",
+            "extra_float_digits": "example_extra_float_digits",
+            "options": "example_options",
+            "replication": "example_replication"
+          }
+        ],
+        "user": "example_user"
+      }
+    },
+    "response": {
+      "authentication_md5_password": "example_authentication_md5_password",
+      "authentication_sasl_final": "example_authentication_sasl_final",
+      "code": "example_code",
+      "command_completed": "example_command_completed",
+      "copy_data_out": {
+        "data_size": 5049,
+        "row_count": 546
+      },
+      "copy_in_response": {
+        "columns": 483367
+      },
+      "copy_out_response": {
+        "columns": 420286
+      },
+      "data_rows": 619221,
+      "data_size": 6873,
+      "field_count": 245,
+      "file": "example_file",
+      "line": "example_line",
+      "message": "example_message",
+      "parameter_status": [
+        {
+          "application_name": "example_application_name",
+          "client_encoding": "example_client_encoding",
+          "date_style": "example_date_style",
+          "integer_datetimes": "example_integer_datetimes",
+          "interval_style": "example_interval_style",
+          "is_superuser": "example_is_superuser",
+          "server_encoding": "example_server_encoding",
+          "server_version": "7.0.0",
+          "session_authorization": "example_session_authorization",
+          "standard_conforming_strings": "example_standard_conforming_strings",
+          "time_zone": "example_time_zone"
+        },
+        {
+          "application_name": "example_application_name",
+          "client_encoding": "example_client_encoding",
+          "date_style": "example_date_style",
+          "integer_datetimes": "example_integer_datetimes",
+          "interval_style": "example_interval_style",
+          "is_superuser": "example_is_superuser",
+          "server_encoding": "example_server_encoding",
+          "server_version": "7.0.0",
+          "session_authorization": "example_session_authorization",
+          "standard_conforming_strings": "example_standard_conforming_strings",
+          "time_zone": "example_time_zone"
+        },
+        {
+          "application_name": "example_application_name",
+          "client_encoding": "example_client_encoding",
+          "date_style": "example_date_style",
+          "integer_datetimes": "example_integer_datetimes",
+          "interval_style": "example_interval_style",
+          "is_superuser": "example_is_superuser",
+          "server_encoding": "example_server_encoding",
+          "server_version": "7.0.0",
+          "session_authorization": "example_session_authorization",
+          "standard_conforming_strings": "example_standard_conforming_strings",
+          "time_zone": "example_time_zone"
+        },
+        {
+          "application_name": "example_application_name",
+          "client_encoding": "example_client_encoding",
+          "date_style": "example_date_style",
+          "integer_datetimes": "example_integer_datetimes",
+          "interval_style": "example_interval_style",
+          "is_superuser": "example_is_superuser",
+          "server_encoding": "example_server_encoding",
+          "server_version": "7.0.0",
+          "session_authorization": "example_session_authorization",
+          "standard_conforming_strings": "example_standard_conforming_strings",
+          "time_zone": "example_time_zone"
+        },
+        {
+          "application_name": "example_application_name",
+          "client_encoding": "example_client_encoding",
+          "date_style": "example_date_style",
+          "integer_datetimes": "example_integer_datetimes",
+          "interval_style": "example_interval_style",
+          "is_superuser": "example_is_superuser",
+          "server_encoding": "example_server_encoding",
+          "server_version": "7.0.0",
+          "session_authorization": "example_session_authorization",
+          "standard_conforming_strings": "example_standard_conforming_strings",
+          "time_zone": "example_time_zone"
+        }
+      ],
+      "process_id": 5088457,
+      "routine": "example_routine",
+      "secret_key": 574566,
+      "severity_localizable": "example_severity_localizable",
+      "severity_non_localizable": "example_severity_non_localizable",
+      "ssl_accepted": true
+    },
+    "tx_id": 9092903
+  },
+  "pkt_src": "example_pkt_src",
+  "proto": "ICMP6",
+  "src_ip": "192.0.2.1",
+  "src_port": 52717,
+  "suricata_version": "7.0.0",
+  "timestamp": "2023-01-01T12:00:00+00:00",
+  "tx_id": 3137316,
+  "vlan": [
+    270587,
+    957204,
+    381104,
+    411122,
+    192259
+  ]
+}

@@ -14,16 +14,16 @@ fn create_storage_config(
     storage_name: &str,
     volume_id: &str,
     key_expr: &str,
-    db_schema: &str,
-    db_table: &str,
-    db_table_desc: Option<&str>,
+    db: &str,
+    table: &str,
+    schema_file_path: Option<&str>,
 ) -> Result<zenoh_backend_traits::config::StorageConfig, String> {
     let mut volume_cfg = serde_json::Map::new();
-    volume_cfg.insert("db_schema".to_string(), serde_json::Value::String(db_schema.to_string()));
-    volume_cfg.insert("db_table".to_string(), serde_json::Value::String(db_table.to_string()));
+    volume_cfg.insert("db".to_string(), serde_json::Value::String(db.to_string()));
+    volume_cfg.insert("table".to_string(), serde_json::Value::String(table.to_string()));
 
-    if let Some(table_desc) = db_table_desc {
-        volume_cfg.insert("db_table_desc".to_string(), serde_json::Value::String(table_desc.to_string()));
+    if let Some(schema_path) = schema_file_path {
+        volume_cfg.insert("schema_file_path".to_string(), serde_json::Value::String(schema_path.to_string()));
     }
 
     Ok(zenoh_backend_traits::config::StorageConfig {
@@ -47,9 +47,9 @@ struct TestCase {
     storage_name: &'static str,
     volume_id: &'static str,
     key_expr: &'static str,
-    db_schema: &'static str,
-    db_table: &'static str,
-    db_table_desc: Option<&'static str>,
+    db: &'static str,
+    table: &'static str,
+    schema_file_path: Option<&'static str>,
     input_file_path: &'static str,
 }
 
@@ -143,18 +143,24 @@ fn validate_diff(
 async fn run_storage_test_case(volume_instance: &VolumeInstance, storage_config: StorageConfig, input_json_str: &str) -> Result<String, String> {
 
     info!(
-        "Storage Config: name = {}, volume_id = {}, key_expr = {}, db_schema = {}, db_table = {}, db_table_desc = {:?}",
+        "Storage Config: name = {}, volume_id = {}, key_expr = {}, db = {}, table = {}, schema_file_path = {:?}",
         storage_config.name,
         storage_config.volume_id,
         storage_config.key_expr,
-        storage_config.volume_cfg.get("db_schema").and_then(|v| v.as_str()).unwrap_or(""),
-        storage_config.volume_cfg.get("db_table").and_then(|v| v.as_str()).unwrap_or(""),
-        storage_config.volume_cfg.get("db_table_desc").and_then(|v| v.as_str()).unwrap_or("")
+        storage_config.volume_cfg.get("db").and_then(|v| v.as_str()).unwrap_or(""),
+        storage_config.volume_cfg.get("table").and_then(|v| v.as_str()).unwrap_or(""),
+        storage_config.volume_cfg.get("schema_file_path").and_then(|v| v.as_str()).unwrap_or("")
     );
 
     let key = OwnedKeyExpr::new(format!("{}/test", storage_config.key_expr.clone()))
         .map_err(|e| format!("Invalid key: {}", e))?;
-    let timestamp = Timestamp::parse_rfc3339("2023-01-01T12:00:00Z/33")
+    
+    // Generate unique timestamp for each test to avoid primary key conflicts
+    let now = std::time::SystemTime::now()
+        .duration_since(std::time::UNIX_EPOCH)
+        .unwrap()
+        .as_nanos();
+    let timestamp = Timestamp::parse_rfc3339(&format!("2023-01-01T12:00:00.{}Z/33", now % 1_000_000_000))
         .map_err(|e| format!("Invalid timestamp: {:?}", e))?;
     let payload = ZBytes::from(input_json_str.as_bytes().to_vec());
 
@@ -212,25 +218,14 @@ fn run_storage_test_result_validate(input_json_str: String, result_json_str: Str
 fn get_test_cases() -> Vec<TestCase> {
     vec![
         TestCase {
-            case_name: "http",
-            storage_name: "http_storage",
-            volume_id: VOLUME_NAME,
-            key_expr: "http/**",
-            db_schema: "evelog",
-            db_table: "http",
-            db_table_desc: Some("event-type-shcemas/http_schema.json"),
-            input_file_path: "event-type-examples/http_example.json"
-        },
-        
-        TestCase {
             case_name: "flow",
             storage_name: "flow_storage",
             volume_id: VOLUME_NAME,
             key_expr: "flow/**",
-            db_schema: "evelog",
-            db_table: "flow",
-            db_table_desc: Some("event-type-shcemas/flow_schema.json"),
-            input_file_path: "event-type-examples/flow_example.json",
+            db: "evelog",
+            table: "flow",
+            schema_file_path: Some("etc/suricata-evelog-schemas/flow_schema.json"),
+            input_file_path: "etc/suricata-evelog-examples/flow_example.json",
         },
         
         TestCase {
@@ -238,21 +233,21 @@ fn get_test_cases() -> Vec<TestCase> {
             storage_name: "alert_storage",
             volume_id: VOLUME_NAME,
             key_expr: "alert/**",
-            db_schema: "evelog",
-            db_table: "alert",
-            db_table_desc: Some("event-type-shcemas/alert_schema.json"),
-            input_file_path: "event-type-examples/alert_example.json",
+            db: "evelog",
+            table: "alert",
+            schema_file_path: Some("etc/suricata-evelog-schemas/alert_schema.json"),
+            input_file_path: "etc/suricata-evelog-examples/alert_example.json",
         },
-        
+
         TestCase {
-            case_name: "dns",
-            storage_name: "dns_storage",
+            case_name: "http",
+            storage_name: "http_storage",
             volume_id: VOLUME_NAME,
-            key_expr: "dns/**",
-            db_schema: "evelog",
-            db_table: "dns",
-            db_table_desc: Some("event-type-shcemas/dns_schema.json"),
-            input_file_path: "event-type-examples/dns_example.json",
+            key_expr: "http/**",
+            db: "evelog",
+            table: "http",
+            schema_file_path: Some("etc/suricata-evelog-schemas/http_schema.json"),
+            input_file_path: "etc/suricata-evelog-examples/http_example.json"
         },
         
         TestCase {
@@ -260,10 +255,21 @@ fn get_test_cases() -> Vec<TestCase> {
             storage_name: "tls_storage",
             volume_id: VOLUME_NAME,
             key_expr: "tls/**",
-            db_schema: "evelog",
-            db_table: "tls",
-            db_table_desc: Some("event-type-shcemas/tls_schema.json"),
-            input_file_path: "event-type-examples/tls_example.json",
+            db: "evelog",
+            table: "tls",
+            schema_file_path: Some("etc/suricata-evelog-schemas/tls_schema.json"),
+            input_file_path: "etc/suricata-evelog-examples/tls_example.json",
+        },
+        
+        TestCase {
+            case_name: "dns",
+            storage_name: "dns_storage",
+            volume_id: VOLUME_NAME,
+            key_expr: "dns/**",
+            db: "evelog",
+            table: "dns",
+            schema_file_path: Some("etc/suricata-evelog-schemas/dns_schema.json"),
+            input_file_path: "etc/suricata-evelog-examples/dns_example.json",
         },
     ]
 }
@@ -284,6 +290,9 @@ fn create_default_volume_config() -> VolumeConfig {
 
 #[tokio::test]
 async fn test_backend() -> Result<(), Box<dyn std::error::Error>> {
+    // Set ZENOH_HOME to current directory for testing
+    std::env::set_var("ZENOH_HOME", std::env::current_dir().unwrap());
+    
     info!("Test: DuckDB backend");
 
     // 1. Create VolumeConfig
@@ -301,9 +310,9 @@ async fn test_backend() -> Result<(), Box<dyn std::error::Error>> {
             test_case.storage_name,
             test_case.volume_id,
             test_case.key_expr,
-            test_case.db_schema,
-            test_case.db_table,
-            test_case.db_table_desc
+            test_case.db,
+            test_case.table,
+            test_case.schema_file_path
         )?;
 
         let input_json_str = std::fs::read_to_string(test_case.input_file_path)
@@ -321,6 +330,9 @@ async fn test_backend() -> Result<(), Box<dyn std::error::Error>> {
 #[tokio::test]
 #[ignore] // Use --ignored to run this test
 async fn test_serve_duckdb() -> Result<(), Box<dyn std::error::Error>> {
+    // Set ZENOH_HOME to current directory for testing
+    std::env::set_var("ZENOH_HOME", std::env::current_dir().unwrap());
+    
     info!("Starting DuckDB server with test data");
 
     // 1. Create VolumeConfig
@@ -340,9 +352,9 @@ async fn test_serve_duckdb() -> Result<(), Box<dyn std::error::Error>> {
             test_case.storage_name,
             test_case.volume_id,
             test_case.key_expr,
-            test_case.db_schema,
-            test_case.db_table,
-            test_case.db_table_desc
+            test_case.db,
+            test_case.table,
+            test_case.schema_file_path
         )?;
 
         let input_json_str = std::fs::read_to_string(test_case.input_file_path)

@@ -1,0 +1,144 @@
+{
+  "app_proto": "TCP",
+  "app_proto_expected": "ICMP6",
+  "app_proto_orig": "ICMP6",
+  "app_proto_tc": "TCP",
+  "app_proto_ts": "TCP",
+  "dest_ip": "192.0.2.1",
+  "dest_port": 63892,
+  "ether": {
+    "dest_mac": "example_dest_mac",
+    "dest_macs": [
+      "example_dest_macs_item_0"
+    ],
+    "ether_type": 969051,
+    "src_mac": "example_src_mac",
+    "src_macs": [
+      "example_src_macs_item_0"
+    ]
+  },
+  "event_type": "flow",
+  "flow": {
+    "action": "rejected",
+    "age": 2264,
+    "alerted": false,
+    "bypass": "example_bypass",
+    "bypassed": {
+      "bytes_toclient": 8355,
+      "bytes_toserver": 84459,
+      "pkts_toclient": 19,
+      "pkts_toserver": 729
+    },
+    "bytes_toclient": 23463,
+    "bytes_toserver": 11837,
+    "dest_ip": "10.10.10.1",
+    "dest_port": 56423,
+    "elephant": false,
+    "emergency": false,
+    "end": "example_end",
+    "exception_policy": [
+      "default_exception_policy_item_0",
+      "default_exception_policy_item_1",
+      "default_exception_policy_item_2",
+      "default_exception_policy_item_3",
+      "default_exception_policy_item_4"
+    ],
+    "pkts_toclient": 888,
+    "pkts_toserver": 107,
+    "reason": "example_reason",
+    "src_ip": "172.20.0.100",
+    "src_port": 61261,
+    "start": "example_start",
+    "state": "example_state",
+    "tx_cnt": 44,
+    "wrong_thread": true
+  },
+  "flow_id": 4220085,
+  "host": "web.example.org",
+  "icmp_code": 255021,
+  "icmp_type": 592447,
+  "in_iface": "example_in_iface",
+  "ip_v": 481294,
+  "metadata": {
+    "entropy": {},
+    "flowbits": [
+      "example_flowbits_item_0",
+      "example_flowbits_item_1",
+      "example_flowbits_item_2",
+      "example_flowbits_item_3",
+      "example_flowbits_item_4"
+    ],
+    "flowints": {},
+    "flowvars": [
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      }
+    ],
+    "pktvars": [
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      }
+    ]
+  },
+  "parent_id": 9832465,
+  "pcap_filename": "capture.pcap",
+  "proto": "ICMP6",
+  "response_icmp_code": 236828,
+  "response_icmp_type": 731105,
+  "spi": 314546,
+  "src_ip": "192.168.0.50",
+  "src_port": 6202,
+  "suricata_version": "7.0.0",
+  "tcp": {
+    "ack": false,
+    "cwr": true,
+    "ecn": true,
+    "fin": false,
+    "psh": true,
+    "rst": true,
+    "state": "example_state",
+    "syn": true,
+    "tc_gap": false,
+    "tc_max_regions": 973995,
+    "tc_urgent_oob_data": 80674,
+    "tcp_flags": "example_tcp_flags",
+    "tcp_flags_tc": "example_tcp_flags_tc",
+    "tcp_flags_ts": "example_tcp_flags_ts",
+    "ts_gap": false,
+    "ts_max_regions": 170341,
+    "ts_urgent_oob_data": 591353,
+    "urg": true
+  },
+  "timestamp": "2023-01-01T12:00:00+00:00",
+  "vlan": [
+    854814,
+    371658,
+    280310
+  ]
+}

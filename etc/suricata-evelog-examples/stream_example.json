@@ -1,0 +1,75 @@
+{
+  "dest_ip": "172.16.0.1",
+  "dest_port": 3002,
+  "ether": {
+    "dest_mac": "example_dest_mac",
+    "dest_macs": [
+      "example_dest_macs_item_0",
+      "example_dest_macs_item_1",
+      "example_dest_macs_item_2",
+      "example_dest_macs_item_3"
+    ],
+    "ether_type": 156989,
+    "src_mac": "example_src_mac",
+    "src_macs": [
+      "example_src_macs_item_0",
+      "example_src_macs_item_1"
+    ]
+  },
+  "event_type": "stream",
+  "flow_id": 8125430,
+  "host": "web.example.org",
+  "icmp_code": 82830,
+  "icmp_type": 148140,
+  "in_iface": "example_in_iface",
+  "ip_v": 382986,
+  "metadata": {
+    "entropy": {},
+    "flowbits": [
+      "example_flowbits_item_0"
+    ],
+    "flowints": {},
+    "flowvars": [
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      }
+    ],
+    "pktvars": [
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      }
+    ]
+  },
+  "parent_id": 7235826,
+  "pcap_cnt": 56,
+  "pcap_filename": "capture.pcap",
+  "pkt_src": "example_pkt_src",
+  "proto": "UDP",
+  "src_ip": "10.0.0.1",
+  "src_port": 32273,
+  "stream": 492584,
+  "suricata_version": "7.0.0",
+  "timestamp": "2023-01-01T12:00:00+00:00",
+  "vlan": [
+    694940
+  ]
+}

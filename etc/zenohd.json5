@@ -1,0 +1,28 @@
+{
+  plugins: {
+    // configuration of "storage_manager" plugin:
+    storage_manager: {
+      volumes: {
+        // DuckDB volume - manages database connections
+        duckdb: {
+          // DuckDB database file path (optional, defaults to :memory:)
+          db_path: ":memory:",
+          // Initialization SQL script file path (optional)
+          init_sql: "etc/init.sql"
+        }
+      },
+      storages: {
+        // Suricata flow events - auto-generate table structure from JSON Schema file
+        flow: {
+          key_expr: "zenoh/duckdb/evelog.flow",        // supports wildcards like evelog.*
+          volume: {
+            id: "duckdb",
+            db: "evelog",                       // DuckDB database schema (actually it is duckdb schema name) - required
+            table: "flow",                          // DuckDB table name - required
+            schema_file_path: "etc/flow_schema.json"      // JSON Schema file path - optional
+          }
+        }
+      }
+    }
+  }
+}

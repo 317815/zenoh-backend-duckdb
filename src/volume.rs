@@ -1,4 +1,4 @@
-/* Copyright (C) 2025-2035 Open Information Security Foundation
+/* Copyright (C) 2025-2035 NetPrism Technology
  *
  * You can copy, redistribute or modify this Program under the terms of
  * the GNU General Public License version 2 as published by the Free
@@ -146,26 +146,26 @@ impl Volume for DuckDBVolume {
         let volume_cfg = config.volume_cfg.as_object()
             .ok_or_else(|| zerror!("Volume configuration is required"))?;
         
-        let schema = volume_cfg.get("db_schema")
+        let db = volume_cfg.get("db")
             .and_then(|v| v.as_str())
-            .ok_or_else(|| zerror!("db_schema is required in volume configuration"))?
+            .ok_or_else(|| zerror!("db is required in volume configuration"))?
             .to_string();
         
-        let table = volume_cfg.get("db_table")
+        let table = volume_cfg.get("table")
             .and_then(|v| v.as_str())
-            .ok_or_else(|| zerror!("db_table is required in volume configuration"))?
+            .ok_or_else(|| zerror!("table is required in volume configuration"))?
             .to_string();
         
-        // Parse table_desc file path from volume configuration (optional)
-        let table_desc = volume_cfg.get("db_table_desc")
+        // Parse schema_file_path from volume configuration (optional)
+        let schema_file_path = volume_cfg.get("schema_file_path")
             .and_then(|v| v.as_str())
             .map(|s| s.to_string());
 
         tracing::info!(
-            "Creating DuckDB storage: key_expr='{}' -> {}.{} (table_desc: {:?})", 
-            config.key_expr, schema, table, table_desc
+            "Creating DuckDB storage: key_expr='{}' -> {}.{} (schema_file_path: {:?})", 
+            config.key_expr, db, table, schema_file_path
         );
 
-        DuckDBStorage::new(config, schema, table, table_desc, self.connection.clone())
+        DuckDBStorage::new(config, db, table, schema_file_path, self.connection.clone())
     }
 }

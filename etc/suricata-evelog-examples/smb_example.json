@@ -1,0 +1,197 @@
+{
+  "dest_ip": "10.0.0.1",
+  "dest_port": 40336,
+  "ether": {
+    "dest_mac": "example_dest_mac",
+    "dest_macs": [
+      "example_dest_macs_item_0",
+      "example_dest_macs_item_1",
+      "example_dest_macs_item_2",
+      "example_dest_macs_item_3"
+    ],
+    "ether_type": 70793,
+    "src_mac": "example_src_mac",
+    "src_macs": [
+      "example_src_macs_item_0",
+      "example_src_macs_item_1",
+      "example_src_macs_item_2"
+    ]
+  },
+  "event_type": "smb",
+  "flow_id": 9381494,
+  "host": "api.service.com",
+  "icmp_code": 407440,
+  "icmp_type": 730139,
+  "in_iface": "example_in_iface",
+  "ip_v": 661519,
+  "metadata": {
+    "entropy": {},
+    "flowbits": [
+      "example_flowbits_item_0",
+      "example_flowbits_item_1",
+      "example_flowbits_item_2"
+    ],
+    "flowints": {},
+    "flowvars": [
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      }
+    ],
+    "pktvars": [
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      }
+    ]
+  },
+  "parent_id": 2708148,
+  "pcap_cnt": 730,
+  "pcap_filename": "capture.pcap",
+  "pkt_src": "example_pkt_src",
+  "proto": "ICMP",
+  "smb": {
+    "access": "example_access",
+    "accessed": 638093,
+    "changed": 956409,
+    "client_dialects": [
+      "example_client_dialects_item_0",
+      "example_client_dialects_item_1",
+      "example_client_dialects_item_2",
+      "example_client_dialects_item_3",
+      "example_client_dialects_item_4"
+    ],
+    "client_guid": "example_client_guid",
+    "command": "example_command",
+    "created": 470717,
+    "dcerpc": {
+      "call_id": 7415127,
+      "interfaces": [
+        {
+          "ack_reason": 671709,
+          "ack_result": 777848,
+          "uuid": "example_uuid",
+          "version": "7.0.0"
+        },
+        {
+          "ack_reason": 243715,
+          "ack_result": 527874,
+          "uuid": "example_uuid",
+          "version": "7.0.0"
+        },
+        {
+          "ack_reason": 616005,
+          "ack_result": 738857,
+          "uuid": "example_uuid",
+          "version": "7.0.0"
+        },
+        {
+          "ack_reason": 13937,
+          "ack_result": 243904,
+          "uuid": "example_uuid",
+          "version": "7.0.0"
+        },
+        {
+          "ack_reason": 22243,
+          "ack_result": 646288,
+          "uuid": "example_uuid",
+          "version": "7.0.0"
+        }
+      ],
+      "opnum": 795807,
+      "req": {
+        "frag_cnt": 919,
+        "stub_data_size": 2132
+      },
+      "request": "example_request",
+      "res": {
+        "frag_cnt": 317,
+        "stub_data_size": 3973
+      },
+      "response": "example_response"
+    },
+    "dialect": "example_dialect",
+    "directory": "example_directory",
+    "disposition": "example_disposition",
+    "filename": "capture.pcap",
+    "fuid": "example_fuid",
+    "function": "example_function",
+    "id": 8189001,
+    "kerberos": {
+      "realm": "example_realm",
+      "snames": [
+        "example_snames_item_0",
+        "example_snames_item_1"
+      ]
+    },
+    "level_of_interest": "example_level_of_interest",
+    "max_read_size": 1400,
+    "max_write_size": 1081,
+    "modified": 144237,
+    "named_pipe": "192.0.2.1",
+    "ntlmssp": {
+      "domain": "example_domain",
+      "host": "auth.service.io",
+      "user": "example_user",
+      "version": "7.0.0",
+      "warning": false
+    },
+    "rename": {
+      "from": "example_from",
+      "to": "example_to"
+    },
+    "request": {
+      "native_lm": "example_native_lm",
+      "native_os": "example_native_os"
+    },
+    "request_done": true,
+    "response": {
+      "native_lm": "example_native_lm",
+      "native_os": "example_native_os"
+    },
+    "response_done": true,
+    "server_guid": "example_server_guid",
+    "service": {
+      "request": "example_request",
+      "response": "example_response"
+    },
+    "session_id": 7304004,
+    "set_info": {
+      "class": "example_class",
+      "info_level": "example_info_level"
+    },
+    "share": "example_share",
+    "share_type": "example_share_type",
+    "size": 3448,
+    "status": "example_status",
+    "status_code": "example_status_code",
+    "subcmd": "example_subcmd",
+    "tree_id": 1635969
+  },
+  "src_ip": "198.51.100.1",
+  "src_port": 63875,
+  "suricata_version": "7.0.0",
+  "timestamp": "2023-01-01T12:00:00+00:00",
+  "tx_id": 1296097,
+  "vlan": [
+    829696,
+    967021,
+    891777,
+    596854,
+    179787
+  ]
+}

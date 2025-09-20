@@ -1,0 +1,80 @@
+{
+  "anomaly": {
+    "app_proto": "ICMP",
+    "code": 420651,
+    "event": "example_event",
+    "layer": "example_layer",
+    "type": "example_type"
+  },
+  "dest_ip": "172.16.0.1",
+  "dest_port": 36029,
+  "ether": {
+    "dest_mac": "example_dest_mac",
+    "dest_macs": [
+      "example_dest_macs_item_0"
+    ],
+    "ether_type": 240174,
+    "src_mac": "example_src_mac",
+    "src_macs": [
+      "example_src_macs_item_0"
+    ]
+  },
+  "event_type": "anomaly",
+  "flow_id": 7120868,
+  "host": "mail.company.net",
+  "icmp_code": 397887,
+  "icmp_type": 484714,
+  "in_iface": "example_in_iface",
+  "ip_v": 171339,
+  "metadata": {
+    "entropy": {},
+    "flowbits": [
+      "example_flowbits_item_0",
+      "example_flowbits_item_1",
+      "example_flowbits_item_2",
+      "example_flowbits_item_3",
+      "example_flowbits_item_4"
+    ],
+    "flowints": {},
+    "flowvars": [
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      }
+    ],
+    "pktvars": [
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      }
+    ]
+  },
+  "parent_id": 3728882,
+  "pcap_cnt": 380,
+  "pcap_filename": "capture.pcap",
+  "pkt_src": "example_pkt_src",
+  "proto": "UDP",
+  "src_ip": "10.0.0.1",
+  "src_port": 40944,
+  "suricata_version": "7.0.0",
+  "timestamp": "2023-01-01T12:00:00+00:00",
+  "vlan": [
+    219684,
+    702729,
+    279946
+  ]
+}

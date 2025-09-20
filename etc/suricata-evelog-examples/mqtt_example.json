@@ -1,0 +1,233 @@
+{
+  "dest_ip": "192.168.0.50",
+  "dest_port": 61827,
+  "ether": {
+    "dest_mac": "example_dest_mac",
+    "dest_macs": [
+      "example_dest_macs_item_0",
+      "example_dest_macs_item_1"
+    ],
+    "ether_type": 605445,
+    "src_mac": "example_src_mac",
+    "src_macs": [
+      "example_src_macs_item_0",
+      "example_src_macs_item_1",
+      "example_src_macs_item_2"
+    ]
+  },
+  "event_type": "mqtt",
+  "flow_id": 3277572,
+  "host": "db.internal.local",
+  "icmp_code": 313884,
+  "icmp_type": 546384,
+  "in_iface": "example_in_iface",
+  "ip_v": 875671,
+  "metadata": {
+    "entropy": {},
+    "flowbits": [
+      "example_flowbits_item_0",
+      "example_flowbits_item_1",
+      "example_flowbits_item_2",
+      "example_flowbits_item_3",
+      "example_flowbits_item_4"
+    ],
+    "flowints": {},
+    "flowvars": [
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      }
+    ],
+    "pktvars": [
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      }
+    ]
+  },
+  "mqtt": {
+    "connack": {
+      "dup": true,
+      "properties": {},
+      "qos": 156557,
+      "retain": false,
+      "return_code": 881578,
+      "session_present": true
+    },
+    "connect": {
+      "client_id": "example_client_id",
+      "dup": false,
+      "flags": {
+        "clean_session": false,
+        "password": true,
+        "username": false,
+        "will": true,
+        "will_retain": true
+      },
+      "password": "example_password",
+      "properties": {},
+      "protocol_string": "ICMP",
+      "protocol_version": 739525,
+      "qos": 899488,
+      "retain": false,
+      "username": "example_username",
+      "will": {
+        "message": "example_message",
+        "properties": {},
+        "topic": "example_topic"
+      }
+    },
+    "disconnect": {
+      "dup": true,
+      "properties": {},
+      "qos": 284685,
+      "reason_code": 433973,
+      "retain": true
+    },
+    "pingreq": {
+      "dup": false,
+      "qos": 919652,
+      "retain": true
+    },
+    "pingresp": {
+      "dup": false,
+      "qos": 473858,
+      "retain": false
+    },
+    "puback": {
+      "dup": true,
+      "message_id": 9809723,
+      "qos": 317003,
+      "reason_code": 183514,
+      "retain": true
+    },
+    "pubcomp": {
+      "dup": false,
+      "message_id": 1627384,
+      "qos": 815572,
+      "reason_code": 211915,
+      "retain": true
+    },
+    "publish": {
+      "dup": false,
+      "message": "example_message",
+      "message_id": 9489182,
+      "properties": {},
+      "qos": 26146,
+      "retain": false,
+      "skipped_length": 8292,
+      "topic": "example_topic",
+      "truncated": true
+    },
+    "pubrec": {
+      "dup": true,
+      "message_id": 6706197,
+      "qos": 968503,
+      "reason_code": 506957,
+      "retain": false
+    },
+    "pubrel": {
+      "dup": false,
+      "message_id": 3404091,
+      "qos": 806859,
+      "reason_code": 914147,
+      "retain": true
+    },
+    "suback": {
+      "dup": true,
+      "message_id": 4442468,
+      "qos": 759767,
+      "qos_granted": [
+        481682
+      ],
+      "retain": false
+    },
+    "subscribe": {
+      "dup": true,
+      "message_id": 1068952,
+      "qos": 326087,
+      "retain": true,
+      "topics": [
+        {
+          "qos": 914227,
+          "topic": "example_topic"
+        },
+        {
+          "qos": 91305,
+          "topic": "example_topic"
+        },
+        {
+          "qos": 349479,
+          "topic": "example_topic"
+        },
+        {
+          "qos": 489554,
+          "topic": "example_topic"
+        },
+        {
+          "qos": 932378,
+          "topic": "example_topic"
+        }
+      ]
+    },
+    "unsuback": {
+      "dup": true,
+      "message_id": 2729778,
+      "qos": 545865,
+      "reason_codes": [
+        23572,
+        605615,
+        795338
+      ],
+      "retain": false
+    },
+    "unsubscribe": {
+      "dup": true,
+      "message_id": 6383479,
+      "qos": 210297,
+      "retain": true,
+      "topics": [
+        "example_topics_item_0",
+        "example_topics_item_1",
+        "example_topics_item_2"
+      ]
+    }
+  },
+  "parent_id": 9078154,
+  "pcap_cnt": 160,
+  "pcap_filename": "capture.pcap",
+  "pkt_src": "example_pkt_src",
+  "proto": "TCP",
+  "src_ip": "192.0.2.1",
+  "src_port": 31332,
+  "suricata_version": "7.0.0",
+  "timestamp": "2023-01-01T12:00:00+00:00",
+  "tx_id": 6932348,
+  "vlan": [
+    935390,
+    907253,
+    563051,
+    939449
+  ]
+}

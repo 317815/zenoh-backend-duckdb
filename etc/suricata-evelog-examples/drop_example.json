@@ -1,0 +1,94 @@
+{
+  "dest_ip": "192.168.0.50",
+  "dest_port": 19017,
+  "ether": {
+    "dest_mac": "example_dest_mac",
+    "dest_macs": [
+      "example_dest_macs_item_0"
+    ],
+    "ether_type": 149715,
+    "src_mac": "example_src_mac",
+    "src_macs": [
+      "example_src_macs_item_0",
+      "example_src_macs_item_1",
+      "example_src_macs_item_2",
+      "example_src_macs_item_3",
+      "example_src_macs_item_4"
+    ]
+  },
+  "event_type": "drop",
+  "flow_id": 8481225,
+  "host": "cdn.example.net",
+  "icmp_code": 668480,
+  "icmp_type": 703787,
+  "in_iface": "example_in_iface",
+  "ip_v": 78686,
+  "metadata": {
+    "entropy": {},
+    "flowbits": [
+      "example_flowbits_item_0",
+      "example_flowbits_item_1",
+      "example_flowbits_item_2"
+    ],
+    "flowints": {},
+    "flowvars": [
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      }
+    ],
+    "pktvars": [
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      }
+    ]
+  },
+  "parent_id": 8149041,
+  "pcap_cnt": 171,
+  "pcap_filename": "capture.pcap",
+  "pkt_src": "example_pkt_src",
+  "proto": "TCP",
+  "src_ip": "192.0.2.1",
+  "src_port": 41318,
+  "suricata_version": "7.0.0",
+  "timestamp": "2023-01-01T12:00:00+00:00",
+  "verdict": {
+    "action": "rejected",
+    "reject": [
+      "example_reject_item_0"
+    ],
+    "reject-target": "example_reject-target"
+  },
+  "vlan": [
+    368623,
+    468849,
+    44412,
+    762120
+  ]
+}

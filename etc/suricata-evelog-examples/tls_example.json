@@ -1,0 +1,184 @@
+{
+  "dest_ip": "192.168.0.50",
+  "dest_port": 42014,
+  "ether": {
+    "dest_mac": "example_dest_mac",
+    "dest_macs": [
+      "example_dest_macs_item_0"
+    ],
+    "ether_type": 123655,
+    "src_mac": "example_src_mac",
+    "src_macs": [
+      "example_src_macs_item_0",
+      "example_src_macs_item_1",
+      "example_src_macs_item_2",
+      "example_src_macs_item_3"
+    ]
+  },
+  "event_type": "tls",
+  "flow_id": 9402873,
+  "host": "test.local",
+  "icmp_code": 596799,
+  "icmp_type": 74310,
+  "in_iface": "example_in_iface",
+  "ip_v": 916431,
+  "metadata": {
+    "entropy": {},
+    "flowbits": [
+      "example_flowbits_item_0",
+      "example_flowbits_item_1"
+    ],
+    "flowints": {},
+    "flowvars": [
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      }
+    ],
+    "pktvars": [
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      }
+    ]
+  },
+  "parent_id": 6907359,
+  "pcap_cnt": 366,
+  "pcap_filename": "capture.pcap",
+  "pkt_src": "example_pkt_src",
+  "proto": "ICMP6",
+  "src_ip": "10.0.0.1",
+  "src_port": 29786,
+  "suricata_version": "7.0.0",
+  "timestamp": "2023-01-01T12:00:00+00:00",
+  "tls": {
+    "certificate": "example_certificate",
+    "chain": [
+      "example_chain_item_0"
+    ],
+    "client": {
+      "certificate": "example_certificate",
+      "chain": [
+        "example_chain_item_0",
+        "example_chain_item_1",
+        "example_chain_item_2",
+        "example_chain_item_3",
+        "example_chain_item_4"
+      ],
+      "fingerprint": "example_fingerprint",
+      "issuerdn": "example_issuerdn",
+      "notafter": "example_notafter",
+      "notbefore": "example_notbefore",
+      "serial": "example_serial",
+      "subject": "example_subject",
+      "subjectaltname": [
+        "example_subjectaltname_item_0",
+        "example_subjectaltname_item_1",
+        "example_subjectaltname_item_2",
+        "example_subjectaltname_item_3",
+        "example_subjectaltname_item_4"
+      ]
+    },
+    "client_alpns": [
+      "example_client_alpns_item_0",
+      "example_client_alpns_item_1",
+      "example_client_alpns_item_2"
+    ],
+    "client_handshake": {
+      "ciphers": [
+        234903
+      ],
+      "exts": [
+        967073,
+        868376,
+        263592
+      ],
+      "sig_algs": [
+        737435,
+        375290,
+        71253,
+        914822
+      ],
+      "version": "7.0.0"
+    },
+    "fingerprint": "example_fingerprint",
+    "from_proto": "UDP",
+    "issuerdn": "example_issuerdn",
+    "ja3": {
+      "hash": "example_hash",
+      "string": "example_string"
+    },
+    "ja3s": {
+      "hash": "example_hash",
+      "string": "example_string"
+    },
+    "ja4": "example_ja4",
+    "notafter": "example_notafter",
+    "notbefore": "example_notbefore",
+    "serial": "example_serial",
+    "server_alpns": [
+      "example_server_alpns_item_0",
+      "example_server_alpns_item_1",
+      "example_server_alpns_item_2"
+    ],
+    "server_handshake": {
+      "cipher": 78409,
+      "exts": [
+        603304,
+        253124,
+        894640,
+        542910,
+        977072
+      ],
+      "version": "7.0.0"
+    },
+    "session_resumed": false,
+    "sni": "cdn.example.net",
+    "subject": "example_subject",
+    "subjectaltname": [
+      "example_subjectaltname_item_0",
+      "example_subjectaltname_item_1",
+      "example_subjectaltname_item_2",
+      "example_subjectaltname_item_3",
+      "example_subjectaltname_item_4"
+    ],
+    "version": "7.0.0"
+  },
+  "tx_id": 4868381,
+  "vlan": [
+    943462,
+    585836,
+    894877,
+    144570,
+    840534
+  ]
+}

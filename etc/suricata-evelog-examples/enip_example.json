@@ -1,0 +1,2403 @@
+{
+  "bittorrent_dht": {
+    "client_version": "7.0.0",
+    "error": {
+      "msg": "example_msg",
+      "num": 800441
+    },
+    "request": {
+      "id": "example_id",
+      "implied_port": 54867,
+      "info_hash": "example_info_hash",
+      "port": 33046,
+      "target": "example_target",
+      "token": "example_token"
+    },
+    "request_type": "example_request_type",
+    "response": {
+      "id": "example_id",
+      "nodes": [
+        {
+          "id": "example_id",
+          "ip": "10.10.10.1",
+          "port": 176405
+        },
+        {
+          "id": "example_id",
+          "ip": "192.0.2.1",
+          "port": 177487
+        },
+        {
+          "id": "example_id",
+          "ip": "172.16.0.1",
+          "port": 755303
+        },
+        {
+          "id": "example_id",
+          "ip": "172.20.0.100",
+          "port": 512036
+        }
+      ],
+      "nodes6": [
+        {
+          "id": "example_id",
+          "ip": "172.20.0.100",
+          "port": 672985
+        },
+        {
+          "id": "example_id",
+          "ip": "192.168.1.100",
+          "port": 549395
+        }
+      ],
+      "token": "example_token",
+      "values": [
+        {
+          "ip": "10.0.0.1",
+          "port": 991101
+        }
+      ]
+    },
+    "transaction_id": "allowed"
+  },
+  "dest_ip": "172.16.0.1",
+  "dest_port": 45527,
+  "dnp3": {
+    "application": {
+      "complete": true,
+      "control": {
+        "con": false,
+        "fin": false,
+        "fir": true,
+        "sequence": 7161,
+        "uns": false
+      },
+      "function_code": 402206,
+      "objects": [
+        {
+          "count": 458,
+          "group": 790371,
+          "points": [
+            {},
+            {},
+            {}
+          ],
+          "prefix_code": 345637,
+          "qualifier": 316613,
+          "range_code": 610754,
+          "start": 757997,
+          "stop": 600705,
+          "variation": 11991
+        },
+        {
+          "count": 268,
+          "group": 685436,
+          "points": [
+            {},
+            {},
+            {}
+          ],
+          "prefix_code": 726420,
+          "qualifier": 247781,
+          "range_code": 65142,
+          "start": 700224,
+          "stop": 123967,
+          "variation": 488002
+        }
+      ]
+    },
+    "control": {
+      "dir": false,
+      "fcb": true,
+      "fcv": false,
+      "function_code": 719400,
+      "pri": false
+    },
+    "dst": 723821,
+    "iin": {
+      "indicators": [
+        "example_indicators_item_0"
+      ]
+    },
+    "request": {
+      "application": {
+        "complete": false,
+        "control": {
+          "con": false,
+          "fin": true,
+          "fir": true,
+          "sequence": 140057,
+          "uns": false
+        },
+        "function_code": 160626,
+        "objects": [
+          {
+            "count": 766,
+            "group": 635163,
+            "points": [
+              {},
+              {},
+              {}
+            ],
+            "prefix_code": 436045,
+            "qualifier": 736038,
+            "range_code": 575914,
+            "start": 957136,
+            "stop": 493699,
+            "variation": 794139
+          },
+          {
+            "count": 551,
+            "group": 840952,
+            "points": [
+              {},
+              {}
+            ],
+            "prefix_code": 798867,
+            "qualifier": 259486,
+            "range_code": 713390,
+            "start": 791401,
+            "stop": 624756,
+            "variation": 915548
+          },
+          {
+            "count": 807,
+            "group": 85847,
+            "points": [
+              {},
+              {},
+              {},
+              {},
+              {}
+            ],
+            "prefix_code": 468449,
+            "qualifier": 553829,
+            "range_code": 737952,
+            "start": 379358,
+            "stop": 81896,
+            "variation": 961800
+          },
+          {
+            "count": 578,
+            "group": 117659,
+            "points": [
+              {}
+            ],
+            "prefix_code": 869032,
+            "qualifier": 574251,
+            "range_code": 946746,
+            "start": 530041,
+            "stop": 211976,
+            "variation": 600521
+          }
+        ]
+      },
+      "control": {
+        "dir": true,
+        "fcb": true,
+        "fcv": false,
+        "function_code": 895993,
+        "pri": false
+      },
+      "dst": 121886,
+      "src": 713341,
+      "type": "example_type"
+    },
+    "response": {
+      "application": {
+        "complete": true,
+        "control": {
+          "con": false,
+          "fin": true,
+          "fir": false,
+          "sequence": 847975,
+          "uns": true
+        },
+        "function_code": 475458,
+        "objects": [
+          {
+            "count": 526,
+            "group": 435604,
+            "points": [
+              {},
+              {},
+              {},
+              {}
+            ],
+            "prefix_code": 591303,
+            "qualifier": 60541,
+            "range_code": 585941,
+            "start": 484838,
+            "stop": 705448,
+            "variation": 846112
+          },
+          {
+            "count": 316,
+            "group": 758414,
+            "points": [
+              {}
+            ],
+            "prefix_code": 415182,
+            "qualifier": 266817,
+            "range_code": 856113,
+            "start": 3161,
+            "stop": 782032,
+            "variation": 228486
+          }
+        ]
+      },
+      "control": {
+        "dir": true,
+        "fcb": true,
+        "fcv": false,
+        "function_code": 361264,
+        "pri": true
+      },
+      "dst": 567451,
+      "iin": {
+        "indicators": [
+          "example_indicators_item_0"
+        ]
+      },
+      "src": 979981,
+      "type": "example_type"
+    },
+    "src": 937656,
+    "type": "example_type"
+  },
+  "dns": {
+    "aa": true,
+    "additionals": [
+      {
+        "opt": [
+          {
+            "code": 533469,
+            "data": "example_data"
+          },
+          {
+            "code": 235134,
+            "data": "example_data"
+          },
+          {
+            "code": 127257,
+            "data": "example_data"
+          }
+        ],
+        "rdata": "example_rdata",
+        "rrname": "web.example.org",
+        "rrtype": "CNAME",
+        "ttl": 31030
+      },
+      {
+        "opt": [
+          {
+            "code": 27560,
+            "data": "example_data"
+          },
+          {
+            "code": 378427,
+            "data": "example_data"
+          },
+          {
+            "code": 580933,
+            "data": "example_data"
+          },
+          {
+            "code": 600076,
+            "data": "example_data"
+          }
+        ],
+        "rdata": "example_rdata",
+        "rrname": "db.internal.local",
+        "rrtype": "TXT",
+        "ttl": 72306
+      }
+    ],
+    "answer": {
+      "additionals": [
+        {
+          "opt": [
+            {
+              "code": 927199,
+              "data": "example_data"
+            },
+            {
+              "code": 90403,
+              "data": "example_data"
+            },
+            {
+              "code": 68941,
+              "data": "example_data"
+            },
+            {
+              "code": 324314,
+              "data": "example_data"
+            },
+            {
+              "code": 417500,
+              "data": "example_data"
+            }
+          ],
+          "rdata": "example_rdata",
+          "rrname": "auth.service.io",
+          "rrtype": "SRV",
+          "ttl": 53844
+        },
+        {
+          "opt": [
+            {
+              "code": 863333,
+              "data": "example_data"
+            },
+            {
+              "code": 602826,
+              "data": "example_data"
+            },
+            {
+              "code": 77333,
+              "data": "example_data"
+            },
+            {
+              "code": 131414,
+              "data": "example_data"
+            }
+          ],
+          "rdata": "example_rdata",
+          "rrname": "db.internal.local",
+          "rrtype": "AAAA",
+          "ttl": 58980
+        }
+      ],
+      "authorities": [
+        {
+          "rdata": "example_rdata",
+          "rdata_truncated": false,
+          "rrname": "api.service.com",
+          "rrname_truncated": true,
+          "rrtype": "CNAME",
+          "soa": {
+            "expire": 453633,
+            "minimum": 527290,
+            "mname": "example_mname",
+            "mname_truncated": true,
+            "refresh": 871776,
+            "retry": 130192,
+            "rname": "example_rname",
+            "serial": 543269
+          },
+          "ttl": 20057
+        },
+        {
+          "rdata": "example_rdata",
+          "rdata_truncated": false,
+          "rrname": "api.service.com",
+          "rrname_truncated": true,
+          "rrtype": "PTR",
+          "soa": {
+            "expire": 980143,
+            "minimum": 743788,
+            "mname": "example_mname",
+            "mname_truncated": true,
+            "refresh": 362831,
+            "retry": 993508,
+            "rname": "example_rname",
+            "serial": 986609
+          },
+          "ttl": 68013
+        },
+        {
+          "rdata": "example_rdata",
+          "rdata_truncated": false,
+          "rrname": "test.local",
+          "rrname_truncated": false,
+          "rrtype": "MX",
+          "soa": {
+            "expire": 665905,
+            "minimum": 577599,
+            "mname": "example_mname",
+            "mname_truncated": false,
+            "refresh": 131250,
+            "retry": 655383,
+            "rname": "example_rname",
+            "serial": 317534
+          },
+          "ttl": 80535
+        },
+        {
+          "rdata": "example_rdata",
+          "rdata_truncated": true,
+          "rrname": "api.service.com",
+          "rrname_truncated": true,
+          "rrtype": "CNAME",
+          "soa": {
+            "expire": 690731,
+            "minimum": 654813,
+            "mname": "example_mname",
+            "mname_truncated": false,
+            "refresh": 883456,
+            "retry": 968810,
+            "rname": "example_rname",
+            "serial": 590996
+          },
+          "ttl": 5400
+        }
+      ],
+      "flags": "example_flags",
+      "id": 1476028,
+      "opcode": 85168,
+      "qr": true,
+      "ra": false,
+      "rcode": "example_rcode",
+      "rd": true,
+      "rrname": "cdn.example.net",
+      "rrtype": "A",
+      "type": "example_type",
+      "version": 522230
+    },
+    "answers": [
+      {
+        "rdata": "example_rdata",
+        "rrname": "mail.company.net",
+        "rrtype": "NS",
+        "soa": {
+          "expire": 506404,
+          "minimum": 256773,
+          "mname": "example_mname",
+          "mname_truncated": false,
+          "refresh": 311882,
+          "retry": 475575,
+          "rname": "example_rname",
+          "serial": 76517
+        },
+        "srv": {
+          "name": "example_name",
+          "port": 46152,
+          "priority": 62823,
+          "weight": 165759
+        },
+        "sshfp": {
+          "algo": 460959,
+          "fingerprint": "example_fingerprint",
+          "type": 435810
+        },
+        "ttl": 63472
+      },
+      {
+        "rdata": "example_rdata",
+        "rrname": "auth.service.io",
+        "rrtype": "MX",
+        "soa": {
+          "expire": 356717,
+          "minimum": 636129,
+          "mname": "example_mname",
+          "mname_truncated": true,
+          "refresh": 327766,
+          "retry": 903332,
+          "rname": "example_rname",
+          "serial": 753258
+        },
+        "srv": {
+          "name": "example_name",
+          "port": 21950,
+          "priority": 769864,
+          "weight": 902590
+        },
+        "sshfp": {
+          "algo": 362147,
+          "fingerprint": "example_fingerprint",
+          "type": 418084
+        },
+        "ttl": 17140
+      },
+      {
+        "rdata": "example_rdata",
+        "rrname": "db.internal.local",
+        "rrtype": "SRV",
+        "soa": {
+          "expire": 588933,
+          "minimum": 111341,
+          "mname": "example_mname",
+          "mname_truncated": false,
+          "refresh": 253480,
+          "retry": 489131,
+          "rname": "example_rname",
+          "serial": 128473
+        },
+        "srv": {
+          "name": "example_name",
+          "port": 18553,
+          "priority": 471435,
+          "weight": 259961
+        },
+        "sshfp": {
+          "algo": 147720,
+          "fingerprint": "example_fingerprint",
+          "type": 101514
+        },
+        "ttl": 6633
+      },
+      {
+        "rdata": "example_rdata",
+        "rrname": "mail.company.net",
+        "rrtype": "SOA",
+        "soa": {
+          "expire": 906141,
+          "minimum": 645270,
+          "mname": "example_mname",
+          "mname_truncated": false,
+          "refresh": 260330,
+          "retry": 907340,
+          "rname": "example_rname",
+          "serial": 946141
+        },
+        "srv": {
+          "name": "example_name",
+          "port": 11490,
+          "priority": 852993,
+          "weight": 343341
+        },
+        "sshfp": {
+          "algo": 979109,
+          "fingerprint": "example_fingerprint",
+          "type": 605748
+        },
+        "ttl": 40989
+      },
+      {
+        "rdata": "example_rdata",
+        "rrname": "web.example.org",
+        "rrtype": "CNAME",
+        "soa": {
+          "expire": 522469,
+          "minimum": 539728,
+          "mname": "example_mname",
+          "mname_truncated": false,
+          "refresh": 522987,
+          "retry": 921777,
+          "rname": "example_rname",
+          "serial": 323528
+        },
+        "srv": {
+          "name": "example_name",
+          "port": 33619,
+          "priority": 24302,
+          "weight": 94423
+        },
+        "sshfp": {
+          "algo": 991148,
+          "fingerprint": "example_fingerprint",
+          "type": 412344
+        },
+        "ttl": 66250
+      }
+    ],
+    "authorities": [
+      {
+        "rdata": "example_rdata",
+        "rdata_truncated": true,
+        "rrname": "web.example.org",
+        "rrname_truncated": false,
+        "rrtype": "A",
+        "soa": {
+          "expire": 52995,
+          "minimum": 295023,
+          "mname": "example_mname",
+          "mname_truncated": false,
+          "refresh": 626543,
+          "retry": 925199,
+          "rname": "example_rname",
+          "serial": 883791
+        },
+        "ttl": 85756
+      },
+      {
+        "rdata": "example_rdata",
+        "rdata_truncated": false,
+        "rrname": "mail.company.net",
+        "rrname_truncated": true,
+        "rrtype": "AAAA",
+        "soa": {
+          "expire": 451860,
+          "minimum": 140440,
+          "mname": "example_mname",
+          "mname_truncated": false,
+          "refresh": 762847,
+          "retry": 383545,
+          "rname": "example_rname",
+          "serial": 800961
+        },
+        "ttl": 52856
+      },
+      {
+        "rdata": "example_rdata",
+        "rdata_truncated": false,
+        "rrname": "example.com",
+        "rrname_truncated": false,
+        "rrtype": "A",
+        "soa": {
+          "expire": 597983,
+          "minimum": 589107,
+          "mname": "example_mname",
+          "mname_truncated": true,
+          "refresh": 380133,
+          "retry": 580096,
+          "rname": "example_rname",
+          "serial": 302620
+        },
+        "ttl": 9638
+      },
+      {
+        "rdata": "example_rdata",
+        "rdata_truncated": false,
+        "rrname": "auth.service.io",
+        "rrname_truncated": false,
+        "rrtype": "AAAA",
+        "soa": {
+          "expire": 134913,
+          "minimum": 101377,
+          "mname": "example_mname",
+          "mname_truncated": false,
+          "refresh": 391326,
+          "retry": 833510,
+          "rname": "example_rname",
+          "serial": 355556
+        },
+        "ttl": 73117
+      }
+    ],
+    "flags": "example_flags",
+    "grouped": {
+      "A": [
+        "example_A_item_0",
+        "example_A_item_1",
+        "example_A_item_2"
+      ],
+      "AAAA": [
+        "example_AAAA_item_0",
+        "example_AAAA_item_1"
+      ],
+      "CNAME": [
+        "example_CNAME_item_0",
+        "example_CNAME_item_1"
+      ],
+      "MX": [
+        "example_MX_item_0",
+        "example_MX_item_1",
+        "example_MX_item_2",
+        "example_MX_item_3",
+        "example_MX_item_4"
+      ],
+      "NS": [
+        "example_NS_item_0",
+        "example_NS_item_1",
+        "example_NS_item_2",
+        "example_NS_item_3",
+        "example_NS_item_4"
+      ],
+      "NULL": [
+        "example_NULL_item_0",
+        "example_NULL_item_1",
+        "example_NULL_item_2",
+        "example_NULL_item_3"
+      ],
+      "PTR": [
+        "example_PTR_item_0",
+        "example_PTR_item_1",
+        "example_PTR_item_2",
+        "example_PTR_item_3",
+        "example_PTR_item_4"
+      ],
+      "SOA": [
+        {
+          "expire": 47504,
+          "minimum": 40804,
+          "mname": "example_mname",
+          "mname_truncated": true,
+          "refresh": 748255,
+          "retry": 349218,
+          "rname": "example_rname",
+          "serial": 843019
+        }
+      ],
+      "SRV": [
+        {
+          "name": "example_name",
+          "port": 35058,
+          "priority": 479187,
+          "weight": 156175
+        },
+        {
+          "name": "example_name",
+          "port": 40755,
+          "priority": 936516,
+          "weight": 540546
+        },
+        {
+          "name": "example_name",
+          "port": 10184,
+          "priority": 343897,
+          "weight": 976610
+        },
+        {
+          "name": "example_name",
+          "port": 41202,
+          "priority": 334002,
+          "weight": 170395
+        }
+      ],
+      "SSHFP": [
+        {
+          "algo": 646447,
+          "fingerprint": "example_fingerprint",
+          "type": 775232
+        },
+        {
+          "algo": 883532,
+          "fingerprint": "example_fingerprint",
+          "type": 313769
+        },
+        {
+          "algo": 622565,
+          "fingerprint": "example_fingerprint",
+          "type": 352713
+        },
+        {
+          "algo": 531958,
+          "fingerprint": "example_fingerprint",
+          "type": 868524
+        }
+      ],
+      "TXT": [
+        "example_TXT_item_0",
+        "example_TXT_item_1",
+        "example_TXT_item_2",
+        "example_TXT_item_3",
+        "example_TXT_item_4"
+      ]
+    },
+    "id": 9931180,
+    "opcode": 513641,
+    "qr": false,
+    "queries": [
+      {
+        "id": 1279121,
+        "opcode": 386251,
+        "rrname": "db.internal.local",
+        "rrname_truncated": true,
+        "rrtype": "SOA",
+        "tx_id": 6161977,
+        "type": "example_type",
+        "z": true
+      },
+      {
+        "id": 8962302,
+        "opcode": 278428,
+        "rrname": "web.example.org",
+        "rrname_truncated": true,
+        "rrtype": "TXT",
+        "tx_id": 3860717,
+        "type": "example_type",
+        "z": false
+      },
+      {
+        "id": 3479264,
+        "opcode": 861574,
+        "rrname": "web.example.org",
+        "rrname_truncated": true,
+        "rrtype": "AAAA",
+        "tx_id": 4200829,
+        "type": "example_type",
+        "z": true
+      },
+      {
+        "id": 8399399,
+        "opcode": 328930,
+        "rrname": "cdn.example.net",
+        "rrname_truncated": true,
+        "rrtype": "SOA",
+        "tx_id": 4420734,
+        "type": "example_type",
+        "z": false
+      }
+    ],
+    "query": [
+      {
+        "id": 8912226,
+        "opcode": 915215,
+        "rrname": "example.com",
+        "rrtype": "CNAME",
+        "tx_id": 9702060,
+        "type": "example_type",
+        "z": true
+      },
+      {
+        "id": 6453426,
+        "opcode": 694395,
+        "rrname": "auth.service.io",
+        "rrtype": "SRV",
+        "tx_id": 7322070,
+        "type": "example_type",
+        "z": false
+      },
+      {
+        "id": 3905518,
+        "opcode": 481992,
+        "rrname": "db.internal.local",
+        "rrtype": "SRV",
+        "tx_id": 6943949,
+        "type": "example_type",
+        "z": false
+      },
+      {
+        "id": 9123194,
+        "opcode": 201603,
+        "rrname": "web.example.org",
+        "rrtype": "NS",
+        "tx_id": 6007984,
+        "type": "example_type",
+        "z": true
+      },
+      {
+        "id": 5993143,
+        "opcode": 808634,
+        "rrname": "mail.company.net",
+        "rrtype": "MX",
+        "tx_id": 9204110,
+        "type": "example_type",
+        "z": false
+      }
+    ],
+    "ra": false,
+    "rcode": "example_rcode",
+    "rd": false,
+    "rrname": "mail.company.net",
+    "rrtype": "NS",
+    "tc": true,
+    "tx_id": 7370211,
+    "type": "example_type",
+    "version": 892717,
+    "z": false
+  },
+  "enip": {
+    "request": {
+      "cip": {
+        "class_name": "example_class_name",
+        "multiple": [
+          {
+            "class_name": "example_class_name",
+            "path": [
+              {
+                "segment_type": "example_segment_type",
+                "value": 932456
+              },
+              {
+                "segment_type": "example_segment_type",
+                "value": 984152
+              },
+              {
+                "segment_type": "example_segment_type",
+                "value": 140718
+              },
+              {
+                "segment_type": "example_segment_type",
+                "value": 892400
+              }
+            ],
+            "service": "example_service"
+          },
+          {
+            "class_name": "example_class_name",
+            "path": [
+              {
+                "segment_type": "example_segment_type",
+                "value": 490755
+              },
+              {
+                "segment_type": "example_segment_type",
+                "value": 286090
+              },
+              {
+                "segment_type": "example_segment_type",
+                "value": 202177
+              },
+              {
+                "segment_type": "example_segment_type",
+                "value": 848102
+              },
+              {
+                "segment_type": "example_segment_type",
+                "value": 118118
+              }
+            ],
+            "service": "example_service"
+          },
+          {
+            "class_name": "example_class_name",
+            "path": [
+              {
+                "segment_type": "example_segment_type",
+                "value": 170387
+              },
+              {
+                "segment_type": "example_segment_type",
+                "value": 766634
+              },
+              {
+                "segment_type": "example_segment_type",
+                "value": 481206
+              }
+            ],
+            "service": "example_service"
+          },
+          {
+            "class_name": "example_class_name",
+            "path": [
+              {
+                "segment_type": "example_segment_type",
+                "value": 753504
+              },
+              {
+                "segment_type": "example_segment_type",
+                "value": 195243
+              },
+              {
+                "segment_type": "example_segment_type",
+                "value": 14768
+              }
+            ],
+            "service": "example_service"
+          },
+          {
+            "class_name": "example_class_name",
+            "path": [
+              {
+                "segment_type": "example_segment_type",
+                "value": 829179
+              },
+              {
+                "segment_type": "example_segment_type",
+                "value": 309355
+              },
+              {
+                "segment_type": "example_segment_type",
+                "value": 595361
+              }
+            ],
+            "service": "example_service"
+          }
+        ],
+        "path": [
+          {
+            "segment_type": "example_segment_type",
+            "value": 184019
+          },
+          {
+            "segment_type": "example_segment_type",
+            "value": 640632
+          }
+        ],
+        "service": "example_service"
+      },
+      "command": "example_command",
+      "register_session": {
+        "options": 897734,
+        "protocol_version": 669752
+      },
+      "status": "example_status"
+    },
+    "response": {
+      "cip": {
+        "multiple": [
+          {
+            "service": "example_service",
+            "status": "example_status",
+            "status_extended": "example_status_extended",
+            "status_extended_meaning": "example_status_extended_meaning"
+          },
+          {
+            "service": "example_service",
+            "status": "example_status",
+            "status_extended": "example_status_extended",
+            "status_extended_meaning": "example_status_extended_meaning"
+          },
+          {
+            "service": "example_service",
+            "status": "example_status",
+            "status_extended": "example_status_extended",
+            "status_extended_meaning": "example_status_extended_meaning"
+          },
+          {
+            "service": "example_service",
+            "status": "example_status",
+            "status_extended": "example_status_extended",
+            "status_extended_meaning": "example_status_extended_meaning"
+          }
+        ],
+        "service": "example_service",
+        "status": "example_status",
+        "status_extended": "example_status_extended",
+        "status_extended_meaning": "example_status_extended_meaning"
+      },
+      "command": "example_command",
+      "identity": {
+        "device_type": "example_device_type",
+        "product_code": 867161,
+        "product_name": "example_product_name",
+        "protocol_version": 448479,
+        "revision": "example_revision",
+        "serial": 540310,
+        "state": 343856,
+        "status": 244,
+        "vendor_id": "example_vendor_id"
+      },
+      "list_services": {
+        "capabilities": 420304,
+        "protocol_version": 701765,
+        "service_name": "example_service_name"
+      },
+      "register_session": {
+        "options": 100018,
+        "protocol_version": 193757
+      },
+      "status": "example_status"
+    }
+  },
+  "ether": {
+    "dest_mac": "example_dest_mac",
+    "dest_macs": [
+      "example_dest_macs_item_0",
+      "example_dest_macs_item_1",
+      "example_dest_macs_item_2",
+      "example_dest_macs_item_3",
+      "example_dest_macs_item_4"
+    ],
+    "ether_type": 384774,
+    "src_mac": "example_src_mac",
+    "src_macs": [
+      "example_src_macs_item_0",
+      "example_src_macs_item_1",
+      "example_src_macs_item_2",
+      "example_src_macs_item_3"
+    ]
+  },
+  "event_type": "enip",
+  "flow_id": 2127988,
+  "ftp": {
+    "command": "example_command",
+    "command_data": "example_command_data",
+    "command_truncated": false,
+    "completion_code": [
+      "example_completion_code_item_0",
+      "example_completion_code_item_1"
+    ],
+    "dynamic_port": 63972,
+    "mode": "example_mode",
+    "reply": [
+      "example_reply_item_0"
+    ],
+    "reply_received": "example_reply_received",
+    "reply_truncated": true
+  },
+  "ftp_data": {
+    "command": "example_command",
+    "filename": "capture.pcap"
+  },
+  "host": "auth.service.io",
+  "icmp_code": 390084,
+  "icmp_type": 388984,
+  "in_iface": "example_in_iface",
+  "ip_v": 994913,
+  "krb5": {
+    "cname": "example_cname",
+    "encryption": "example_encryption",
+    "error_code": "example_error_code",
+    "failed_request": "example_failed_request",
+    "msg_type": "example_msg_type",
+    "realm": "example_realm",
+    "sname": "example_sname",
+    "ticket_encryption": "example_ticket_encryption",
+    "ticket_weak_encryption": true,
+    "weak_encryption": false
+  },
+  "ldap": {
+    "request": {
+      "abandon_request": {
+        "message_id": 5070038
+      },
+      "add_request": {
+        "attributes": [
+          {
+            "name": "example_name",
+            "values": [
+              "example_values_item_0",
+              "example_values_item_1"
+            ]
+          },
+          {
+            "name": "example_name",
+            "values": [
+              "example_values_item_0",
+              "example_values_item_1",
+              "example_values_item_2",
+              "example_values_item_3"
+            ]
+          },
+          {
+            "name": "example_name",
+            "values": [
+              "example_values_item_0",
+              "example_values_item_1"
+            ]
+          },
+          {
+            "name": "example_name",
+            "values": [
+              "example_values_item_0",
+              "example_values_item_1",
+              "example_values_item_2",
+              "example_values_item_3",
+              "example_values_item_4"
+            ]
+          },
+          {
+            "name": "example_name",
+            "values": [
+              "example_values_item_0",
+              "example_values_item_1",
+              "example_values_item_2"
+            ]
+          }
+        ],
+        "entry": "example_entry"
+      },
+      "bind_request": {
+        "name": "example_name",
+        "sasl": {
+          "credentials": "example_credentials",
+          "mechanism": "example_mechanism"
+        },
+        "version": 813185
+      },
+      "compare_request": {
+        "attribute_value_assertion": {
+          "description": "198.51.100.1",
+          "value": "example_value"
+        },
+        "entry": "example_entry"
+      },
+      "del_request": {
+        "dn": "example_dn"
+      },
+      "extended_request": {
+        "name": "example_name",
+        "value": "example_value"
+      },
+      "message_id": 7386444,
+      "mod_dn_request": {
+        "delete_old_rdn": false,
+        "entry": "example_entry",
+        "new_rdn": "example_new_rdn",
+        "new_superior": "example_new_superior"
+      },
+      "modify_request": {
+        "changes": [
+          {
+            "modification": {
+              "attribute_type": "example_attribute_type",
+              "attribute_values": [
+                "example_attribute_values_item_0",
+                "example_attribute_values_item_1",
+                "example_attribute_values_item_2"
+              ]
+            },
+            "operation": "example_operation"
+          },
+          {
+            "modification": {
+              "attribute_type": "example_attribute_type",
+              "attribute_values": [
+                "example_attribute_values_item_0",
+                "example_attribute_values_item_1",
+                "example_attribute_values_item_2"
+              ]
+            },
+            "operation": "example_operation"
+          },
+          {
+            "modification": {
+              "attribute_type": "example_attribute_type",
+              "attribute_values": [
+                "example_attribute_values_item_0",
+                "example_attribute_values_item_1",
+                "example_attribute_values_item_2"
+              ]
+            },
+            "operation": "example_operation"
+          },
+          {
+            "modification": {
+              "attribute_type": "example_attribute_type",
+              "attribute_values": [
+                "example_attribute_values_item_0",
+                "example_attribute_values_item_1",
+                "example_attribute_values_item_2"
+              ]
+            },
+            "operation": "example_operation"
+          },
+          {
+            "modification": {
+              "attribute_type": "example_attribute_type",
+              "attribute_values": [
+                "example_attribute_values_item_0",
+                "example_attribute_values_item_1",
+                "example_attribute_values_item_2",
+                "example_attribute_values_item_3",
+                "example_attribute_values_item_4"
+              ]
+            },
+            "operation": "example_operation"
+          }
+        ],
+        "object": "example_object"
+      },
+      "operation": "example_operation",
+      "search_request": {
+        "attributes": [
+          "example_attributes_item_0",
+          "example_attributes_item_1",
+          "example_attributes_item_2",
+          "example_attributes_item_3"
+        ],
+        "base_object": "example_base_object",
+        "deref_alias": 488640,
+        "scope": 103398,
+        "size_limit": 7792,
+        "time_limit": 798625,
+        "types_online": false,
+        "types_only": true
+      }
+    },
+    "responses": [
+      {
+        "add_response": {
+          "matched_dn": "example_matched_dn",
+          "message": "example_message",
+          "result_code": "example_result_code"
+        },
+        "bind_response": {
+          "matched_dn": "example_matched_dn",
+          "message": "example_message",
+          "result_code": "example_result_code",
+          "server_sasl_creds": "example_server_sasl_creds"
+        },
+        "compare_response": {
+          "matched_dn": "example_matched_dn",
+          "message": "example_message",
+          "result_code": "example_result_code"
+        },
+        "del_response": {
+          "matched_dn": "example_matched_dn",
+          "message": "example_message",
+          "result_code": "example_result_code"
+        },
+        "extended_response": {
+          "matched_dn": "example_matched_dn",
+          "message": "example_message",
+          "name": "example_name",
+          "result_code": "example_result_code",
+          "value": "example_value"
+        },
+        "intermediate_response": {
+          "name": "example_name",
+          "value": "example_value"
+        },
+        "message_id": 6249960,
+        "mod_dn_response": {
+          "matched_dn": "example_matched_dn",
+          "message": "example_message",
+          "result_code": "example_result_code"
+        },
+        "modify_response": {
+          "matched_dn": "example_matched_dn",
+          "message": "example_message",
+          "result_code": "example_result_code"
+        },
+        "operation": "example_operation",
+        "search_result_done": {
+          "matched_dn": "example_matched_dn",
+          "message": "example_message",
+          "result_code": "example_result_code"
+        },
+        "search_result_entry": {
+          "attributes": [
+            {
+              "type": "example_type",
+              "values": [
+                "example_values_item_0"
+              ]
+            },
+            {
+              "type": "example_type",
+              "values": [
+                "example_values_item_0",
+                "example_values_item_1",
+                "example_values_item_2",
+                "example_values_item_3",
+                "example_values_item_4"
+              ]
+            },
+            {
+              "type": "example_type",
+              "values": [
+                "example_values_item_0",
+                "example_values_item_1"
+              ]
+            },
+            {
+              "type": "example_type",
+              "values": [
+                "example_values_item_0",
+                "example_values_item_1"
+              ]
+            }
+          ],
+          "base_object": "example_base_object"
+        }
+      },
+      {
+        "add_response": {
+          "matched_dn": "example_matched_dn",
+          "message": "example_message",
+          "result_code": "example_result_code"
+        },
+        "bind_response": {
+          "matched_dn": "example_matched_dn",
+          "message": "example_message",
+          "result_code": "example_result_code",
+          "server_sasl_creds": "example_server_sasl_creds"
+        },
+        "compare_response": {
+          "matched_dn": "example_matched_dn",
+          "message": "example_message",
+          "result_code": "example_result_code"
+        },
+        "del_response": {
+          "matched_dn": "example_matched_dn",
+          "message": "example_message",
+          "result_code": "example_result_code"
+        },
+        "extended_response": {
+          "matched_dn": "example_matched_dn",
+          "message": "example_message",
+          "name": "example_name",
+          "result_code": "example_result_code",
+          "value": "example_value"
+        },
+        "intermediate_response": {
+          "name": "example_name",
+          "value": "example_value"
+        },
+        "message_id": 1272124,
+        "mod_dn_response": {
+          "matched_dn": "example_matched_dn",
+          "message": "example_message",
+          "result_code": "example_result_code"
+        },
+        "modify_response": {
+          "matched_dn": "example_matched_dn",
+          "message": "example_message",
+          "result_code": "example_result_code"
+        },
+        "operation": "example_operation",
+        "search_result_done": {
+          "matched_dn": "example_matched_dn",
+          "message": "example_message",
+          "result_code": "example_result_code"
+        },
+        "search_result_entry": {
+          "attributes": [
+            {
+              "type": "example_type",
+              "values": [
+                "example_values_item_0",
+                "example_values_item_1",
+                "example_values_item_2",
+                "example_values_item_3",
+                "example_values_item_4"
+              ]
+            },
+            {
+              "type": "example_type",
+              "values": [
+                "example_values_item_0",
+                "example_values_item_1",
+                "example_values_item_2",
+                "example_values_item_3",
+                "example_values_item_4"
+              ]
+            },
+            {
+              "type": "example_type",
+              "values": [
+                "example_values_item_0",
+                "example_values_item_1",
+                "example_values_item_2",
+                "example_values_item_3",
+                "example_values_item_4"
+              ]
+            }
+          ],
+          "base_object": "example_base_object"
+        }
+      },
+      {
+        "add_response": {
+          "matched_dn": "example_matched_dn",
+          "message": "example_message",
+          "result_code": "example_result_code"
+        },
+        "bind_response": {
+          "matched_dn": "example_matched_dn",
+          "message": "example_message",
+          "result_code": "example_result_code",
+          "server_sasl_creds": "example_server_sasl_creds"
+        },
+        "compare_response": {
+          "matched_dn": "example_matched_dn",
+          "message": "example_message",
+          "result_code": "example_result_code"
+        },
+        "del_response": {
+          "matched_dn": "example_matched_dn",
+          "message": "example_message",
+          "result_code": "example_result_code"
+        },
+        "extended_response": {
+          "matched_dn": "example_matched_dn",
+          "message": "example_message",
+          "name": "example_name",
+          "result_code": "example_result_code",
+          "value": "example_value"
+        },
+        "intermediate_response": {
+          "name": "example_name",
+          "value": "example_value"
+        },
+        "message_id": 8005797,
+        "mod_dn_response": {
+          "matched_dn": "example_matched_dn",
+          "message": "example_message",
+          "result_code": "example_result_code"
+        },
+        "modify_response": {
+          "matched_dn": "example_matched_dn",
+          "message": "example_message",
+          "result_code": "example_result_code"
+        },
+        "operation": "example_operation",
+        "search_result_done": {
+          "matched_dn": "example_matched_dn",
+          "message": "example_message",
+          "result_code": "example_result_code"
+        },
+        "search_result_entry": {
+          "attributes": [
+            {
+              "type": "example_type",
+              "values": [
+                "example_values_item_0",
+                "example_values_item_1"
+              ]
+            },
+            {
+              "type": "example_type",
+              "values": [
+                "example_values_item_0",
+                "example_values_item_1"
+              ]
+            },
+            {
+              "type": "example_type",
+              "values": [
+                "example_values_item_0",
+                "example_values_item_1",
+                "example_values_item_2"
+              ]
+            }
+          ],
+          "base_object": "example_base_object"
+        }
+      }
+    ]
+  },
+  "mdns": {
+    "additionals": [
+      {
+        "ptr": "example_ptr",
+        "rrname": "api.service.com",
+        "rrname_truncated": false,
+        "txt": [
+          "example_txt_item_0"
+        ]
+      },
+      {
+        "ptr": "example_ptr",
+        "rrname": "mail.company.net",
+        "rrname_truncated": true,
+        "txt": [
+          "example_txt_item_0",
+          "example_txt_item_1",
+          "example_txt_item_2"
+        ]
+      },
+      {
+        "ptr": "example_ptr",
+        "rrname": "auth.service.io",
+        "rrname_truncated": false,
+        "txt": [
+          "example_txt_item_0",
+          "example_txt_item_1",
+          "example_txt_item_2",
+          "example_txt_item_3"
+        ]
+      }
+    ],
+    "answers": [
+      {
+        "ptr": "example_ptr",
+        "rrname": "web.example.org",
+        "rrname_truncated": false,
+        "txt": [
+          "example_txt_item_0",
+          "example_txt_item_1",
+          "example_txt_item_2",
+          "example_txt_item_3",
+          "example_txt_item_4"
+        ]
+      },
+      {
+        "ptr": "example_ptr",
+        "rrname": "mail.company.net",
+        "rrname_truncated": true,
+        "txt": [
+          "example_txt_item_0"
+        ]
+      }
+    ],
+    "authorities": [
+      {
+        "rrname": "web.example.org",
+        "rrname_truncated": true
+      },
+      {
+        "rrname": "example.com",
+        "rrname_truncated": true
+      },
+      {
+        "rrname": "web.example.org",
+        "rrname_truncated": true
+      },
+      {
+        "rrname": "test.local",
+        "rrname_truncated": false
+      },
+      {
+        "rrname": "db.internal.local",
+        "rrname_truncated": false
+      }
+    ],
+    "flags": [
+      "ad"
+    ],
+    "id": 3306314,
+    "opcode": 5433,
+    "queries": [
+      {
+        "rrname": "api.service.com",
+        "rrname_truncated": false,
+        "rrtype": "TXT"
+      },
+      {
+        "rrname": "auth.service.io",
+        "rrname_truncated": true,
+        "rrtype": "NS"
+      },
+      {
+        "rrname": "db.internal.local",
+        "rrname_truncated": false,
+        "rrtype": "A"
+      },
+      {
+        "rrname": "test.local",
+        "rrname_truncated": true,
+        "rrtype": "SRV"
+      },
+      {
+        "rrname": "example.com",
+        "rrname_truncated": true,
+        "rrtype": "SOA"
+      }
+    ],
+    "rcode": 925100,
+    "type": "request"
+  },
+  "metadata": {
+    "entropy": {},
+    "flowbits": [
+      "example_flowbits_item_0"
+    ],
+    "flowints": {},
+    "flowvars": [
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      }
+    ],
+    "pktvars": [
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      }
+    ]
+  },
+  "modbus": {
+    "id": 1609681,
+    "request": {
+      "access_type": "example_access_type",
+      "category": "Attempted User Privilege Gain",
+      "data": "example_data",
+      "diagnostic": {
+        "code": "example_code",
+        "data": "example_data",
+        "raw": 416278
+      },
+      "error_flags": "example_error_flags",
+      "function_code": "example_function_code",
+      "function_raw": 826236,
+      "mei": {
+        "code": "example_code",
+        "data": "example_data",
+        "raw": 519447
+      },
+      "protocol_id": 4125790,
+      "read": {
+        "address": 982105,
+        "quantity": 785386
+      },
+      "transaction_id": 5856449,
+      "unit_id": 1628578,
+      "write": {
+        "address": 9717,
+        "data": 312886
+      }
+    },
+    "response": {
+      "access_type": "example_access_type",
+      "category": "Trojan Activity",
+      "data": "example_data",
+      "diagnostic": {
+        "code": "example_code",
+        "data": "example_data",
+        "raw": 632063
+      },
+      "error_flags": "example_error_flags",
+      "exception": {
+        "code": "example_code",
+        "raw": 112512
+      },
+      "function_code": "example_function_code",
+      "function_raw": 973555,
+      "protocol_id": 6621073,
+      "read": {
+        "data": "example_data"
+      },
+      "transaction_id": 5774152,
+      "unit_id": 8622712,
+      "write": {
+        "address": 672464,
+        "data": 569691
+      }
+    }
+  },
+  "mqtt": {
+    "connack": {
+      "dup": false,
+      "properties": {},
+      "qos": 197636,
+      "retain": true,
+      "return_code": 33782,
+      "session_present": false
+    },
+    "connect": {
+      "client_id": "example_client_id",
+      "dup": true,
+      "flags": {
+        "clean_session": true,
+        "password": true,
+        "username": true,
+        "will": true,
+        "will_retain": true
+      },
+      "password": "example_password",
+      "properties": {},
+      "protocol_string": "ICMP6",
+      "protocol_version": 626822,
+      "qos": 704667,
+      "retain": true,
+      "username": "example_username",
+      "will": {
+        "message": "example_message",
+        "properties": {},
+        "topic": "example_topic"
+      }
+    },
+    "disconnect": {
+      "dup": true,
+      "properties": {},
+      "qos": 776513,
+      "reason_code": 46385,
+      "retain": false
+    },
+    "pingreq": {
+      "dup": false,
+      "qos": 245722,
+      "retain": true
+    },
+    "pingresp": {
+      "dup": true,
+      "qos": 146942,
+      "retain": false
+    },
+    "puback": {
+      "dup": true,
+      "message_id": 6350316,
+      "qos": 605526,
+      "reason_code": 626962,
+      "retain": false
+    },
+    "pubcomp": {
+      "dup": true,
+      "message_id": 6062767,
+      "qos": 918823,
+      "reason_code": 150219,
+      "retain": true
+    },
+    "publish": {
+      "dup": false,
+      "message": "example_message",
+      "message_id": 6041569,
+      "properties": {},
+      "qos": 288519,
+      "retain": true,
+      "skipped_length": 9221,
+      "topic": "example_topic",
+      "truncated": true
+    },
+    "pubrec": {
+      "dup": false,
+      "message_id": 9315137,
+      "qos": 49161,
+      "reason_code": 361145,
+      "retain": false
+    },
+    "pubrel": {
+      "dup": false,
+      "message_id": 7984768,
+      "qos": 428090,
+      "reason_code": 156466,
+      "retain": false
+    },
+    "suback": {
+      "dup": false,
+      "message_id": 4084977,
+      "qos": 791062,
+      "qos_granted": [
+        496520,
+        252673,
+        890598,
+        236290,
+        315344
+      ],
+      "retain": true
+    },
+    "subscribe": {
+      "dup": false,
+      "message_id": 1966769,
+      "qos": 589704,
+      "retain": false,
+      "topics": [
+        {
+          "qos": 584357,
+          "topic": "example_topic"
+        },
+        {
+          "qos": 555736,
+          "topic": "example_topic"
+        },
+        {
+          "qos": 140606,
+          "topic": "example_topic"
+        },
+        {
+          "qos": 407286,
+          "topic": "example_topic"
+        }
+      ]
+    },
+    "unsuback": {
+      "dup": true,
+      "message_id": 5278117,
+      "qos": 213214,
+      "reason_codes": [
+        678120,
+        82911,
+        967024
+      ],
+      "retain": false
+    },
+    "unsubscribe": {
+      "dup": false,
+      "message_id": 2551288,
+      "qos": 561654,
+      "retain": true,
+      "topics": [
+        "example_topics_item_0"
+      ]
+    }
+  },
+  "parent_id": 4959345,
+  "pcap_cnt": 798,
+  "pcap_filename": "capture.pcap",
+  "pgsql": {
+    "request": {
+      "copy_data_in": {
+        "data_size": 4498,
+        "msg_count": 387
+      },
+      "message": "example_message",
+      "password": "example_password",
+      "password_redacted": true,
+      "process_id": 2221118,
+      "protocol_version": "UDP",
+      "sasl_authentication_mechanism": "example_sasl_authentication_mechanism",
+      "sasl_param": "example_sasl_param",
+      "sasl_response": "example_sasl_response",
+      "secret_key": 843737,
+      "simple_query": "example_simple_query",
+      "startup_parameters": {
+        "optional_parameters": [
+          {
+            "application_name": "example_application_name",
+            "client_encoding": "example_client_encoding",
+            "database": "example_database",
+            "datestyle": "example_datestyle",
+            "extra_float_digits": "example_extra_float_digits",
+            "options": "example_options",
+            "replication": "example_replication"
+          },
+          {
+            "application_name": "example_application_name",
+            "client_encoding": "example_client_encoding",
+            "database": "example_database",
+            "datestyle": "example_datestyle",
+            "extra_float_digits": "example_extra_float_digits",
+            "options": "example_options",
+            "replication": "example_replication"
+          },
+          {
+            "application_name": "example_application_name",
+            "client_encoding": "example_client_encoding",
+            "database": "example_database",
+            "datestyle": "example_datestyle",
+            "extra_float_digits": "example_extra_float_digits",
+            "options": "example_options",
+            "replication": "example_replication"
+          },
+          {
+            "application_name": "example_application_name",
+            "client_encoding": "example_client_encoding",
+            "database": "example_database",
+            "datestyle": "example_datestyle",
+            "extra_float_digits": "example_extra_float_digits",
+            "options": "example_options",
+            "replication": "example_replication"
+          },
+          {
+            "application_name": "example_application_name",
+            "client_encoding": "example_client_encoding",
+            "database": "example_database",
+            "datestyle": "example_datestyle",
+            "extra_float_digits": "example_extra_float_digits",
+            "options": "example_options",
+            "replication": "example_replication"
+          }
+        ],
+        "user": "example_user"
+      }
+    },
+    "response": {
+      "authentication_md5_password": "example_authentication_md5_password",
+      "authentication_sasl_final": "example_authentication_sasl_final",
+      "code": "example_code",
+      "command_completed": "example_command_completed",
+      "copy_data_out": {
+        "data_size": 9256,
+        "row_count": 223
+      },
+      "copy_in_response": {
+        "columns": 502681
+      },
+      "copy_out_response": {
+        "columns": 219036
+      },
+      "data_rows": 911709,
+      "data_size": 5555,
+      "field_count": 311,
+      "file": "example_file",
+      "line": "example_line",
+      "message": "example_message",
+      "parameter_status": [
+        {
+          "application_name": "example_application_name",
+          "client_encoding": "example_client_encoding",
+          "date_style": "example_date_style",
+          "integer_datetimes": "example_integer_datetimes",
+          "interval_style": "example_interval_style",
+          "is_superuser": "example_is_superuser",
+          "server_encoding": "example_server_encoding",
+          "server_version": "7.0.0",
+          "session_authorization": "example_session_authorization",
+          "standard_conforming_strings": "example_standard_conforming_strings",
+          "time_zone": "example_time_zone"
+        }
+      ],
+      "process_id": 4553544,
+      "routine": "example_routine",
+      "secret_key": 982683,
+      "severity_localizable": "example_severity_localizable",
+      "severity_non_localizable": "example_severity_non_localizable",
+      "ssl_accepted": true
+    },
+    "tx_id": 2968239
+  },
+  "pkt_src": "example_pkt_src",
+  "pop3": {
+    "request": {
+      "args": [
+        "example_args_item_0",
+        "example_args_item_1",
+        "example_args_item_2",
+        "example_args_item_3"
+      ],
+      "command": "example_command"
+    },
+    "response": {
+      "data": [
+        "example_data_item_0",
+        "example_data_item_1",
+        "example_data_item_2"
+      ],
+      "header": "example_header",
+      "status": "example_status",
+      "success": true
+    }
+  },
+  "proto": "ICMP6",
+  "quic": {
+    "cyu": [
+      {
+        "hash": "example_hash",
+        "string": "example_string"
+      }
+    ],
+    "extensions": [
+      {
+        "name": "example_name",
+        "type": 428728,
+        "values": [
+          "example_values_item_0",
+          "example_values_item_1"
+        ]
+      },
+      {
+        "name": "example_name",
+        "type": 806325,
+        "values": [
+          "example_values_item_0",
+          "example_values_item_1"
+        ]
+      },
+      {
+        "name": "example_name",
+        "type": 803028,
+        "values": [
+          "example_values_item_0",
+          "example_values_item_1",
+          "example_values_item_2",
+          "example_values_item_3"
+        ]
+      }
+    ],
+    "ja3": {
+      "hash": "example_hash",
+      "string": "example_string"
+    },
+    "ja3s": {
+      "hash": "example_hash",
+      "string": "example_string"
+    },
+    "ja4": "example_ja4",
+    "sni": "db.internal.local",
+    "ua": "example_ua",
+    "version": "7.0.0"
+  },
+  "rdp": {
+    "channels": [
+      "example_channels_item_0",
+      "example_channels_item_1"
+    ],
+    "client": {
+      "build": "example_build",
+      "capabilities": [
+        "example_capabilities_item_0",
+        "example_capabilities_item_1",
+        "example_capabilities_item_2",
+        "example_capabilities_item_3"
+      ],
+      "client_name": "example_client_name",
+      "color_depth": 597467,
+      "desktop_height": 873844,
+      "desktop_width": 5122665,
+      "function_keys": 523555,
+      "id": "example_id",
+      "keyboard_layout": "example_keyboard_layout",
+      "keyboard_type": "example_keyboard_type",
+      "product_id": 6663388,
+      "version": "7.0.0"
+    },
+    "cookie": "example_cookie",
+    "event_type": "example_event_type",
+    "tx_id": 5317226
+  },
+  "rfb": {
+    "authentication": {
+      "security_result": "example_security_result",
+      "security_type": 763214,
+      "vnc": {
+        "challenge": "example_challenge",
+        "response": "example_response"
+      }
+    },
+    "client_protocol_version": {
+      "major": "example_major",
+      "minor": "example_minor"
+    },
+    "framebuffer": {
+      "height": 233507,
+      "name": "example_name",
+      "pixel_format": {
+        "big_endian": true,
+        "bits_per_pixel": 792911,
+        "blue_max": 23839,
+        "blue_shift": 312856,
+        "depth": 485494,
+        "green_max": 706215,
+        "green_shift": 754024,
+        "red_max": 570892,
+        "red_shift": 444730,
+        "true_color": false
+      },
+      "width": 4853123
+    },
+    "screen_shared": true,
+    "server_protocol_version": {
+      "major": "example_major",
+      "minor": "example_minor"
+    }
+  },
+  "sip": {
+    "code": "example_code",
+    "method": "DELETE",
+    "reason": "example_reason",
+    "request_line": "example_request_line",
+    "response_line": "example_response_line",
+    "sdp": {
+      "attributes": [
+        "example_attributes_item_0",
+        "example_attributes_item_1",
+        "example_attributes_item_2",
+        "example_attributes_item_3"
+      ],
+      "bandwidths": [
+        "example_bandwidths_item_0",
+        "example_bandwidths_item_1",
+        "example_bandwidths_item_2",
+        "example_bandwidths_item_3"
+      ],
+      "connection_data": "example_connection_data",
+      "email": "example_email",
+      "encryption_key": "example_encryption_key",
+      "media_descriptions": [
+        {
+          "attributes": [
+            "example_attributes_item_0"
+          ],
+          "bandwidths": [
+            "example_bandwidths_item_0",
+            "example_bandwidths_item_1",
+            "example_bandwidths_item_2",
+            "example_bandwidths_item_3",
+            "example_bandwidths_item_4"
+          ],
+          "connection_data": "example_connection_data",
+          "encryption_key": "example_encryption_key",
+          "media": "example_media",
+          "media_info": "example_media_info"
+        },
+        {
+          "attributes": [
+            "example_attributes_item_0",
+            "example_attributes_item_1"
+          ],
+          "bandwidths": [
+            "example_bandwidths_item_0",
+            "example_bandwidths_item_1",
+            "example_bandwidths_item_2"
+          ],
+          "connection_data": "example_connection_data",
+          "encryption_key": "example_encryption_key",
+          "media": "example_media",
+          "media_info": "example_media_info"
+        },
+        {
+          "attributes": [
+            "example_attributes_item_0"
+          ],
+          "bandwidths": [
+            "example_bandwidths_item_0",
+            "example_bandwidths_item_1"
+          ],
+          "connection_data": "example_connection_data",
+          "encryption_key": "example_encryption_key",
+          "media": "example_media",
+          "media_info": "example_media_info"
+        },
+        {
+          "attributes": [
+            "example_attributes_item_0",
+            "example_attributes_item_1",
+            "example_attributes_item_2",
+            "example_attributes_item_3",
+            "example_attributes_item_4"
+          ],
+          "bandwidths": [
+            "example_bandwidths_item_0",
+            "example_bandwidths_item_1",
+            "example_bandwidths_item_2",
+            "example_bandwidths_item_3"
+          ],
+          "connection_data": "example_connection_data",
+          "encryption_key": "example_encryption_key",
+          "media": "example_media",
+          "media_info": "example_media_info"
+        }
+      ],
+      "origin": "example_origin",
+      "phone_number": "example_phone_number",
+      "session_info": "example_session_info",
+      "session_name": "example_session_name",
+      "time_descriptions": [
+        {
+          "repeat_time": "example_repeat_time",
+          "time": "example_time"
+        },
+        {
+          "repeat_time": "example_repeat_time",
+          "time": "example_time"
+        },
+        {
+          "repeat_time": "example_repeat_time",
+          "time": "example_time"
+        },
+        {
+          "repeat_time": "example_repeat_time",
+          "time": "example_time"
+        },
+        {
+          "repeat_time": "example_repeat_time",
+          "time": "example_time"
+        }
+      ],
+      "timezone": "example_timezone",
+      "uri": "example_uri",
+      "version": 133533
+    },
+    "uri": "example_uri",
+    "version": "7.0.0"
+  },
+  "src_ip": "192.168.1.100",
+  "src_port": 40679,
+  "ssh": {
+    "client": {
+      "hassh": {
+        "hash": "example_hash",
+        "string": "example_string"
+      },
+      "proto_version": "ICMP",
+      "software_version": "7.0.0"
+    },
+    "server": {
+      "hassh": {
+        "hash": "example_hash",
+        "string": "example_string"
+      },
+      "proto_version": "ICMP",
+      "software_version": "7.0.0"
+    }
+  },
+  "suricata_version": "7.0.0",
+  "template": {
+    "request": "example_request",
+    "response": "example_response"
+  },
+  "tftp": {
+    "file": "example_file",
+    "mode": "example_mode",
+    "packet": "example_packet"
+  },
+  "timestamp": "2023-01-01T12:00:00+00:00",
+  "tls": {
+    "certificate": "example_certificate",
+    "chain": [
+      "example_chain_item_0",
+      "example_chain_item_1"
+    ],
+    "client": {
+      "certificate": "example_certificate",
+      "chain": [
+        "example_chain_item_0",
+        "example_chain_item_1",
+        "example_chain_item_2",
+        "example_chain_item_3"
+      ],
+      "fingerprint": "example_fingerprint",
+      "issuerdn": "example_issuerdn",
+      "notafter": "example_notafter",
+      "notbefore": "example_notbefore",
+      "serial": "example_serial",
+      "subject": "example_subject",
+      "subjectaltname": [
+        "example_subjectaltname_item_0",
+        "example_subjectaltname_item_1",
+        "example_subjectaltname_item_2",
+        "example_subjectaltname_item_3",
+        "example_subjectaltname_item_4"
+      ]
+    },
+    "client_alpns": [
+      "example_client_alpns_item_0",
+      "example_client_alpns_item_1",
+      "example_client_alpns_item_2",
+      "example_client_alpns_item_3"
+    ],
+    "client_handshake": {
+      "ciphers": [
+        123481,
+        274492,
+        812609,
+        272933,
+        738237
+      ],
+      "exts": [
+        224993,
+        641599,
+        299449,
+        727691
+      ],
+      "sig_algs": [
+        209902,
+        128594,
+        142321,
+        894253
+      ],
+      "version": "7.0.0"
+    },
+    "fingerprint": "example_fingerprint",
+    "from_proto": "TCP",
+    "issuerdn": "example_issuerdn",
+    "ja3": {
+      "hash": "example_hash",
+      "string": "example_string"
+    },
+    "ja3s": {
+      "hash": "example_hash",
+      "string": "example_string"
+    },
+    "ja4": "example_ja4",
+    "notafter": "example_notafter",
+    "notbefore": "example_notbefore",
+    "serial": "example_serial",
+    "server_alpns": [
+      "example_server_alpns_item_0",
+      "example_server_alpns_item_1",
+      "example_server_alpns_item_2",
+      "example_server_alpns_item_3"
+    ],
+    "server_handshake": {
+      "cipher": 181043,
+      "exts": [
+        92055,
+        849884,
+        715054,
+        886593
+      ],
+      "version": "7.0.0"
+    },
+    "session_resumed": false,
+    "sni": "db.internal.local",
+    "subject": "example_subject",
+    "subjectaltname": [
+      "example_subjectaltname_item_0"
+    ],
+    "version": "7.0.0"
+  },
+  "tx_id": 6274512,
+  "vlan": [
+    379742,
+    401451,
+    995588
+  ],
+  "websocket": {
+    "fin": false,
+    "mask": 958861,
+    "opcode": "example_opcode",
+    "payload_base64": "example_payload_base64",
+    "payload_printable": "example_payload_printable"
+  }
+}

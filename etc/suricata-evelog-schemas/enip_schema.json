@@ -1,0 +1,4321 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "event_type",
+    "timestamp"
+  ],
+  "properties": {
+    "timestamp": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d+[+\\-]\\d+$"
+    },
+    "flow_id": {
+      "type": "integer"
+    },
+    "parent_id": {
+      "type": "integer"
+    },
+    "in_iface": {
+      "type": "string"
+    },
+    "pcap_cnt": {
+      "type": "integer"
+    },
+    "event_type": {
+      "type": "string"
+    },
+    "vlan": {
+      "type": "array",
+      "suricata": {
+        "keywords": [
+          "vlan.layers"
+        ]
+      },
+      "minItems": 1,
+      "items": {
+        "type": "number",
+        "suricata": {
+          "keywords": [
+            "vlan.id"
+          ]
+        }
+      }
+    },
+    "src_ip": {
+      "type": "string"
+    },
+    "src_port": {
+      "type": "integer"
+    },
+    "dest_ip": {
+      "type": "string"
+    },
+    "dest_port": {
+      "type": "integer"
+    },
+    "proto": {
+      "type": "string"
+    },
+    "ip_v": {
+      "type": "integer",
+      "description": "IP version of the packet or flow"
+    },
+    "icmp_type": {
+      "type": "integer",
+      "suricata": {
+        "keywords": [
+          "itype"
+        ]
+      }
+    },
+    "icmp_code": {
+      "type": "integer",
+      "suricata": {
+        "keywords": [
+          "icode"
+        ]
+      }
+    },
+    "pkt_src": {
+      "type": "string"
+    },
+    "suricata_version": {
+      "type": "string"
+    },
+    "host": {
+      "type": "string",
+      "$comment": "May change to sensor_name in the future, or become user configurable: https://redmine.openinfosecfoundation.org/issues/4919",
+      "description": "the sensor-name, if configured"
+    },
+    "pcap_filename": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "entropy": {
+          "type": "object",
+          "additionalProperties": true,
+          "suricata": {
+            "keywords": [
+              "entropy"
+            ]
+          }
+        },
+        "flowbits": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          },
+          "suricata": {
+            "keywords": [
+              "flowbits"
+            ]
+          }
+        },
+        "flowints": {
+          "type": "object",
+          "additionalProperties": true,
+          "suricata": {
+            "keywords": [
+              "flowint"
+            ]
+          }
+        },
+        "flowvars": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "gid": {
+                "type": "string"
+              },
+              "key": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "pktvars": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "uid": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "optional": true
+    },
+    "ether": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "dest_mac": {
+          "type": "string"
+        },
+        "dest_macs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "ether_type": {
+          "type": "integer",
+          "description": "Ethernet type value "
+        },
+        "src_mac": {
+          "type": "string"
+        },
+        "src_macs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "tx_id": {
+      "type": "integer"
+    },
+    "ftp": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "command": {
+          "type": "string"
+        },
+        "command_data": {
+          "type": "string"
+        },
+        "command_truncated": {
+          "type": "boolean"
+        },
+        "completion_code": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "dynamic_port": {
+          "type": "integer",
+          "suricata": {
+            "keywords": [
+              "ftp.dynamic_port"
+            ]
+          }
+        },
+        "mode": {
+          "type": "string"
+        },
+        "reply": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "reply_received": {
+          "type": "string"
+        },
+        "reply_truncated": {
+          "type": "boolean"
+        }
+      }
+    },
+    "tls": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "certificate": {
+          "type": "string",
+          "suricata": {
+            "keywords": [
+              "tls.certs"
+            ]
+          }
+        },
+        "chain": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          },
+          "suricata": {
+            "keywords": [
+              "tls.certs",
+              "tls.cert_chain_len"
+            ]
+          }
+        },
+        "client": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "certificate": {
+              "type": "string",
+              "suricata": {
+                "keywords": [
+                  "tls.certs"
+                ]
+              }
+            },
+            "chain": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              },
+              "suricata": {
+                "keywords": [
+                  "tls.certs",
+                  "tls.cert_chain_len"
+                ]
+              }
+            },
+            "fingerprint": {
+              "type": "string",
+              "suricata": {
+                "keywords": [
+                  "tls.cert_fingerprint",
+                  "tls.fingerprint"
+                ]
+              }
+            },
+            "issuerdn": {
+              "type": "string",
+              "suricata": {
+                "keywords": [
+                  "tls.cert_issuer",
+                  "tls.issuerdn"
+                ]
+              }
+            },
+            "notafter": {
+              "$ref": "#/$defs/tls_date",
+              "suricata": {
+                "keywords": [
+                  "tls_cert_notafter",
+                  "tls_cert_expired",
+                  "tls_cert_valid"
+                ]
+              }
+            },
+            "notbefore": {
+              "$ref": "#/$defs/tls_date",
+              "suricata": {
+                "keywords": [
+                  "tls_cert_notbefore",
+                  "tls_cert_expired",
+                  "tls_cert_valid"
+                ]
+              }
+            },
+            "serial": {
+              "type": "string",
+              "suricata": {
+                "keywords": [
+                  "tls.cert_serial"
+                ]
+              }
+            },
+            "subject": {
+              "type": "string",
+              "suricata": {
+                "keywords": [
+                  "tls.cert_subject",
+                  "tls.subject"
+                ]
+              }
+            },
+            "subjectaltname": {
+              "type": "array",
+              "description": "TLS Subject Alternative Name field",
+              "suricata": {
+                "keywords": [
+                  "tls.subjectaltname"
+                ]
+              },
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "client_alpns": {
+          "type": "array",
+          "description": "TLS client ALPN field(s)",
+          "suricata": {
+            "keywords": [
+              "tls.alpn"
+            ]
+          },
+          "items": {
+            "type": "string"
+          }
+        },
+        "client_handshake": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "ciphers": {
+              "description": "TLS client cipher(s)",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "integer"
+              }
+            },
+            "exts": {
+              "description": "TLS client extension(s)",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "integer"
+              }
+            },
+            "sig_algs": {
+              "description": "TLS client signature algorithm(s)",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "integer"
+              }
+            },
+            "version": {
+              "description": "TLS version in client hello",
+              "type": "string"
+            }
+          }
+        },
+        "fingerprint": {
+          "type": "string",
+          "suricata": {
+            "keywords": [
+              "tls.cert_fingerprint",
+              "tls.fingerprint"
+            ]
+          }
+        },
+        "from_proto": {
+          "type": "string"
+        },
+        "issuerdn": {
+          "type": "string",
+          "suricata": {
+            "keywords": [
+              "tls.cert_issuer",
+              "tls.issuerdn"
+            ]
+          }
+        },
+        "ja3": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "hash": {
+              "type": "string",
+              "suricata": {
+                "keywords": [
+                  "ja3.hash"
+                ]
+              }
+            },
+            "string": {
+              "type": "string",
+              "suricata": {
+                "keywords": [
+                  "ja3s.string"
+                ]
+              }
+            }
+          }
+        },
+        "ja3s": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "hash": {
+              "type": "string",
+              "suricata": {
+                "keywords": [
+                  "ja3s.hash"
+                ]
+              }
+            },
+            "string": {
+              "type": "string",
+              "suricata": {
+                "keywords": [
+                  "ja3s.string"
+                ]
+              }
+            }
+          }
+        },
+        "ja4": {
+          "type": "string",
+          "suricata": {
+            "keywords": [
+              "ja4.hash"
+            ]
+          }
+        },
+        "notafter": {
+          "$ref": "#/$defs/tls_date",
+          "suricata": {
+            "keywords": [
+              "tls_cert_notafter",
+              "tls_cert_expired",
+              "tls_cert_valid"
+            ]
+          }
+        },
+        "notbefore": {
+          "$ref": "#/$defs/tls_date",
+          "suricata": {
+            "keywords": [
+              "tls_cert_notbefore",
+              "tls_cert_expired",
+              "tls_cert_valid"
+            ]
+          }
+        },
+        "serial": {
+          "type": "string",
+          "suricata": {
+            "keywords": [
+              "tls.cert_serial"
+            ]
+          }
+        },
+        "server_alpns": {
+          "type": "array",
+          "description": "TLS server ALPN field(s)",
+          "suricata": {
+            "keywords": [
+              "tls.alpn"
+            ]
+          },
+          "items": {
+            "type": "string"
+          }
+        },
+        "server_handshake": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "cipher": {
+              "description": "TLS server's chosen cipher",
+              "type": "integer"
+            },
+            "exts": {
+              "description": "TLS server extension(s)",
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "integer"
+              }
+            },
+            "version": {
+              "description": "TLS version in server hello",
+              "type": "string"
+            }
+          }
+        },
+        "session_resumed": {
+          "type": "boolean"
+        },
+        "sni": {
+          "type": "string",
+          "suricata": {
+            "keywords": [
+              "tls.sni"
+            ]
+          }
+        },
+        "subject": {
+          "type": "string",
+          "suricata": {
+            "keywords": [
+              "tls.cert_subject",
+              "tls.subject"
+            ]
+          }
+        },
+        "subjectaltname": {
+          "type": "array",
+          "description": "TLS Subject Alternative Name field",
+          "suricata": {
+            "keywords": [
+              "tls.subjectaltname"
+            ]
+          },
+          "items": {
+            "type": "string"
+          }
+        },
+        "version": {
+          "type": "string",
+          "suricata": {
+            "keywords": [
+              "tls.version"
+            ]
+          }
+        }
+      }
+    },
+    "ssh": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "client": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "hassh": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "hash": {
+                  "type": "string"
+                },
+                "string": {
+                  "type": "string"
+                }
+              }
+            },
+            "proto_version": {
+              "type": "string"
+            },
+            "software_version": {
+              "type": "string"
+            }
+          }
+        },
+        "server": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "hassh": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "hash": {
+                  "type": "string"
+                },
+                "string": {
+                  "type": "string"
+                }
+              }
+            },
+            "proto_version": {
+              "type": "string"
+            },
+            "software_version": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "optional": true
+    },
+    "dns": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version"
+      ],
+      "properties": {
+        "aa": {
+          "type": "boolean"
+        },
+        "additionals": {
+          "$ref": "#/$defs/dns.additionals"
+        },
+        "answer": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "additionals": {
+              "$ref": "#/$defs/dns.additionals"
+            },
+            "authorities": {
+              "$ref": "#/$defs/dns.authorities"
+            },
+            "flags": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer"
+            },
+            "opcode": {
+              "type": "integer",
+              "description": "DNS opcode as an integer"
+            },
+            "qr": {
+              "type": "boolean"
+            },
+            "ra": {
+              "type": "boolean"
+            },
+            "rcode": {
+              "type": "string"
+            },
+            "rd": {
+              "type": "boolean"
+            },
+            "rrname": {
+              "type": "string"
+            },
+            "rrtype": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "version": {
+              "type": "integer"
+            }
+          }
+        },
+        "answers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "rdata": {
+                "type": "string",
+                "suricata": {
+                  "keywords": [
+                    "dns.response.rrname"
+                  ]
+                }
+              },
+              "rrname": {
+                "type": "string",
+                "suricata": {
+                  "keywords": [
+                    "dns.answers.rrname",
+                    "dns.response.rrname"
+                  ]
+                }
+              },
+              "rrtype": {
+                "type": "string"
+              },
+              "soa": {
+                "$ref": "#/$defs/dns.soa"
+              },
+              "srv": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "port": {
+                    "type": "integer"
+                  },
+                  "priority": {
+                    "type": "integer"
+                  },
+                  "weight": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "sshfp": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "algo": {
+                    "type": "integer"
+                  },
+                  "fingerprint": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "integer"
+                  }
+                },
+                "description": "A Secure Shell fingerprint, used to verify the system’s authenticity"
+              },
+              "ttl": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "authorities": {
+          "$ref": "#/$defs/dns.authorities"
+        },
+        "flags": {
+          "type": "string"
+        },
+        "grouped": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "A": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "AAAA": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "CNAME": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "MX": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "NS": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "NULL": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "PTR": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "SOA": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/dns.soa"
+              }
+            },
+            "SRV": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "port": {
+                    "type": "integer"
+                  },
+                  "priority": {
+                    "type": "integer"
+                  },
+                  "weight": {
+                    "type": "integer"
+                  }
+                }
+              }
+            },
+            "SSHFP": {
+              "type": "array",
+              "description": "A Secure Shell fingerprint is used to verify the system’s authenticity",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "algo": {
+                    "type": "integer"
+                  },
+                  "fingerprint": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "integer"
+                  }
+                }
+              }
+            },
+            "TXT": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "desription": "DNS fields grouped by type: alternative format, no direct keywords",
+          "suricata": {
+            "keywords": false
+          }
+        },
+        "id": {
+          "type": "integer"
+        },
+        "opcode": {
+          "type": "integer",
+          "description": "DNS opcode as an integer"
+        },
+        "qr": {
+          "type": "boolean"
+        },
+        "queries": {
+          "type": "array",
+          "$comment": "EVE DNS v3 style query logging.",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "opcode": {
+                "type": "integer",
+                "description": "DNS opcode as an integer",
+                "suricata": {
+                  "keywords": [
+                    "dns.opcode"
+                  ]
+                }
+              },
+              "rrname": {
+                "type": "string",
+                "suricata": {
+                  "keywords": [
+                    "dns.queries.rrname",
+                    "dns.query"
+                  ]
+                }
+              },
+              "rrname_truncated": {
+                "type": "boolean",
+                "description": "Set to true if the rrname was too long and truncated by Suricata"
+              },
+              "rrtype": {
+                "type": "string",
+                "suricata": {
+                  "keywords": [
+                    "dns.rrtype"
+                  ]
+                }
+              },
+              "tx_id": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "string"
+              },
+              "z": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "query": {
+          "type": "array",
+          "$comment": "EVE DNS v2 style query logging; as of Suricata 8 only used in DNS records when v2 logging is enabled, not used for DNS records logged as part of an event.",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "opcode": {
+                "type": "integer",
+                "description": "DNS opcode as an integer"
+              },
+              "rrname": {
+                "type": "string"
+              },
+              "rrtype": {
+                "type": "string"
+              },
+              "tx_id": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "string"
+              },
+              "z": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "ra": {
+          "type": "boolean"
+        },
+        "rcode": {
+          "type": "string",
+          "suricata": {
+            "keywords": [
+              "dns.rcode"
+            ]
+          }
+        },
+        "rd": {
+          "type": "boolean"
+        },
+        "rrname": {
+          "type": "string"
+        },
+        "rrtype": {
+          "type": "string"
+        },
+        "tc": {
+          "type": "boolean",
+          "description": "DNS truncation flag"
+        },
+        "tx_id": {
+          "type": "integer"
+        },
+        "type": {
+          "type": "string"
+        },
+        "version": {
+          "type": "integer",
+          "description": "The version of this EVE DNS event",
+          "suricata": {
+            "keywords": false
+          }
+        },
+        "z": {
+          "type": "boolean"
+        }
+      }
+    },
+    "mdns": {
+      "description": "mDNS requests and responses",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "additionals": {
+          "description": "mDNS additional records",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "ptr": {
+                "type": "string",
+                "description": "Value of the requested PTR record",
+                "suricata": {
+                  "keywords": [
+                    "mdns.response.rrname"
+                  ]
+                }
+              },
+              "rrname": {
+                "type": "string",
+                "description": "Resource name of the record being returned",
+                "suricata": {
+                  "keywords": [
+                    "mdns.additionals.rrname",
+                    "mdns.response.rrname"
+                  ]
+                }
+              },
+              "rrname_truncated": {
+                "description": "Name was truncated by Suricata due to length",
+                "type": "boolean",
+                "$comment": "keyword: app-layer-event:mdns.name_too_long (https://redmine.openinfosecfoundation.org/issues/7784)"
+              },
+              "txt": {
+                "type": "array",
+                "description": "Value of the requested TXT record",
+                "minItems": 1,
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "answers": {
+          "description": "mDNS answer records",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "ptr": {
+                "type": "string",
+                "description": "Value of the requested PTR record",
+                "suricata": {
+                  "$comment": "No specific ptr keywords exists",
+                  "keywords": [
+                    "mdns.response.rrname"
+                  ]
+                }
+              },
+              "rrname": {
+                "type": "string",
+                "description": "Resource name of the record being returned",
+                "suricata": {
+                  "keywords": [
+                    "mdns.answers.rrname",
+                    "mdns.response.rrname"
+                  ]
+                }
+              },
+              "rrname_truncated": {
+                "description": "Name was truncated by Suricata due to length",
+                "type": "boolean",
+                "$comment": "keyword: app-layer-event:mdns.name_too_long (https://redmine.openinfosecfoundation.org/issues/7784)"
+              },
+              "txt": {
+                "type": "array",
+                "description": "Value of the requested TXT record",
+                "minItems": 1,
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "authorities": {
+          "description": "mDNS authority records",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "rrname": {
+                "type": "string",
+                "description": "Resource name of the record being returned",
+                "suricata": {
+                  "keywords": [
+                    "mdns.authorities.rrname",
+                    "mdns.response.rrname"
+                  ]
+                }
+              },
+              "rrname_truncated": {
+                "description": "Name was truncated by Suricata due to length",
+                "type": "boolean",
+                "$comment": "keyword: app-layer-event:mdns.name_too_long (https://redmine.openinfosecfoundation.org/issues/7784)"
+              }
+            }
+          }
+        },
+        "flags": {
+          "description": "mDNS message flags",
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "const": "aa",
+                "title": "Authoritative Answer"
+              },
+              {
+                "const": "tc",
+                "title": "Truncated"
+              },
+              {
+                "const": "rd",
+                "title": "Recursion Desired"
+              },
+              {
+                "const": "ra",
+                "title": "Recursion Available"
+              },
+              {
+                "const": "z",
+                "title": "Z (reserved)"
+              },
+              {
+                "const": "ad",
+                "title": "Authentic Data"
+              },
+              {
+                "const": "cd",
+                "title": "Checking Disabled"
+              }
+            ]
+          }
+        },
+        "id": {
+          "description": "mDNS transaction ID",
+          "type": "integer"
+        },
+        "opcode": {
+          "description": "mDNS opcode value",
+          "type": "integer"
+        },
+        "queries": {
+          "description": "mDNS query records",
+          "type": "array",
+          "additionalProperties": false,
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "rrname": {
+                "description": "Resource name being requested",
+                "type": "string",
+                "suricata": {
+                  "keywords": [
+                    "mdns.queries.rrname"
+                  ]
+                }
+              },
+              "rrname_truncated": {
+                "description": "Name was truncated by Suricata due to length",
+                "type": "boolean",
+                "$comment": "keyword: app-layer-event:mdns.name_too_long (https://redmine.openinfosecfoundation.org/issues/7784)"
+              },
+              "rrtype": {
+                "type": "string",
+                "description": "Type of resource being requested"
+              }
+            }
+          }
+        },
+        "rcode": {
+          "description": "mDNS reply (error) code",
+          "type": "integer"
+        },
+        "type": {
+          "description": "Type of message, either a request or response",
+          "type": "string",
+          "enum": [
+            "request",
+            "response"
+          ]
+        }
+      }
+    },
+    "modbus": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "request": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "access_type": {
+              "type": "string"
+            },
+            "category": {
+              "type": "string"
+            },
+            "data": {
+              "type": "string"
+            },
+            "diagnostic": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "data": {
+                  "type": "string"
+                },
+                "raw": {
+                  "type": "integer"
+                }
+              }
+            },
+            "error_flags": {
+              "type": "string"
+            },
+            "function_code": {
+              "type": "string"
+            },
+            "function_raw": {
+              "type": "integer"
+            },
+            "mei": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "data": {
+                  "type": "string"
+                },
+                "raw": {
+                  "type": "integer"
+                }
+              }
+            },
+            "protocol_id": {
+              "type": "integer"
+            },
+            "read": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "address": {
+                  "type": "integer"
+                },
+                "quantity": {
+                  "type": "integer"
+                }
+              }
+            },
+            "transaction_id": {
+              "type": "integer"
+            },
+            "unit_id": {
+              "type": "integer"
+            },
+            "write": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "address": {
+                  "type": "integer"
+                },
+                "data": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        },
+        "response": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "access_type": {
+              "type": "string"
+            },
+            "category": {
+              "type": "string"
+            },
+            "data": {
+              "type": "string"
+            },
+            "diagnostic": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "data": {
+                  "type": "string"
+                },
+                "raw": {
+                  "type": "integer"
+                }
+              }
+            },
+            "error_flags": {
+              "type": "string"
+            },
+            "exception": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "code": {
+                  "type": "string"
+                },
+                "raw": {
+                  "type": "integer"
+                }
+              }
+            },
+            "function_code": {
+              "type": "string"
+            },
+            "function_raw": {
+              "type": "integer"
+            },
+            "protocol_id": {
+              "type": "integer"
+            },
+            "read": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "data": {
+                  "type": "string"
+                }
+              }
+            },
+            "transaction_id": {
+              "type": "integer"
+            },
+            "unit_id": {
+              "type": "integer"
+            },
+            "write": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "address": {
+                  "type": "integer"
+                },
+                "data": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      },
+      "optional": true
+    },
+    "enip": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "request": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "cip": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "class_name": {
+                  "type": "string",
+                  "suricata": {
+                    "keywords": [
+                      "enip.cip_class"
+                    ]
+                  }
+                },
+                "multiple": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "class_name": {
+                        "type": "string",
+                        "suricata": {
+                          "keywords": [
+                            "enip.cip_class"
+                          ]
+                        }
+                      },
+                      "path": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "segment_type": {
+                              "type": "string"
+                            },
+                            "value": {
+                              "type": "integer",
+                              "suricata": {
+                                "keywords": [
+                                  "enip.cip_attribute",
+                                  "enip.cip_class",
+                                  "enip.cip_instance"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "service": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "path": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "segment_type": {
+                        "type": "string"
+                      },
+                      "value": {
+                        "type": "integer",
+                        "suricata": {
+                          "keywords": [
+                            "enip.cip_attribute",
+                            "enip.cip_class",
+                            "enip.cip_instance"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                },
+                "service": {
+                  "type": "string"
+                }
+              }
+            },
+            "command": {
+              "type": "string",
+              "suricata": {
+                "keywords": [
+                  "enip.command"
+                ]
+              }
+            },
+            "register_session": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "options": {
+                  "type": "integer"
+                },
+                "protocol_version": {
+                  "type": "integer",
+                  "suricata": {
+                    "keywords": [
+                      "enip.protocol_version"
+                    ]
+                  }
+                }
+              }
+            },
+            "status": {
+              "type": "string",
+              "suricata": {
+                "keywords": [
+                  "enip.status"
+                ]
+              }
+            }
+          }
+        },
+        "response": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "cip": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "multiple": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "service": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "type": "string",
+                        "suricata": {
+                          "keywords": [
+                            "enip.cip_status"
+                          ]
+                        }
+                      },
+                      "status_extended": {
+                        "type": "string",
+                        "suricata": {
+                          "keywords": [
+                            "enip.cip_extendedstatus"
+                          ]
+                        }
+                      },
+                      "status_extended_meaning": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "service": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string",
+                  "suricata": {
+                    "keywords": [
+                      "enip.cip_status"
+                    ]
+                  }
+                },
+                "status_extended": {
+                  "type": "string",
+                  "suricata": {
+                    "keywords": [
+                      "enip.cip_extendedstatus"
+                    ]
+                  }
+                },
+                "status_extended_meaning": {
+                  "type": "string"
+                }
+              }
+            },
+            "command": {
+              "type": "string",
+              "suricata": {
+                "keywords": [
+                  "enip.command"
+                ]
+              }
+            },
+            "identity": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "device_type": {
+                  "type": "string",
+                  "suricata": {
+                    "keywords": [
+                      "enip.device_type"
+                    ]
+                  }
+                },
+                "product_code": {
+                  "type": "integer",
+                  "suricata": {
+                    "keywords": [
+                      "enip.product_code"
+                    ]
+                  }
+                },
+                "product_name": {
+                  "type": "string"
+                },
+                "protocol_version": {
+                  "type": "integer",
+                  "suricata": {
+                    "keywords": [
+                      "enip.protocol_version"
+                    ]
+                  }
+                },
+                "revision": {
+                  "type": "string",
+                  "suricata": {
+                    "keywords": [
+                      "enip.revision"
+                    ]
+                  }
+                },
+                "serial": {
+                  "type": "integer",
+                  "suricata": {
+                    "keywords": [
+                      "enip.serial"
+                    ]
+                  }
+                },
+                "state": {
+                  "type": "integer",
+                  "suricata": {
+                    "keywords": [
+                      "enip.state"
+                    ]
+                  }
+                },
+                "status": {
+                  "type": "integer",
+                  "suricata": {
+                    "keywords": [
+                      "enip.identity_status"
+                    ]
+                  }
+                },
+                "vendor_id": {
+                  "type": "string",
+                  "suricata": {
+                    "keywords": [
+                      "enip.vendor_id"
+                    ]
+                  }
+                }
+              }
+            },
+            "list_services": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "capabilities": {
+                  "type": "integer",
+                  "suricata": {
+                    "keywords": [
+                      "enip.capabilities"
+                    ]
+                  }
+                },
+                "protocol_version": {
+                  "type": "integer",
+                  "suricata": {
+                    "keywords": [
+                      "enip.protocol_version"
+                    ]
+                  }
+                },
+                "service_name": {
+                  "type": "string"
+                }
+              }
+            },
+            "register_session": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "options": {
+                  "type": "integer"
+                },
+                "protocol_version": {
+                  "type": "integer",
+                  "suricata": {
+                    "keywords": [
+                      "enip.protocol_version"
+                    ]
+                  }
+                }
+              }
+            },
+            "status": {
+              "type": "string",
+              "suricata": {
+                "keywords": [
+                  "enip.status"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "dnp3": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "application": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "complete": {
+              "type": "boolean"
+            },
+            "control": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "con": {
+                  "type": "boolean"
+                },
+                "fin": {
+                  "type": "boolean"
+                },
+                "fir": {
+                  "type": "boolean"
+                },
+                "sequence": {
+                  "type": "integer"
+                },
+                "uns": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "function_code": {
+              "type": "integer"
+            },
+            "objects": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "count": {
+                    "type": "integer"
+                  },
+                  "group": {
+                    "type": "integer"
+                  },
+                  "points": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "prefix_code": {
+                    "type": "integer"
+                  },
+                  "qualifier": {
+                    "type": "integer"
+                  },
+                  "range_code": {
+                    "type": "integer"
+                  },
+                  "start": {
+                    "type": "integer"
+                  },
+                  "stop": {
+                    "type": "integer"
+                  },
+                  "variation": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "control": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dir": {
+              "type": "boolean"
+            },
+            "fcb": {
+              "type": "boolean"
+            },
+            "fcv": {
+              "type": "boolean"
+            },
+            "function_code": {
+              "type": "integer"
+            },
+            "pri": {
+              "type": "boolean"
+            }
+          }
+        },
+        "dst": {
+          "type": "integer"
+        },
+        "iin": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "indicators": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "request": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "application": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "complete": {
+                  "type": "boolean"
+                },
+                "control": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "con": {
+                      "type": "boolean"
+                    },
+                    "fin": {
+                      "type": "boolean"
+                    },
+                    "fir": {
+                      "type": "boolean"
+                    },
+                    "sequence": {
+                      "type": "integer"
+                    },
+                    "uns": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "function_code": {
+                  "type": "integer"
+                },
+                "objects": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "count": {
+                        "type": "integer"
+                      },
+                      "group": {
+                        "type": "integer"
+                      },
+                      "points": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                          "type": "object",
+                          "additionalProperties": true
+                        }
+                      },
+                      "prefix_code": {
+                        "type": "integer"
+                      },
+                      "qualifier": {
+                        "type": "integer"
+                      },
+                      "range_code": {
+                        "type": "integer"
+                      },
+                      "start": {
+                        "type": "integer"
+                      },
+                      "stop": {
+                        "type": "integer"
+                      },
+                      "variation": {
+                        "type": "integer"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "control": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "dir": {
+                  "type": "boolean"
+                },
+                "fcb": {
+                  "type": "boolean"
+                },
+                "fcv": {
+                  "type": "boolean"
+                },
+                "function_code": {
+                  "type": "integer"
+                },
+                "pri": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "dst": {
+              "type": "integer"
+            },
+            "src": {
+              "type": "integer"
+            },
+            "type": {
+              "type": "string"
+            }
+          }
+        },
+        "response": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "application": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "complete": {
+                  "type": "boolean"
+                },
+                "control": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "con": {
+                      "type": "boolean"
+                    },
+                    "fin": {
+                      "type": "boolean"
+                    },
+                    "fir": {
+                      "type": "boolean"
+                    },
+                    "sequence": {
+                      "type": "integer"
+                    },
+                    "uns": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "function_code": {
+                  "type": "integer"
+                },
+                "objects": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "count": {
+                        "type": "integer"
+                      },
+                      "group": {
+                        "type": "integer"
+                      },
+                      "points": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                          "type": "object",
+                          "additionalProperties": true
+                        }
+                      },
+                      "prefix_code": {
+                        "type": "integer"
+                      },
+                      "qualifier": {
+                        "type": "integer"
+                      },
+                      "range_code": {
+                        "type": "integer"
+                      },
+                      "start": {
+                        "type": "integer"
+                      },
+                      "stop": {
+                        "type": "integer"
+                      },
+                      "variation": {
+                        "type": "integer"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "control": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "dir": {
+                  "type": "boolean"
+                },
+                "fcb": {
+                  "type": "boolean"
+                },
+                "fcv": {
+                  "type": "boolean"
+                },
+                "function_code": {
+                  "type": "integer"
+                },
+                "pri": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "dst": {
+              "type": "integer"
+            },
+            "iin": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "indicators": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "src": {
+              "type": "integer"
+            },
+            "type": {
+              "type": "string"
+            }
+          }
+        },
+        "src": {
+          "type": "integer"
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "ftp_data": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "command": {
+          "type": "string"
+        },
+        "filename": {
+          "type": "string"
+        }
+      }
+    },
+    "tftp": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "file": {
+          "type": "string"
+        },
+        "mode": {
+          "type": "string"
+        },
+        "packet": {
+          "type": "string"
+        }
+      }
+    },
+    "krb5": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "cname": {
+          "type": "string",
+          "description": "The client PrincipalName",
+          "suricata": {
+            "keywords": [
+              "krb5.cname"
+            ]
+          }
+        },
+        "encryption": {
+          "type": "string",
+          "description": "Encryption used (only in AS-REP and TGS-REP)",
+          "suricata": {
+            "$comment": "TODO add keyword"
+          }
+        },
+        "error_code": {
+          "type": "string",
+          "description": "Error code, if request has failed",
+          "suricata": {
+            "keywords": [
+              "krb5_err_code"
+            ]
+          }
+        },
+        "failed_request": {
+          "type": "string",
+          "description": "The request type for which the response had an error_code",
+          "suricata": {
+            "$comment": "TODO add keyword"
+          }
+        },
+        "msg_type": {
+          "type": "string",
+          "description": "The message type: AS-REQ, AS-REP, etc...",
+          "suricata": {
+            "keywords": [
+              "krb5_msg_type"
+            ]
+          }
+        },
+        "realm": {
+          "type": "string",
+          "description": "The server Realm",
+          "suricata": {
+            "$comment": "TODO add keyword"
+          }
+        },
+        "sname": {
+          "type": "string",
+          "description": "The server PrincipalName",
+          "suricata": {
+            "keywords": [
+              "krb5.sname"
+            ]
+          }
+        },
+        "ticket_encryption": {
+          "type": "string",
+          "description": "Encryption used for ticket",
+          "suricata": {
+            "keywords": [
+              "krb5.ticket_encryption"
+            ]
+          }
+        },
+        "ticket_weak_encryption": {
+          "type": "boolean",
+          "description": "Whether the encryption used for ticket is a weak cipher",
+          "suricata": {
+            "keywords": [
+              "krb5.ticket_encryption"
+            ]
+          }
+        },
+        "weak_encryption": {
+          "type": "boolean",
+          "description": "Whether the encryption used in AS-REP or TGS-REP is a weak cipher",
+          "suricata": {
+            "$comment": "TODO add keyword (rather option for encryption keyword)"
+          }
+        }
+      },
+      "optional": true
+    },
+    "quic": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "cyu": {
+          "type": "array",
+          "description": "JA3-like fingerprint for versions of QUIC before standardization",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "hash": {
+                "type": "string",
+                "description": "CYU hash hex representation"
+              },
+              "string": {
+                "type": "string",
+                "description": "CYU hash string representation"
+              }
+            }
+          }
+        },
+        "extensions": {
+          "type": "array",
+          "description": "list of extensions in hello",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "Human-friendly name of the extension"
+              },
+              "type": {
+                "type": "integer",
+                "description": "Integer identifier of the extension"
+              },
+              "values": {
+                "type": "array",
+                "description": "Extension values",
+                "minItems": 1,
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "ja3": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "hash": {
+              "type": "string",
+              "description": "JA3 hex representation"
+            },
+            "string": {
+              "type": "string",
+              "description": "JA3 string representation"
+            }
+          },
+          "description": "JA3 from client, as in TLS",
+          "optional": true
+        },
+        "ja3s": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "hash": {
+              "type": "string",
+              "description": "JA3s hex representation"
+            },
+            "string": {
+              "type": "string",
+              "description": "JA3s string representation"
+            }
+          },
+          "description": "JA3 from server, as in TLS",
+          "optional": true
+        },
+        "ja4": {
+          "type": "string",
+          "suricata": {
+            "keywords": [
+              "ja4.hash"
+            ]
+          }
+        },
+        "sni": {
+          "type": "string",
+          "description": "Server Name Indication"
+        },
+        "ua": {
+          "type": "string",
+          "description": "User Agent for versions of QUIC before standardization"
+        },
+        "version": {
+          "type": "string",
+          "description": "Quic protocol version"
+        }
+      },
+      "optional": true
+    },
+    "sip": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "method": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "request_line": {
+          "type": "string"
+        },
+        "response_line": {
+          "type": "string"
+        },
+        "sdp": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "attributes": {
+              "type": "array",
+              "optional": true,
+              "description": "A list of attributes to extend SDP",
+              "minItems": 1,
+              "items": {
+                "type": "string",
+                "description": "Attribute's name and value"
+              }
+            },
+            "bandwidths": {
+              "type": "array",
+              "optional": true,
+              "description": "Proposed bandwidths to be used by the session or media",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "connection_data": {
+              "type": "string",
+              "optional": true,
+              "description": "Connection data"
+            },
+            "email": {
+              "type": "string",
+              "optional": true,
+              "description": "Email address for the person responsible for the conference"
+            },
+            "encryption_key": {
+              "type": "string",
+              "optional": true,
+              "description": "Field used to convey encryption keys if SDP is used over a secure channel"
+            },
+            "media_descriptions": {
+              "type": "array",
+              "description": "A list of media descriptions for a session",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "type": "array",
+                    "description": "A list of attributes specified for a media description",
+                    "optional": true,
+                    "minItems": 1,
+                    "items": {
+                      "type": "string",
+                      "description": "Attribute's name and value"
+                    }
+                  },
+                  "bandwidths": {
+                    "type": "array",
+                    "optional": true,
+                    "description": "A list of bandwidth proposed for a media",
+                    "minItems": 1,
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "connection_data": {
+                    "type": "string",
+                    "optional": true,
+                    "description": "Connection data per media description"
+                  },
+                  "encryption_key": {
+                    "type": "string",
+                    "optional": true,
+                    "description": "Field used to convey encryption keys if SDP is used over a secure channel"
+                  },
+                  "media": {
+                    "type": "string",
+                    "description": "Media description"
+                  },
+                  "media_info": {
+                    "type": "string",
+                    "optional": true,
+                    "description": "Media information primarily intended for labelling media streams"
+                  }
+                },
+                "optional": true
+              }
+            },
+            "origin": {
+              "type": "string",
+              "description": "Owner of the session"
+            },
+            "phone_number": {
+              "type": "string",
+              "optional": true,
+              "description": "Phone number for the person responsible for the conference"
+            },
+            "session_info": {
+              "type": "string",
+              "optional": true,
+              "description": "Textual information about the session"
+            },
+            "session_name": {
+              "type": "string",
+              "description": "Session name"
+            },
+            "time_descriptions": {
+              "type": "array",
+              "description": "A list of time descriptions for a session",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "repeat_time": {
+                    "type": "string",
+                    "optional": true,
+                    "description": "Specify repeat times for a session"
+                  },
+                  "time": {
+                    "type": "string",
+                    "optional": true,
+                    "description": "Start and stop times for a session"
+                  }
+                },
+                "optional": true
+              }
+            },
+            "timezone": {
+              "type": "string",
+              "optional": true,
+              "description": "Timezone to specify adjustments for times and offsets from the base time"
+            },
+            "uri": {
+              "type": "string",
+              "optional": true,
+              "description": "A pointer to additional information about the session"
+            },
+            "version": {
+              "type": "integer",
+              "description": "SDP protocol version"
+            }
+          },
+          "description": "SDP message body",
+          "optional": true
+        },
+        "uri": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "optional": true
+    },
+    "rfb": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "authentication": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "security_result": {
+              "type": "string",
+              "suricata": {
+                "keywords": [
+                  "rfb.secresult"
+                ]
+              }
+            },
+            "security_type": {
+              "type": "integer",
+              "suricata": {
+                "keywords": [
+                  "rfb.sectype"
+                ]
+              }
+            },
+            "vnc": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "challenge": {
+                  "type": "string"
+                },
+                "response": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "client_protocol_version": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "major": {
+              "type": "string"
+            },
+            "minor": {
+              "type": "string"
+            }
+          }
+        },
+        "framebuffer": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "height": {
+              "type": "integer"
+            },
+            "name": {
+              "type": "string"
+            },
+            "pixel_format": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "big_endian": {
+                  "type": "boolean"
+                },
+                "bits_per_pixel": {
+                  "type": "integer"
+                },
+                "blue_max": {
+                  "type": "integer"
+                },
+                "blue_shift": {
+                  "type": "integer"
+                },
+                "depth": {
+                  "type": "integer"
+                },
+                "green_max": {
+                  "type": "integer"
+                },
+                "green_shift": {
+                  "type": "integer"
+                },
+                "red_max": {
+                  "type": "integer"
+                },
+                "red_shift": {
+                  "type": "integer"
+                },
+                "true_color": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "width": {
+              "type": "integer"
+            }
+          }
+        },
+        "screen_shared": {
+          "type": "boolean"
+        },
+        "server_protocol_version": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "major": {
+              "type": "string"
+            },
+            "minor": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "optional": true
+    },
+    "pop3": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "request": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "args": {
+              "type": "array",
+              "description": "Pop3 request arguments",
+              "items": {
+                "type": "string"
+              }
+            },
+            "command": {
+              "type": "string",
+              "description": "A pop3 command, for example `USER` or `STAT`"
+            }
+          },
+          "optional": true
+        },
+        "response": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "data": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "header": {
+              "type": "string",
+              "description": "First line of response"
+            },
+            "status": {
+              "type": "string"
+            },
+            "success": {
+              "type": "boolean",
+              "description": "Response indicated positive status ie +OK"
+            }
+          },
+          "optional": true
+        }
+      },
+      "optional": true
+    },
+    "mqtt": {
+      "type": "object",
+      "additionalProperties": false,
+      "suricata": {
+        "keywords": [
+          "mqtt.type"
+        ]
+      },
+      "properties": {
+        "connack": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dup": {
+              "type": "boolean",
+              "suricata": {
+                "keywords": [
+                  "mqtt.flags"
+                ]
+              }
+            },
+            "properties": {
+              "type": "object",
+              "additionalProperties": true
+            },
+            "qos": {
+              "type": "integer"
+            },
+            "retain": {
+              "type": "boolean",
+              "suricata": {
+                "keywords": [
+                  "mqtt.flags"
+                ]
+              }
+            },
+            "return_code": {
+              "type": "integer"
+            },
+            "session_present": {
+              "type": "boolean"
+            }
+          }
+        },
+        "connect": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "client_id": {
+              "type": "string"
+            },
+            "dup": {
+              "type": "boolean",
+              "suricata": {
+                "keywords": [
+                  "mqtt.flags"
+                ]
+              }
+            },
+            "flags": {
+              "type": "object",
+              "additionalProperties": false,
+              "suricata": {
+                "keywords": [
+                  "mqtt.connect.flags"
+                ]
+              },
+              "properties": {
+                "clean_session": {
+                  "type": "boolean"
+                },
+                "password": {
+                  "type": "boolean"
+                },
+                "username": {
+                  "type": "boolean"
+                },
+                "will": {
+                  "type": "boolean"
+                },
+                "will_retain": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "password": {
+              "type": "string"
+            },
+            "properties": {
+              "type": "object",
+              "additionalProperties": true
+            },
+            "protocol_string": {
+              "type": "string"
+            },
+            "protocol_version": {
+              "type": "integer",
+              "suricata": {
+                "keywords": [
+                  "mqtt.protocol_version"
+                ]
+              }
+            },
+            "qos": {
+              "type": "integer"
+            },
+            "retain": {
+              "type": "boolean",
+              "suricata": {
+                "keywords": [
+                  "mqtt.flags"
+                ]
+              }
+            },
+            "username": {
+              "type": "string"
+            },
+            "will": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "properties": {
+                  "type": "object",
+                  "additionalProperties": true
+                },
+                "topic": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "disconnect": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dup": {
+              "type": "boolean",
+              "suricata": {
+                "keywords": [
+                  "mqtt.flags"
+                ]
+              }
+            },
+            "properties": {
+              "type": "object",
+              "additionalProperties": true
+            },
+            "qos": {
+              "type": "integer"
+            },
+            "reason_code": {
+              "type": "integer",
+              "suricata": {
+                "keywords": [
+                  "mqtt.reason_code"
+                ]
+              }
+            },
+            "retain": {
+              "type": "boolean",
+              "suricata": {
+                "keywords": [
+                  "mqtt.flags"
+                ]
+              }
+            }
+          }
+        },
+        "pingreq": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dup": {
+              "type": "boolean",
+              "suricata": {
+                "keywords": [
+                  "mqtt.flags"
+                ]
+              }
+            },
+            "qos": {
+              "type": "integer"
+            },
+            "retain": {
+              "type": "boolean",
+              "suricata": {
+                "keywords": [
+                  "mqtt.flags"
+                ]
+              }
+            }
+          }
+        },
+        "pingresp": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dup": {
+              "type": "boolean",
+              "suricata": {
+                "keywords": [
+                  "mqtt.flags"
+                ]
+              }
+            },
+            "qos": {
+              "type": "integer"
+            },
+            "retain": {
+              "type": "boolean",
+              "suricata": {
+                "keywords": [
+                  "mqtt.flags"
+                ]
+              }
+            }
+          }
+        },
+        "puback": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dup": {
+              "type": "boolean",
+              "suricata": {
+                "keywords": [
+                  "mqtt.flags"
+                ]
+              }
+            },
+            "message_id": {
+              "type": "integer"
+            },
+            "qos": {
+              "type": "integer"
+            },
+            "reason_code": {
+              "type": "integer",
+              "suricata": {
+                "keywords": [
+                  "mqtt.reason_code"
+                ]
+              }
+            },
+            "retain": {
+              "type": "boolean",
+              "suricata": {
+                "keywords": [
+                  "mqtt.flags"
+                ]
+              }
+            }
+          }
+        },
+        "pubcomp": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dup": {
+              "type": "boolean",
+              "suricata": {
+                "keywords": [
+                  "mqtt.flags"
+                ]
+              }
+            },
+            "message_id": {
+              "type": "integer"
+            },
+            "qos": {
+              "type": "integer"
+            },
+            "reason_code": {
+              "type": "integer",
+              "suricata": {
+                "keywords": [
+                  "mqtt.reason_code"
+                ]
+              }
+            },
+            "retain": {
+              "type": "boolean",
+              "suricata": {
+                "keywords": [
+                  "mqtt.flags"
+                ]
+              }
+            }
+          }
+        },
+        "publish": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dup": {
+              "type": "boolean",
+              "suricata": {
+                "keywords": [
+                  "mqtt.flags"
+                ]
+              }
+            },
+            "message": {
+              "type": "string"
+            },
+            "message_id": {
+              "type": "integer"
+            },
+            "properties": {
+              "type": "object",
+              "additionalProperties": true
+            },
+            "qos": {
+              "type": "integer"
+            },
+            "retain": {
+              "type": "boolean",
+              "suricata": {
+                "keywords": [
+                  "mqtt.flags"
+                ]
+              }
+            },
+            "skipped_length": {
+              "type": "integer"
+            },
+            "topic": {
+              "type": "string"
+            },
+            "truncated": {
+              "type": "boolean"
+            }
+          }
+        },
+        "pubrec": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dup": {
+              "type": "boolean",
+              "suricata": {
+                "keywords": [
+                  "mqtt.flags"
+                ]
+              }
+            },
+            "message_id": {
+              "type": "integer"
+            },
+            "qos": {
+              "type": "integer"
+            },
+            "reason_code": {
+              "type": "integer",
+              "suricata": {
+                "keywords": [
+                  "mqtt.reason_code"
+                ]
+              }
+            },
+            "retain": {
+              "type": "boolean",
+              "suricata": {
+                "keywords": [
+                  "mqtt.flags"
+                ]
+              }
+            }
+          }
+        },
+        "pubrel": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dup": {
+              "type": "boolean",
+              "suricata": {
+                "keywords": [
+                  "mqtt.flags"
+                ]
+              }
+            },
+            "message_id": {
+              "type": "integer"
+            },
+            "qos": {
+              "type": "integer"
+            },
+            "reason_code": {
+              "type": "integer",
+              "suricata": {
+                "keywords": [
+                  "mqtt.reason_code"
+                ]
+              }
+            },
+            "retain": {
+              "type": "boolean",
+              "suricata": {
+                "keywords": [
+                  "mqtt.flags"
+                ]
+              }
+            }
+          }
+        },
+        "suback": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dup": {
+              "type": "boolean",
+              "suricata": {
+                "keywords": [
+                  "mqtt.flags"
+                ]
+              }
+            },
+            "message_id": {
+              "type": "integer"
+            },
+            "qos": {
+              "type": "integer"
+            },
+            "qos_granted": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "integer"
+              }
+            },
+            "retain": {
+              "type": "boolean",
+              "suricata": {
+                "keywords": [
+                  "mqtt.flags"
+                ]
+              }
+            }
+          }
+        },
+        "subscribe": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dup": {
+              "type": "boolean",
+              "suricata": {
+                "keywords": [
+                  "mqtt.flags"
+                ]
+              }
+            },
+            "message_id": {
+              "type": "integer"
+            },
+            "qos": {
+              "type": "integer"
+            },
+            "retain": {
+              "type": "boolean",
+              "suricata": {
+                "keywords": [
+                  "mqtt.flags"
+                ]
+              }
+            },
+            "topics": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "qos": {
+                    "type": "integer"
+                  },
+                  "topic": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "unsuback": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dup": {
+              "type": "boolean",
+              "suricata": {
+                "keywords": [
+                  "mqtt.flags"
+                ]
+              }
+            },
+            "message_id": {
+              "type": "integer"
+            },
+            "qos": {
+              "type": "integer"
+            },
+            "reason_codes": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "integer"
+              },
+              "suricata": {
+                "keywords": [
+                  "mqtt.reason_code"
+                ]
+              }
+            },
+            "retain": {
+              "type": "boolean",
+              "suricata": {
+                "keywords": [
+                  "mqtt.flags"
+                ]
+              }
+            }
+          }
+        },
+        "unsubscribe": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "dup": {
+              "type": "boolean",
+              "suricata": {
+                "keywords": [
+                  "mqtt.flags"
+                ]
+              }
+            },
+            "message_id": {
+              "type": "integer"
+            },
+            "qos": {
+              "type": "integer"
+            },
+            "retain": {
+              "type": "boolean",
+              "suricata": {
+                "keywords": [
+                  "mqtt.flags"
+                ]
+              }
+            },
+            "topics": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "optional": true
+    },
+    "pgsql": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "request": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "copy_data_in": {
+              "type": "object",
+              "additionalProperties": false,
+              "description": "CopyData message from CopyIn mode",
+              "properties": {
+                "data_size": {
+                  "type": "integer",
+                  "description": "Accumulated data size of all CopyData messages sent"
+                },
+                "msg_count": {
+                  "type": "integer",
+                  "description": "How many CopyData messages were sent (does not necessarily match number of rows from the query)"
+                }
+              }
+            },
+            "message": {
+              "type": "string"
+            },
+            "password": {
+              "type": "string"
+            },
+            "password_redacted": {
+              "type": "boolean",
+              "description": "Indicates if a password message was received but not logged due to Suricata settings"
+            },
+            "process_id": {
+              "type": "integer"
+            },
+            "protocol_version": {
+              "type": "string"
+            },
+            "sasl_authentication_mechanism": {
+              "type": "string"
+            },
+            "sasl_param": {
+              "type": "string"
+            },
+            "sasl_response": {
+              "type": "string"
+            },
+            "secret_key": {
+              "type": "integer"
+            },
+            "simple_query": {
+              "type": "string"
+            },
+            "startup_parameters": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "optional_parameters": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": true,
+                    "properties": {
+                      "application_name": {
+                        "type": "string"
+                      },
+                      "client_encoding": {
+                        "type": "string"
+                      },
+                      "database": {
+                        "type": "string"
+                      },
+                      "datestyle": {
+                        "type": "string"
+                      },
+                      "extra_float_digits": {
+                        "type": "string"
+                      },
+                      "options": {
+                        "type": "string"
+                      },
+                      "replication": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "user": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "response": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "authentication_md5_password": {
+              "type": "string"
+            },
+            "authentication_sasl_final": {
+              "type": "string"
+            },
+            "code": {
+              "type": "string"
+            },
+            "command_completed": {
+              "type": "string"
+            },
+            "copy_data_out": {
+              "type": "object",
+              "additionalProperties": false,
+              "description": "CopyData message from CopyOut mode",
+              "properties": {
+                "data_size": {
+                  "type": "integer",
+                  "description": "Accumulated data size of all CopyData messages sent"
+                },
+                "row_count": {
+                  "type": "integer",
+                  "description": "Number of rows sent in CopyData messages"
+                }
+              }
+            },
+            "copy_in_response": {
+              "type": "object",
+              "additionalProperties": false,
+              "description": "Backend/server response accepting CopyIn mode",
+              "properties": {
+                "columns": {
+                  "type": "integer",
+                  "description": "Number of columns that will be copied in the CopyData message"
+                }
+              }
+            },
+            "copy_out_response": {
+              "type": "object",
+              "additionalProperties": false,
+              "description": "Backend/server response accepting CopyOut mode",
+              "properties": {
+                "columns": {
+                  "type": "integer",
+                  "description": "Number of columns that will be copied in the CopyData message"
+                }
+              }
+            },
+            "data_rows": {
+              "type": "integer"
+            },
+            "data_size": {
+              "type": "integer"
+            },
+            "field_count": {
+              "type": "integer"
+            },
+            "file": {
+              "type": "string"
+            },
+            "line": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            },
+            "parameter_status": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": true,
+                "properties": {
+                  "application_name": {
+                    "type": "string"
+                  },
+                  "client_encoding": {
+                    "type": "string"
+                  },
+                  "date_style": {
+                    "type": "string"
+                  },
+                  "integer_datetimes": {
+                    "type": "string"
+                  },
+                  "interval_style": {
+                    "type": "string"
+                  },
+                  "is_superuser": {
+                    "type": "string"
+                  },
+                  "server_encoding": {
+                    "type": "string"
+                  },
+                  "server_version": {
+                    "type": "string"
+                  },
+                  "session_authorization": {
+                    "type": "string"
+                  },
+                  "standard_conforming_strings": {
+                    "type": "string"
+                  },
+                  "time_zone": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "process_id": {
+              "type": "integer"
+            },
+            "routine": {
+              "type": "string"
+            },
+            "secret_key": {
+              "type": "integer"
+            },
+            "severity_localizable": {
+              "type": "string"
+            },
+            "severity_non_localizable": {
+              "type": "string"
+            },
+            "ssl_accepted": {
+              "type": "boolean"
+            }
+          }
+        },
+        "tx_id": {
+          "type": "integer"
+        }
+      },
+      "optional": true
+    },
+    "websocket": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "fin": {
+          "type": "boolean",
+          "suricata": {
+            "keywords": [
+              "websocket.flags"
+            ]
+          }
+        },
+        "mask": {
+          "type": "integer",
+          "suricata": {
+            "keywords": [
+              "websocket.mask"
+            ]
+          }
+        },
+        "opcode": {
+          "type": "string",
+          "suricata": {
+            "keywords": [
+              "websocket.opcode"
+            ]
+          }
+        },
+        "payload_base64": {
+          "type": "string"
+        },
+        "payload_printable": {
+          "type": "string"
+        }
+      }
+    },
+    "ldap": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "request": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "abandon_request": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "message_id": {
+                  "type": "integer"
+                }
+              },
+              "optional": "true"
+            },
+            "add_request": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "values": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "entry": {
+                  "type": "string"
+                }
+              },
+              "optional": "true"
+            },
+            "bind_request": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "sasl": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "credentials": {
+                      "type": "string",
+                      "optional": "true"
+                    },
+                    "mechanism": {
+                      "type": "string"
+                    }
+                  },
+                  "optional": "true"
+                },
+                "version": {
+                  "type": "integer"
+                }
+              },
+              "optional": "true"
+            },
+            "compare_request": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "attribute_value_assertion": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "description": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "entry": {
+                  "type": "string"
+                }
+              },
+              "optional": "true"
+            },
+            "del_request": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "dn": {
+                  "type": "string"
+                }
+              },
+              "optional": "true"
+            },
+            "extended_request": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string",
+                  "optional": "true"
+                }
+              },
+              "optional": "true"
+            },
+            "message_id": {
+              "type": "integer"
+            },
+            "mod_dn_request": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "delete_old_rdn": {
+                  "type": "boolean"
+                },
+                "entry": {
+                  "type": "string"
+                },
+                "new_rdn": {
+                  "type": "string"
+                },
+                "new_superior": {
+                  "type": "string",
+                  "optional": "true"
+                }
+              },
+              "optional": "true"
+            },
+            "modify_request": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "changes": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "modification": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "attribute_type": {
+                            "type": "string"
+                          },
+                          "attribute_values": {
+                            "type": "array",
+                            "minItems": 1,
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      },
+                      "operation": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "object": {
+                  "type": "string"
+                }
+              },
+              "optional": "true"
+            },
+            "operation": {
+              "type": "string",
+              "suricata": {
+                "keywords": [
+                  "ldap.request.operation"
+                ]
+              }
+            },
+            "search_request": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "attributes": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "base_object": {
+                  "type": "string"
+                },
+                "deref_alias": {
+                  "type": "integer"
+                },
+                "scope": {
+                  "type": "integer"
+                },
+                "size_limit": {
+                  "type": "integer"
+                },
+                "time_limit": {
+                  "type": "integer"
+                },
+                "types_online": {
+                  "type": "boolean"
+                },
+                "types_only": {
+                  "type": "boolean"
+                }
+              },
+              "optional": "true"
+            }
+          }
+        },
+        "responses": {
+          "type": "array",
+          "optional": "true",
+          "minItems": 1,
+          "suricata": {
+            "keywords": [
+              "ldap.responses.count"
+            ]
+          },
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "add_response": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "matched_dn": {
+                    "type": "string"
+                  },
+                  "message": {
+                    "type": "string"
+                  },
+                  "result_code": {
+                    "type": "string",
+                    "suricata": {
+                      "keywords": [
+                        "ldap.responses.result_code"
+                      ]
+                    }
+                  }
+                },
+                "optional": "true"
+              },
+              "bind_response": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "matched_dn": {
+                    "type": "string"
+                  },
+                  "message": {
+                    "type": "string"
+                  },
+                  "result_code": {
+                    "type": "string",
+                    "suricata": {
+                      "keywords": [
+                        "ldap.responses.result_code"
+                      ]
+                    }
+                  },
+                  "server_sasl_creds": {
+                    "type": "string",
+                    "optional": "true"
+                  }
+                },
+                "optional": "true"
+              },
+              "compare_response": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "matched_dn": {
+                    "type": "string"
+                  },
+                  "message": {
+                    "type": "string"
+                  },
+                  "result_code": {
+                    "type": "string",
+                    "suricata": {
+                      "keywords": [
+                        "ldap.responses.result_code"
+                      ]
+                    }
+                  }
+                },
+                "optional": "true"
+              },
+              "del_response": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "matched_dn": {
+                    "type": "string"
+                  },
+                  "message": {
+                    "type": "string"
+                  },
+                  "result_code": {
+                    "type": "string",
+                    "suricata": {
+                      "keywords": [
+                        "ldap.responses.result_code"
+                      ]
+                    }
+                  }
+                },
+                "optional": "true"
+              },
+              "extended_response": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "matched_dn": {
+                    "type": "string"
+                  },
+                  "message": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "result_code": {
+                    "type": "string",
+                    "suricata": {
+                      "keywords": [
+                        "ldap.responses.result_code"
+                      ]
+                    }
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                },
+                "optional": "true"
+              },
+              "intermediate_response": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "type": "string"
+                  }
+                },
+                "optional": "true"
+              },
+              "message_id": {
+                "type": "integer"
+              },
+              "mod_dn_response": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "matched_dn": {
+                    "type": "string"
+                  },
+                  "message": {
+                    "type": "string"
+                  },
+                  "result_code": {
+                    "type": "string",
+                    "suricata": {
+                      "keywords": [
+                        "ldap.responses.result_code"
+                      ]
+                    }
+                  }
+                },
+                "optional": "true"
+              },
+              "modify_response": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "matched_dn": {
+                    "type": "string"
+                  },
+                  "message": {
+                    "type": "string"
+                  },
+                  "result_code": {
+                    "type": "string",
+                    "suricata": {
+                      "keywords": [
+                        "ldap.responses.result_code"
+                      ]
+                    }
+                  }
+                },
+                "optional": "true"
+              },
+              "operation": {
+                "type": "string",
+                "suricata": {
+                  "keywords": [
+                    "ldap.responses.operation"
+                  ]
+                }
+              },
+              "search_result_done": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "matched_dn": {
+                    "type": "string"
+                  },
+                  "message": {
+                    "type": "string"
+                  },
+                  "result_code": {
+                    "type": "string",
+                    "suricata": {
+                      "keywords": [
+                        "ldap.responses.result_code"
+                      ]
+                    }
+                  }
+                },
+                "optional": "true"
+              },
+              "search_result_entry": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "attributes": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "type": {
+                          "type": "string"
+                        },
+                        "values": {
+                          "type": "array",
+                          "minItems": 1,
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "base_object": {
+                    "type": "string"
+                  }
+                },
+                "optional": "true"
+              }
+            }
+          }
+        }
+      },
+      "optional": true
+    },
+    "template": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "request": {
+          "type": "string"
+        },
+        "response": {
+          "type": "string"
+        }
+      }
+    },
+    "rdp": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "channels": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "client": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "build": {
+              "type": "string"
+            },
+            "capabilities": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "client_name": {
+              "type": "string"
+            },
+            "color_depth": {
+              "type": "integer"
+            },
+            "desktop_height": {
+              "type": "integer"
+            },
+            "desktop_width": {
+              "type": "integer"
+            },
+            "function_keys": {
+              "type": "integer"
+            },
+            "id": {
+              "type": "string"
+            },
+            "keyboard_layout": {
+              "type": "string"
+            },
+            "keyboard_type": {
+              "type": "string"
+            },
+            "product_id": {
+              "type": "integer"
+            },
+            "version": {
+              "type": "string"
+            }
+          }
+        },
+        "cookie": {
+          "type": "string"
+        },
+        "event_type": {
+          "type": "string"
+        },
+        "tx_id": {
+          "type": "integer"
+        }
+      },
+      "optional": true
+    },
+    "bittorrent_dht": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "client_version": {
+          "type": "string"
+        },
+        "error": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "msg": {
+              "type": "string"
+            },
+            "num": {
+              "type": "integer"
+            }
+          }
+        },
+        "request": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "implied_port": {
+              "type": "integer"
+            },
+            "info_hash": {
+              "type": "string"
+            },
+            "port": {
+              "type": "integer"
+            },
+            "target": {
+              "type": "string"
+            },
+            "token": {
+              "type": "string"
+            }
+          }
+        },
+        "request_type": {
+          "type": "string"
+        },
+        "response": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id"
+          ],
+          "properties": {
+            "id": {
+              "type": "string"
+            },
+            "nodes": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "ip",
+                  "port"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "ip": {
+                    "type": "string"
+                  },
+                  "port": {
+                    "type": "number"
+                  }
+                }
+              }
+            },
+            "nodes6": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "ip",
+                  "port"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "ip": {
+                    "type": "string"
+                  },
+                  "port": {
+                    "type": "number"
+                  }
+                }
+              }
+            },
+            "token": {
+              "type": "string"
+            },
+            "values": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "ip": {
+                    "type": "string"
+                  },
+                  "port": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "transaction_id": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "dns.soa": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expire": {
+          "type": "integer"
+        },
+        "minimum": {
+          "type": "integer"
+        },
+        "mname": {
+          "type": "string"
+        },
+        "mname_truncated": {
+          "type": "boolean",
+          "description": "Set to true if the mname was too long and truncated by Suricata"
+        },
+        "refresh": {
+          "type": "integer"
+        },
+        "retry": {
+          "type": "integer"
+        },
+        "rname": {
+          "type": "string"
+        },
+        "serial": {
+          "type": "integer"
+        }
+      }
+    },
+    "dns.authorities": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "rdata": {
+            "type": "string",
+            "suricata": {
+              "keywords": [
+                "dns.response.rrname"
+              ]
+            }
+          },
+          "rdata_truncated": {
+            "type": "boolean",
+            "description": "Set to true if the rdata was too long and truncated by Suricata"
+          },
+          "rrname": {
+            "type": "string",
+            "suricata": {
+              "keywords": [
+                "dns.authorities.rrname",
+                "dns.response.rrname"
+              ]
+            }
+          },
+          "rrname_truncated": {
+            "type": "boolean",
+            "description": "Set to true if the rrname was too long and truncated by Suricata"
+          },
+          "rrtype": {
+            "type": "string"
+          },
+          "soa": {
+            "$ref": "#/$defs/dns.soa"
+          },
+          "ttl": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "dns.additionals": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "opt": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "data": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "rdata": {
+            "type": "string",
+            "suricata": {
+              "keywords": [
+                "dns.response.rrname"
+              ]
+            }
+          },
+          "rrname": {
+            "type": "string",
+            "suricata": {
+              "keywords": [
+                "dns.additionals.rrname",
+                "dns.response.rrname"
+              ]
+            }
+          },
+          "rrtype": {
+            "type": "string"
+          },
+          "ttl": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "tls_date": {
+      "type": "string",
+      "$comment": "Definition for TLS date formats",
+      "pattern": "^[1-2]\\d{3}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}$"
+    }
+  },
+  "description": "ENIP event schema based on Suricata source code analysis"
+}

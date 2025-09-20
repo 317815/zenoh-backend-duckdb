@@ -1,0 +1,87 @@
+{
+  "dest_ip": "192.168.1.100",
+  "dest_port": 19817,
+  "direction": "example_direction",
+  "ether": {
+    "dest_mac": "example_dest_mac",
+    "dest_macs": [
+      "example_dest_macs_item_0",
+      "example_dest_macs_item_1"
+    ],
+    "ether_type": 11395,
+    "src_mac": "example_src_mac",
+    "src_macs": [
+      "example_src_macs_item_0",
+      "example_src_macs_item_1",
+      "example_src_macs_item_2",
+      "example_src_macs_item_3"
+    ]
+  },
+  "event_type": "stream_tcp",
+  "flow_id": 3350695,
+  "host": "example.com",
+  "icmp_code": 923960,
+  "icmp_type": 62915,
+  "in_iface": "example_in_iface",
+  "ip_v": 163459,
+  "metadata": {
+    "entropy": {},
+    "flowbits": [
+      "example_flowbits_item_0",
+      "example_flowbits_item_1",
+      "example_flowbits_item_2",
+      "example_flowbits_item_3",
+      "example_flowbits_item_4"
+    ],
+    "flowints": {},
+    "flowvars": [
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      }
+    ],
+    "pktvars": [
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      }
+    ]
+  },
+  "parent_id": 9849143,
+  "pcap_cnt": 716,
+  "pcap_filename": "capture.pcap",
+  "pkt_src": "example_pkt_src",
+  "proto": "TCP",
+  "src_ip": "192.0.2.1",
+  "src_port": 30120,
+  "stream_tcp": {},
+  "suricata_version": "7.0.0",
+  "timestamp": "2023-01-01T12:00:00+00:00",
+  "vlan": [
+    493024,
+    431512,
+    757656
+  ]
+}

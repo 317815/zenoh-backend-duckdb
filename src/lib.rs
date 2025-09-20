@@ -1,4 +1,4 @@
-/* Copyright (C) 2025-2035 Open Information Security Foundation
+/* Copyright (C) 2025-2035 NetPrism Technology
  *
  * You can copy, redistribute or modify this Program under the terms of
  * the GNU General Public License version 2 as published by the Free

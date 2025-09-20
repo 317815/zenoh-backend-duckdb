@@ -1,0 +1,194 @@
+{
+  "dest_ip": "10.0.0.1",
+  "dest_port": 16488,
+  "ether": {
+    "dest_mac": "example_dest_mac",
+    "dest_macs": [
+      "example_dest_macs_item_0",
+      "example_dest_macs_item_1"
+    ],
+    "ether_type": 9363,
+    "src_mac": "example_src_mac",
+    "src_macs": [
+      "example_src_macs_item_0"
+    ]
+  },
+  "event_type": "mdns",
+  "flow_id": 4334029,
+  "host": "mail.company.net",
+  "icmp_code": 175490,
+  "icmp_type": 15799,
+  "in_iface": "example_in_iface",
+  "ip_v": 340277,
+  "mdns": {
+    "additionals": [
+      {
+        "ptr": "example_ptr",
+        "rrname": "api.service.com",
+        "rrname_truncated": false,
+        "txt": [
+          "example_txt_item_0"
+        ]
+      },
+      {
+        "ptr": "example_ptr",
+        "rrname": "web.example.org",
+        "rrname_truncated": true,
+        "txt": [
+          "example_txt_item_0",
+          "example_txt_item_1",
+          "example_txt_item_2",
+          "example_txt_item_3"
+        ]
+      },
+      {
+        "ptr": "example_ptr",
+        "rrname": "test.local",
+        "rrname_truncated": false,
+        "txt": [
+          "example_txt_item_0"
+        ]
+      },
+      {
+        "ptr": "example_ptr",
+        "rrname": "example.com",
+        "rrname_truncated": false,
+        "txt": [
+          "example_txt_item_0",
+          "example_txt_item_1"
+        ]
+      },
+      {
+        "ptr": "example_ptr",
+        "rrname": "test.local",
+        "rrname_truncated": true,
+        "txt": [
+          "example_txt_item_0",
+          "example_txt_item_1",
+          "example_txt_item_2",
+          "example_txt_item_3"
+        ]
+      }
+    ],
+    "answers": [
+      {
+        "ptr": "example_ptr",
+        "rrname": "db.internal.local",
+        "rrname_truncated": false,
+        "txt": [
+          "example_txt_item_0",
+          "example_txt_item_1",
+          "example_txt_item_2",
+          "example_txt_item_3"
+        ]
+      },
+      {
+        "ptr": "example_ptr",
+        "rrname": "web.example.org",
+        "rrname_truncated": true,
+        "txt": [
+          "example_txt_item_0",
+          "example_txt_item_1",
+          "example_txt_item_2",
+          "example_txt_item_3"
+        ]
+      }
+    ],
+    "authorities": [
+      {
+        "rrname": "api.service.com",
+        "rrname_truncated": false
+      },
+      {
+        "rrname": "example.com",
+        "rrname_truncated": false
+      },
+      {
+        "rrname": "auth.service.io",
+        "rrname_truncated": false
+      }
+    ],
+    "flags": [
+      "ad",
+      "ra",
+      "tc",
+      "z",
+      "tc"
+    ],
+    "id": 6832845,
+    "opcode": 339403,
+    "queries": [
+      {
+        "rrname": "mail.company.net",
+        "rrname_truncated": true,
+        "rrtype": "AAAA"
+      },
+      {
+        "rrname": "api.service.com",
+        "rrname_truncated": false,
+        "rrtype": "NS"
+      },
+      {
+        "rrname": "mail.company.net",
+        "rrname_truncated": false,
+        "rrtype": "TXT"
+      },
+      {
+        "rrname": "example.com",
+        "rrname_truncated": false,
+        "rrtype": "CNAME"
+      }
+    ],
+    "rcode": 925821,
+    "type": "request"
+  },
+  "metadata": {
+    "entropy": {},
+    "flowbits": [
+      "example_flowbits_item_0",
+      "example_flowbits_item_1",
+      "example_flowbits_item_2",
+      "example_flowbits_item_3",
+      "example_flowbits_item_4"
+    ],
+    "flowints": {},
+    "flowvars": [
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      }
+    ],
+    "pktvars": [
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      }
+    ]
+  },
+  "parent_id": 7046955,
+  "pcap_cnt": 909,
+  "pcap_filename": "capture.pcap",
+  "pkt_src": "example_pkt_src",
+  "proto": "ICMP6",
+  "src_ip": "203.0.113.1",
+  "src_port": 64808,
+  "suricata_version": "7.0.0",
+  "timestamp": "2023-01-01T12:00:00+00:00",
+  "tx_id": 8973718,
+  "vlan": [
+    905610
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "dest_ip": "172.20.0.100",
+  "dest_port": 13513,
+  "ether": {
+    "dest_mac": "example_dest_mac",
+    "dest_macs": [
+      "example_dest_macs_item_0",
+      "example_dest_macs_item_1"
+    ],
+    "ether_type": 107697,
+    "src_mac": "example_src_mac",
+    "src_macs": [
+      "example_src_macs_item_0",
+      "example_src_macs_item_1",
+      "example_src_macs_item_2",
+      "example_src_macs_item_3"
+    ]
+  },
+  "event_type": "ike",
+  "flow_id": 4345615,
+  "host": "web.example.org",
+  "icmp_code": 657128,
+  "icmp_type": 4324,
+  "ike": {
+    "alg_auth": "example_alg_auth",
+    "alg_auth_raw": 617265,
+    "alg_dh": "example_alg_dh",
+    "alg_dh_raw": 320984,
+    "alg_enc": "example_alg_enc",
+    "alg_enc_raw": 175133,
+    "alg_hash": "example_alg_hash",
+    "alg_hash_raw": 68458,
+    "exchange_type": 863862,
+    "exchange_type_verbose": "example_exchange_type_verbose",
+    "ikev1": {
+      "client": {
+        "key_exchange_payload": "example_key_exchange_payload",
+        "key_exchange_payload_length": 849,
+        "nonce_payload": "example_nonce_payload",
+        "nonce_payload_length": 4985,
+        "proposals": [
+          {
+            "alg_auth": "example_alg_auth",
+            "alg_auth_raw": 478073,
+            "alg_dh": "example_alg_dh",
+            "alg_dh_raw": 763187,
+            "alg_enc": "example_alg_enc",
+            "alg_enc_raw": 545561,
+            "alg_hash": "example_alg_hash",
+            "alg_hash_raw": 625339,
+            "sa_key_length": "example_sa_key_length",
+            "sa_key_length_raw": 8687,
+            "sa_life_duration": "example_sa_life_duration",
+            "sa_life_duration_raw": 354245,
+            "sa_life_type": "example_sa_life_type",
+            "sa_life_type_raw": 454730
+          },
+          {
+            "alg_auth": "example_alg_auth",
+            "alg_auth_raw": 931108,
+            "alg_dh": "example_alg_dh",
+            "alg_dh_raw": 720141,
+            "alg_enc": "example_alg_enc",
+            "alg_enc_raw": 140288,
+            "alg_hash": "example_alg_hash",
+            "alg_hash_raw": 359381,
+            "sa_key_length": "example_sa_key_length",
+            "sa_key_length_raw": 8131,
+            "sa_life_duration": "example_sa_life_duration",
+            "sa_life_duration_raw": 376701,
+            "sa_life_type": "example_sa_life_type",
+            "sa_life_type_raw": 786553
+          },
+          {
+            "alg_auth": "example_alg_auth",
+            "alg_auth_raw": 197579,
+            "alg_dh": "example_alg_dh",
+            "alg_dh_raw": 172892,
+            "alg_enc": "example_alg_enc",
+            "alg_enc_raw": 994138,
+            "alg_hash": "example_alg_hash",
+            "alg_hash_raw": 950947,
+            "sa_key_length": "example_sa_key_length",
+            "sa_key_length_raw": 6709,
+            "sa_life_duration": "example_sa_life_duration",
+            "sa_life_duration_raw": 20053,
+            "sa_life_type": "example_sa_life_type",
+            "sa_life_type_raw": 239513
+          }
+        ]
+      },
+      "doi": 235217,
+      "encrypted_payloads": true,
+      "server": {
+        "key_exchange_payload": "example_key_exchange_payload",
+        "key_exchange_payload_length": 3560,
+        "nonce_payload": "example_nonce_payload",
+        "nonce_payload_length": 459
+      },
+      "vendor_ids": [
+        "example_vendor_ids_item_0",
+        "example_vendor_ids_item_1",
+        "example_vendor_ids_item_2",
+        "example_vendor_ids_item_3",
+        "example_vendor_ids_item_4"
+      ]
+    },
+    "ikev2": {
+      "errors": 529146,
+      "notify": [
+        "default_notify_item_0",
+        "default_notify_item_1"
+      ]
+    },
+    "init_spi": "example_init_spi",
+    "message_id": 3066315,
+    "payload": [
+      "example_payload_item_0",
+      "example_payload_item_1",
+      "example_payload_item_2"
+    ],
+    "resp_spi": "example_resp_spi",
+    "role": "example_role",
+    "sa_key_length": "example_sa_key_length",
+    "sa_key_length_raw": 712,
+    "sa_life_duration": "example_sa_life_duration",
+    "sa_life_duration_raw": 393417,
+    "sa_life_type": "example_sa_life_type",
+    "sa_life_type_raw": 919123,
+    "version_major": 671425,
+    "version_minor": 268214
+  },
+  "in_iface": "example_in_iface",
+  "ip_v": 709621,
+  "metadata": {
+    "entropy": {},
+    "flowbits": [
+      "example_flowbits_item_0",
+      "example_flowbits_item_1"
+    ],
+    "flowints": {},
+    "flowvars": [
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      }
+    ],
+    "pktvars": [
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      }
+    ]
+  },
+  "parent_id": 7259602,
+  "pcap_cnt": 973,
+  "pcap_filename": "capture.pcap",
+  "pkt_src": "example_pkt_src",
+  "proto": "TCP",
+  "src_ip": "192.0.2.1",
+  "src_port": 50624,
+  "suricata_version": "7.0.0",
+  "timestamp": "2023-01-01T12:00:00+00:00",
+  "tx_id": 9444584,
+  "vlan": [
+    935336
+  ]
+}

@@ -1,0 +1,661 @@
+{
+  "dest_ip": "192.168.1.100",
+  "dest_port": 30549,
+  "dns": {
+    "aa": true,
+    "additionals": [
+      {
+        "opt": [
+          {
+            "code": 962526,
+            "data": "example_data"
+          },
+          {
+            "code": 296635,
+            "data": "example_data"
+          },
+          {
+            "code": 406235,
+            "data": "example_data"
+          }
+        ],
+        "rdata": "example_rdata",
+        "rrname": "cdn.example.net",
+        "rrtype": "PTR",
+        "ttl": 78367
+      },
+      {
+        "opt": [
+          {
+            "code": 827564,
+            "data": "example_data"
+          }
+        ],
+        "rdata": "example_rdata",
+        "rrname": "db.internal.local",
+        "rrtype": "AAAA",
+        "ttl": 43214
+      },
+      {
+        "opt": [
+          {
+            "code": 585066,
+            "data": "example_data"
+          }
+        ],
+        "rdata": "example_rdata",
+        "rrname": "cdn.example.net",
+        "rrtype": "NS",
+        "ttl": 33030
+      }
+    ],
+    "answer": {
+      "additionals": [
+        {
+          "opt": [
+            {
+              "code": 349555,
+              "data": "example_data"
+            },
+            {
+              "code": 85461,
+              "data": "example_data"
+            }
+          ],
+          "rdata": "example_rdata",
+          "rrname": "api.service.com",
+          "rrtype": "PTR",
+          "ttl": 40663
+        },
+        {
+          "opt": [
+            {
+              "code": 135215,
+              "data": "example_data"
+            },
+            {
+              "code": 623945,
+              "data": "example_data"
+            },
+            {
+              "code": 743266,
+              "data": "example_data"
+            },
+            {
+              "code": 983566,
+              "data": "example_data"
+            }
+          ],
+          "rdata": "example_rdata",
+          "rrname": "test.local",
+          "rrtype": "NS",
+          "ttl": 73260
+        },
+        {
+          "opt": [
+            {
+              "code": 674751,
+              "data": "example_data"
+            },
+            {
+              "code": 830117,
+              "data": "example_data"
+            },
+            {
+              "code": 344432,
+              "data": "example_data"
+            },
+            {
+              "code": 852686,
+              "data": "example_data"
+            }
+          ],
+          "rdata": "example_rdata",
+          "rrname": "api.service.com",
+          "rrtype": "SRV",
+          "ttl": 12250
+        },
+        {
+          "opt": [
+            {
+              "code": 533188,
+              "data": "example_data"
+            },
+            {
+              "code": 379404,
+              "data": "example_data"
+            },
+            {
+              "code": 19116,
+              "data": "example_data"
+            },
+            {
+              "code": 380211,
+              "data": "example_data"
+            }
+          ],
+          "rdata": "example_rdata",
+          "rrname": "mail.company.net",
+          "rrtype": "CNAME",
+          "ttl": 28075
+        },
+        {
+          "opt": [
+            {
+              "code": 993702,
+              "data": "example_data"
+            },
+            {
+              "code": 803373,
+              "data": "example_data"
+            },
+            {
+              "code": 509892,
+              "data": "example_data"
+            }
+          ],
+          "rdata": "example_rdata",
+          "rrname": "web.example.org",
+          "rrtype": "MX",
+          "ttl": 18031
+        }
+      ],
+      "authorities": [
+        {
+          "rdata": "example_rdata",
+          "rdata_truncated": true,
+          "rrname": "mail.company.net",
+          "rrname_truncated": true,
+          "rrtype": "SRV",
+          "soa": {
+            "expire": 808320,
+            "minimum": 565990,
+            "mname": "example_mname",
+            "mname_truncated": true,
+            "refresh": 694083,
+            "retry": 353123,
+            "rname": "example_rname",
+            "serial": 918964
+          },
+          "ttl": 81007
+        },
+        {
+          "rdata": "example_rdata",
+          "rdata_truncated": true,
+          "rrname": "cdn.example.net",
+          "rrname_truncated": true,
+          "rrtype": "CNAME",
+          "soa": {
+            "expire": 189630,
+            "minimum": 871728,
+            "mname": "example_mname",
+            "mname_truncated": true,
+            "refresh": 756215,
+            "retry": 458933,
+            "rname": "example_rname",
+            "serial": 45814
+          },
+          "ttl": 53853
+        }
+      ],
+      "flags": "example_flags",
+      "id": 7111929,
+      "opcode": 709217,
+      "qr": true,
+      "ra": false,
+      "rcode": "example_rcode",
+      "rd": false,
+      "rrname": "auth.service.io",
+      "rrtype": "MX",
+      "type": "example_type",
+      "version": 559951
+    },
+    "answers": [
+      {
+        "rdata": "example_rdata",
+        "rrname": "mail.company.net",
+        "rrtype": "TXT",
+        "soa": {
+          "expire": 947885,
+          "minimum": 875679,
+          "mname": "example_mname",
+          "mname_truncated": true,
+          "refresh": 385709,
+          "retry": 711256,
+          "rname": "example_rname",
+          "serial": 993137
+        },
+        "srv": {
+          "name": "example_name",
+          "port": 38407,
+          "priority": 461999,
+          "weight": 484106
+        },
+        "sshfp": {
+          "algo": 806814,
+          "fingerprint": "example_fingerprint",
+          "type": 295459
+        },
+        "ttl": 50053
+      },
+      {
+        "rdata": "example_rdata",
+        "rrname": "cdn.example.net",
+        "rrtype": "CNAME",
+        "soa": {
+          "expire": 856572,
+          "minimum": 209398,
+          "mname": "example_mname",
+          "mname_truncated": true,
+          "refresh": 915408,
+          "retry": 262147,
+          "rname": "example_rname",
+          "serial": 54714
+        },
+        "srv": {
+          "name": "example_name",
+          "port": 43044,
+          "priority": 503935,
+          "weight": 916578
+        },
+        "sshfp": {
+          "algo": 389244,
+          "fingerprint": "example_fingerprint",
+          "type": 581478
+        },
+        "ttl": 13447
+      }
+    ],
+    "authorities": [
+      {
+        "rdata": "example_rdata",
+        "rdata_truncated": true,
+        "rrname": "mail.company.net",
+        "rrname_truncated": true,
+        "rrtype": "CNAME",
+        "soa": {
+          "expire": 286042,
+          "minimum": 471145,
+          "mname": "example_mname",
+          "mname_truncated": true,
+          "refresh": 871415,
+          "retry": 458723,
+          "rname": "example_rname",
+          "serial": 96168
+        },
+        "ttl": 29103
+      },
+      {
+        "rdata": "example_rdata",
+        "rdata_truncated": false,
+        "rrname": "db.internal.local",
+        "rrname_truncated": true,
+        "rrtype": "SOA",
+        "soa": {
+          "expire": 55843,
+          "minimum": 415712,
+          "mname": "example_mname",
+          "mname_truncated": false,
+          "refresh": 247231,
+          "retry": 404924,
+          "rname": "example_rname",
+          "serial": 85569
+        },
+        "ttl": 49141
+      },
+      {
+        "rdata": "example_rdata",
+        "rdata_truncated": true,
+        "rrname": "example.com",
+        "rrname_truncated": false,
+        "rrtype": "AAAA",
+        "soa": {
+          "expire": 879940,
+          "minimum": 749421,
+          "mname": "example_mname",
+          "mname_truncated": false,
+          "refresh": 829822,
+          "retry": 153143,
+          "rname": "example_rname",
+          "serial": 144283
+        },
+        "ttl": 5021
+      },
+      {
+        "rdata": "example_rdata",
+        "rdata_truncated": false,
+        "rrname": "auth.service.io",
+        "rrname_truncated": true,
+        "rrtype": "TXT",
+        "soa": {
+          "expire": 470392,
+          "minimum": 645239,
+          "mname": "example_mname",
+          "mname_truncated": true,
+          "refresh": 949860,
+          "retry": 83074,
+          "rname": "example_rname",
+          "serial": 19927
+        },
+        "ttl": 33545
+      },
+      {
+        "rdata": "example_rdata",
+        "rdata_truncated": true,
+        "rrname": "api.service.com",
+        "rrname_truncated": false,
+        "rrtype": "AAAA",
+        "soa": {
+          "expire": 813875,
+          "minimum": 302096,
+          "mname": "example_mname",
+          "mname_truncated": true,
+          "refresh": 315779,
+          "retry": 127767,
+          "rname": "example_rname",
+          "serial": 50068
+        },
+        "ttl": 31253
+      }
+    ],
+    "flags": "example_flags",
+    "grouped": {
+      "A": [
+        "example_A_item_0",
+        "example_A_item_1",
+        "example_A_item_2",
+        "example_A_item_3"
+      ],
+      "AAAA": [
+        "example_AAAA_item_0",
+        "example_AAAA_item_1",
+        "example_AAAA_item_2",
+        "example_AAAA_item_3",
+        "example_AAAA_item_4"
+      ],
+      "CNAME": [
+        "example_CNAME_item_0",
+        "example_CNAME_item_1",
+        "example_CNAME_item_2",
+        "example_CNAME_item_3"
+      ],
+      "MX": [
+        "example_MX_item_0"
+      ],
+      "NS": [
+        "example_NS_item_0"
+      ],
+      "NULL": [
+        "example_NULL_item_0",
+        "example_NULL_item_1",
+        "example_NULL_item_2",
+        "example_NULL_item_3"
+      ],
+      "PTR": [
+        "example_PTR_item_0",
+        "example_PTR_item_1",
+        "example_PTR_item_2",
+        "example_PTR_item_3",
+        "example_PTR_item_4"
+      ],
+      "SOA": [
+        {
+          "expire": 17233,
+          "minimum": 662652,
+          "mname": "example_mname",
+          "mname_truncated": true,
+          "refresh": 753448,
+          "retry": 150551,
+          "rname": "example_rname",
+          "serial": 305420
+        },
+        {
+          "expire": 450089,
+          "minimum": 1640,
+          "mname": "example_mname",
+          "mname_truncated": false,
+          "refresh": 252249,
+          "retry": 598384,
+          "rname": "example_rname",
+          "serial": 436802
+        },
+        {
+          "expire": 196412,
+          "minimum": 696643,
+          "mname": "example_mname",
+          "mname_truncated": true,
+          "refresh": 548913,
+          "retry": 378120,
+          "rname": "example_rname",
+          "serial": 70966
+        },
+        {
+          "expire": 999716,
+          "minimum": 551613,
+          "mname": "example_mname",
+          "mname_truncated": true,
+          "refresh": 409420,
+          "retry": 915754,
+          "rname": "example_rname",
+          "serial": 492972
+        },
+        {
+          "expire": 45649,
+          "minimum": 666549,
+          "mname": "example_mname",
+          "mname_truncated": false,
+          "refresh": 391435,
+          "retry": 265971,
+          "rname": "example_rname",
+          "serial": 783618
+        }
+      ],
+      "SRV": [
+        {
+          "name": "example_name",
+          "port": 24426,
+          "priority": 826823,
+          "weight": 70841
+        }
+      ],
+      "SSHFP": [
+        {
+          "algo": 252838,
+          "fingerprint": "example_fingerprint",
+          "type": 768544
+        },
+        {
+          "algo": 689023,
+          "fingerprint": "example_fingerprint",
+          "type": 658775
+        },
+        {
+          "algo": 108699,
+          "fingerprint": "example_fingerprint",
+          "type": 808977
+        }
+      ],
+      "TXT": [
+        "example_TXT_item_0",
+        "example_TXT_item_1",
+        "example_TXT_item_2",
+        "example_TXT_item_3",
+        "example_TXT_item_4"
+      ]
+    },
+    "id": 6578736,
+    "opcode": 139890,
+    "qr": true,
+    "queries": [
+      {
+        "id": 6679880,
+        "opcode": 853025,
+        "rrname": "api.service.com",
+        "rrname_truncated": false,
+        "rrtype": "TXT",
+        "tx_id": 4058117,
+        "type": "example_type",
+        "z": true
+      },
+      {
+        "id": 2058651,
+        "opcode": 750827,
+        "rrname": "auth.service.io",
+        "rrname_truncated": true,
+        "rrtype": "NS",
+        "tx_id": 4382135,
+        "type": "example_type",
+        "z": true
+      },
+      {
+        "id": 4346548,
+        "opcode": 928818,
+        "rrname": "example.com",
+        "rrname_truncated": false,
+        "rrtype": "NS",
+        "tx_id": 9646701,
+        "type": "example_type",
+        "z": false
+      }
+    ],
+    "query": [
+      {
+        "id": 8942330,
+        "opcode": 265618,
+        "rrname": "example.com",
+        "rrtype": "MX",
+        "tx_id": 5800144,
+        "type": "example_type",
+        "z": false
+      },
+      {
+        "id": 1802018,
+        "opcode": 907855,
+        "rrname": "db.internal.local",
+        "rrtype": "NS",
+        "tx_id": 3088344,
+        "type": "example_type",
+        "z": false
+      },
+      {
+        "id": 8330827,
+        "opcode": 932694,
+        "rrname": "cdn.example.net",
+        "rrtype": "TXT",
+        "tx_id": 7486822,
+        "type": "example_type",
+        "z": false
+      },
+      {
+        "id": 4134272,
+        "opcode": 520306,
+        "rrname": "auth.service.io",
+        "rrtype": "PTR",
+        "tx_id": 9712003,
+        "type": "example_type",
+        "z": false
+      },
+      {
+        "id": 2385991,
+        "opcode": 762400,
+        "rrname": "cdn.example.net",
+        "rrtype": "AAAA",
+        "tx_id": 8224389,
+        "type": "example_type",
+        "z": true
+      }
+    ],
+    "ra": false,
+    "rcode": "example_rcode",
+    "rd": false,
+    "rrname": "test.local",
+    "rrtype": "AAAA",
+    "tc": false,
+    "tx_id": 5960015,
+    "type": "example_type",
+    "version": 549525,
+    "z": false
+  },
+  "ether": {
+    "dest_mac": "example_dest_mac",
+    "dest_macs": [
+      "example_dest_macs_item_0"
+    ],
+    "ether_type": 259778,
+    "src_mac": "example_src_mac",
+    "src_macs": [
+      "example_src_macs_item_0",
+      "example_src_macs_item_1",
+      "example_src_macs_item_2",
+      "example_src_macs_item_3"
+    ]
+  },
+  "event_type": "dns",
+  "flow_id": 1688246,
+  "host": "db.internal.local",
+  "icmp_code": 878053,
+  "icmp_type": 942802,
+  "in_iface": "example_in_iface",
+  "ip_v": 850360,
+  "metadata": {
+    "entropy": {},
+    "flowbits": [
+      "example_flowbits_item_0"
+    ],
+    "flowints": {},
+    "flowvars": [
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      }
+    ],
+    "pktvars": [
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      }
+    ]
+  },
+  "parent_id": 8545279,
+  "pcap_cnt": 931,
+  "pcap_filename": "capture.pcap",
+  "pkt_src": "example_pkt_src",
+  "proto": "TCP",
+  "src_ip": "172.20.0.100",
+  "src_port": 10910,
+  "suricata_version": "7.0.0",
+  "timestamp": "2023-01-01T12:00:00+00:00",
+  "tx_id": 8372274,
+  "vlan": [
+    683501,
+    197383,
+    337145,
+    634394,
+    498733
+  ]
+}

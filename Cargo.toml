@@ -22,9 +22,11 @@ async-trait = "0.1.82"
 git-version = "0.3.9"
 serde_json = "1.0.128"
 tokio = { version = "1.40.0", default-features = false } # Default features are disabled due to some crates' requirements
-zenoh = { version = "1.5.1", features = [
+zenoh = { version = "1.5.1", default-features = false, features = [
   "internal",
+  "internal_config",
   "plugins",
+  "runtime_plugins",
   "unstable",
 ] , git = "https://github.com/eclipse-zenoh/zenoh.git" , branch = "main" }
 zenoh-plugin-trait = { version = "1.5.1", git = "https://github.com/eclipse-zenoh/zenoh.git" , branch = "main" }
@@ -39,8 +41,13 @@ rustc_version = "0.4.0"
 
 [package.metadata.deb]
 assets = [
-  ["event-type-schemas/*", "/var/zenohd/event-type-schemas/", "644"],
-  ["etc/*", "/var/zenohd/etc/", "644"]
+  ["target/release/libzenoh_backend_duckdb.so", "/usr/lib/", "644"],
+  ["etc/suricata-evelog-schemas/*", "/var/zenohd/etc/suricata-evelog-schemas/", "644"],
+  ["etc/init.sql", "/var/zenohd/etc/", "644"],
+  ["etc/schema.version", "/var/zenohd/etc/", "644"],
+  ["etc/zenohd.json5", "/var/zenohd/etc/", "644"],
+  ["README.md", "/usr/share/doc/zenoh-backend-duckdb/", "644"],
+  ["LICENSE", "/usr/share/doc/zenoh-backend-duckdb/", "644"],
 ]
 copyright = "2025 NetPrism Technology"
 depends = "zenoh-plugin-storage-manager (=1.5.1)"

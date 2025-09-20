@@ -1,0 +1,1188 @@
+{
+  "event_type": "stats",
+  "stats": {
+    "app_layer": {
+      "error": {
+        "bittorrent-dht": {
+          "alloc": 581078,
+          "exception_policy": {
+            "bypass": 974744,
+            "drop_flow": 516791,
+            "drop_packet": 847613,
+            "pass_flow": 916825,
+            "pass_packet": 11214,
+            "reject": 994466
+          },
+          "gap": 444579,
+          "internal": 709920,
+          "parser": 533392
+        },
+        "dcerpc_tcp": {
+          "alloc": 977735,
+          "exception_policy": {
+            "bypass": 766296,
+            "drop_flow": 143055,
+            "drop_packet": 502955,
+            "pass_flow": 521986,
+            "pass_packet": 540028,
+            "reject": 718402
+          },
+          "gap": 709649,
+          "internal": 931219,
+          "parser": 558271
+        },
+        "dcerpc_udp": {
+          "alloc": 731782,
+          "exception_policy": {
+            "bypass": 130748,
+            "drop_flow": 425167,
+            "drop_packet": 14575,
+            "pass_flow": 646223,
+            "pass_packet": 199422,
+            "reject": 955133
+          },
+          "gap": 871783,
+          "internal": 782150,
+          "parser": 7644
+        },
+        "dhcp": {
+          "alloc": 748851,
+          "exception_policy": {
+            "bypass": 445622,
+            "drop_flow": 736720,
+            "drop_packet": 560280,
+            "pass_flow": 786083,
+            "pass_packet": 361822,
+            "reject": 256089
+          },
+          "gap": 774879,
+          "internal": 693291,
+          "parser": 997057
+        },
+        "dnp3": {
+          "alloc": 965171,
+          "exception_policy": {
+            "bypass": 863359,
+            "drop_flow": 923094,
+            "drop_packet": 990842,
+            "pass_flow": 553764,
+            "pass_packet": 717307,
+            "reject": 638785
+          },
+          "gap": 44413,
+          "internal": 636877,
+          "parser": 470445
+        },
+        "dns_tcp": {
+          "alloc": 176718,
+          "exception_policy": {
+            "bypass": 707287,
+            "drop_flow": 975370,
+            "drop_packet": 924771,
+            "pass_flow": 800808,
+            "pass_packet": 548946,
+            "reject": 947701
+          },
+          "gap": 236001,
+          "internal": 183305,
+          "parser": 78771
+        },
+        "dns_udp": {
+          "alloc": 384880,
+          "exception_policy": {
+            "bypass": 880184,
+            "drop_flow": 139794,
+            "drop_packet": 538637,
+            "pass_flow": 370453,
+            "pass_packet": 998751,
+            "reject": 53379
+          },
+          "gap": 443256,
+          "internal": 519577,
+          "parser": 397509
+        },
+        "doh2": {
+          "alloc": 178765,
+          "exception_policy": {
+            "bypass": 391416,
+            "drop_flow": 118733,
+            "drop_packet": 354375,
+            "pass_flow": 958445,
+            "pass_packet": 712049,
+            "reject": 261897
+          },
+          "gap": 872128,
+          "internal": 565307,
+          "parser": 892104
+        },
+        "enip_tcp": {
+          "alloc": 803643,
+          "exception_policy": {
+            "bypass": 899474,
+            "drop_flow": 123590,
+            "drop_packet": 304154,
+            "pass_flow": 313710,
+            "pass_packet": 506592,
+            "reject": 307804
+          },
+          "gap": 277611,
+          "internal": 223415,
+          "parser": 2342
+        },
+        "enip_udp": {
+          "alloc": 773876,
+          "exception_policy": {
+            "bypass": 661836,
+            "drop_flow": 596474,
+            "drop_packet": 412742,
+            "pass_flow": 228026,
+            "pass_packet": 967894,
+            "reject": 319626
+          },
+          "gap": 974241,
+          "internal": 978438,
+          "parser": 674206
+        },
+        "failed_tcp": {
+          "alloc": 540571,
+          "exception_policy": {
+            "bypass": 865837,
+            "drop_flow": 936816,
+            "drop_packet": 37150,
+            "pass_flow": 980853,
+            "pass_packet": 485550,
+            "reject": 935847
+          },
+          "gap": 647756,
+          "internal": 889561,
+          "parser": 511984
+        },
+        "ftp": {
+          "alloc": 60289,
+          "exception_policy": {
+            "bypass": 373024,
+            "drop_flow": 6177,
+            "drop_packet": 645430,
+            "pass_flow": 482716,
+            "pass_packet": 344511,
+            "reject": 312843
+          },
+          "gap": 371083,
+          "internal": 112369,
+          "parser": 5404
+        },
+        "ftp-data": {
+          "alloc": 366709,
+          "exception_policy": {
+            "bypass": 933438,
+            "drop_flow": 757526,
+            "drop_packet": 195200,
+            "pass_flow": 421598,
+            "pass_packet": 371754,
+            "reject": 9294
+          },
+          "gap": 106260,
+          "internal": 451730,
+          "parser": 515947
+        },
+        "http": {
+          "alloc": 207140,
+          "exception_policy": {
+            "bypass": 88860,
+            "drop_flow": 554797,
+            "drop_packet": 539302,
+            "pass_flow": 942155,
+            "pass_packet": 161177,
+            "reject": 430670
+          },
+          "gap": 129858,
+          "internal": 957464,
+          "parser": 511088
+        },
+        "http2": {
+          "alloc": 7246,
+          "exception_policy": {
+            "bypass": 163190,
+            "drop_flow": 806824,
+            "drop_packet": 688530,
+            "pass_flow": 262285,
+            "pass_packet": 237078,
+            "reject": 493563
+          },
+          "gap": 414563,
+          "internal": 392491,
+          "parser": 313823
+        },
+        "ike": {
+          "alloc": 382201,
+          "exception_policy": {
+            "bypass": 449148,
+            "drop_flow": 935532,
+            "drop_packet": 191031,
+            "pass_flow": 562484,
+            "pass_packet": 850965,
+            "reject": 282572
+          },
+          "gap": 113974,
+          "internal": 459876,
+          "parser": 688159
+        },
+        "imap": {
+          "alloc": 880130,
+          "exception_policy": {
+            "bypass": 460698,
+            "drop_flow": 169695,
+            "drop_packet": 146668,
+            "pass_flow": 370920,
+            "pass_packet": 783381,
+            "reject": 455040
+          },
+          "gap": 6092,
+          "internal": 376687,
+          "parser": 926496
+        },
+        "krb5_tcp": {
+          "alloc": 912800,
+          "exception_policy": {
+            "bypass": 743670,
+            "drop_flow": 208105,
+            "drop_packet": 116041,
+            "pass_flow": 198775,
+            "pass_packet": 298739,
+            "reject": 42211
+          },
+          "gap": 140173,
+          "internal": 413711,
+          "parser": 441508
+        },
+        "krb5_udp": {
+          "alloc": 780060,
+          "exception_policy": {
+            "bypass": 347302,
+            "drop_flow": 944764,
+            "drop_packet": 33141,
+            "pass_flow": 168099,
+            "pass_packet": 698566,
+            "reject": 208658
+          },
+          "gap": 994444,
+          "internal": 502577,
+          "parser": 697557
+        },
+        "ldap_tcp": {
+          "alloc": 278711,
+          "exception_policy": {
+            "bypass": 124562,
+            "drop_flow": 441550,
+            "drop_packet": 512824,
+            "pass_flow": 576846,
+            "pass_packet": 519640,
+            "reject": 838672
+          },
+          "gap": 714852,
+          "internal": 749019,
+          "parser": 133624
+        },
+        "ldap_udp": {
+          "alloc": 340669,
+          "exception_policy": {
+            "bypass": 787574,
+            "drop_flow": 801523,
+            "drop_packet": 818243,
+            "pass_flow": 924599,
+            "pass_packet": 419300,
+            "reject": 526236
+          },
+          "gap": 761260,
+          "internal": 968424,
+          "parser": 777931
+        },
+        "mdns": {
+          "alloc": 884015,
+          "exception_policy": {
+            "bypass": 865745,
+            "drop_flow": 407737,
+            "drop_packet": 137801,
+            "pass_flow": 115063,
+            "pass_packet": 113119,
+            "reject": 831219
+          },
+          "gap": 22179,
+          "internal": 132250,
+          "parser": 163097
+        },
+        "modbus": {
+          "alloc": 360836,
+          "exception_policy": {
+            "bypass": 524288,
+            "drop_flow": 14311,
+            "drop_packet": 804661,
+            "pass_flow": 717684,
+            "pass_packet": 247993,
+            "reject": 54567
+          },
+          "gap": 711259,
+          "internal": 870145,
+          "parser": 358760
+        },
+        "mqtt": {
+          "alloc": 450536,
+          "exception_policy": {
+            "bypass": 626090,
+            "drop_flow": 773253,
+            "drop_packet": 8418,
+            "pass_flow": 455426,
+            "pass_packet": 503518,
+            "reject": 303527
+          },
+          "gap": 295932,
+          "internal": 509533,
+          "parser": 86627
+        },
+        "nfs_tcp": {
+          "alloc": 797861,
+          "exception_policy": {
+            "bypass": 449788,
+            "drop_flow": 259781,
+            "drop_packet": 647614,
+            "pass_flow": 159903,
+            "pass_packet": 764672,
+            "reject": 536073
+          },
+          "gap": 195937,
+          "internal": 261584,
+          "parser": 294795
+        },
+        "nfs_udp": {
+          "alloc": 803972,
+          "exception_policy": {
+            "bypass": 120607,
+            "drop_flow": 906144,
+            "drop_packet": 276331,
+            "pass_flow": 735005,
+            "pass_packet": 259369,
+            "reject": 698698
+          },
+          "gap": 860471,
+          "internal": 450005,
+          "parser": 208050
+        },
+        "ntp": {
+          "alloc": 496912,
+          "exception_policy": {
+            "bypass": 740777,
+            "drop_flow": 820738,
+            "drop_packet": 849296,
+            "pass_flow": 108071,
+            "pass_packet": 735203,
+            "reject": 765939
+          },
+          "gap": 526735,
+          "internal": 640785,
+          "parser": 189989
+        },
+        "pgsql": {
+          "alloc": 197833,
+          "exception_policy": {
+            "bypass": 896398,
+            "drop_flow": 619914,
+            "drop_packet": 659457,
+            "pass_flow": 665297,
+            "pass_packet": 155950,
+            "reject": 240526
+          },
+          "gap": 126312,
+          "internal": 138722,
+          "parser": 420775
+        },
+        "pop3": {
+          "alloc": 40230,
+          "exception_policy": {
+            "bypass": 287164,
+            "drop_flow": 201512,
+            "drop_packet": 974230,
+            "pass_flow": 153311,
+            "pass_packet": 447011,
+            "reject": 18519
+          },
+          "gap": 646412,
+          "internal": 209341,
+          "parser": 95352
+        },
+        "quic": {
+          "alloc": 906336,
+          "exception_policy": {
+            "bypass": 53430,
+            "drop_flow": 398828,
+            "drop_packet": 427082,
+            "pass_flow": 550472,
+            "pass_packet": 321331,
+            "reject": 734169
+          },
+          "gap": 664073,
+          "internal": 242669,
+          "parser": 232548
+        },
+        "rdp": {
+          "alloc": 352508,
+          "exception_policy": {
+            "bypass": 446772,
+            "drop_flow": 502472,
+            "drop_packet": 64329,
+            "pass_flow": 534630,
+            "pass_packet": 447818,
+            "reject": 675149
+          },
+          "gap": 54164,
+          "internal": 319071,
+          "parser": 115400
+        },
+        "rfb": {
+          "alloc": 282324,
+          "exception_policy": {
+            "bypass": 381237,
+            "drop_flow": 294184,
+            "drop_packet": 988805,
+            "pass_flow": 368075,
+            "pass_packet": 746151,
+            "reject": 438382
+          },
+          "gap": 258965,
+          "internal": 335377,
+          "parser": 938586
+        },
+        "sip_tcp": {
+          "alloc": 49866,
+          "exception_policy": {
+            "bypass": 190580,
+            "drop_flow": 42875,
+            "drop_packet": 561,
+            "pass_flow": 54662,
+            "pass_packet": 692511,
+            "reject": 780931
+          },
+          "gap": 337263,
+          "internal": 222274,
+          "parser": 299176
+        },
+        "sip_udp": {
+          "alloc": 494988,
+          "exception_policy": {
+            "bypass": 293768,
+            "drop_flow": 952612,
+            "drop_packet": 635984,
+            "pass_flow": 105656,
+            "pass_packet": 451839,
+            "reject": 193818
+          },
+          "gap": 264516,
+          "internal": 994394,
+          "parser": 515151
+        },
+        "smb": {
+          "alloc": 381242,
+          "exception_policy": {
+            "bypass": 350520,
+            "drop_flow": 319141,
+            "drop_packet": 116946,
+            "pass_flow": 101593,
+            "pass_packet": 701442,
+            "reject": 14325
+          },
+          "gap": 716137,
+          "internal": 578570,
+          "parser": 807889
+        },
+        "smtp": {
+          "alloc": 903845,
+          "exception_policy": {
+            "bypass": 136637,
+            "drop_flow": 347300,
+            "drop_packet": 378083,
+            "pass_flow": 777301,
+            "pass_packet": 849383,
+            "reject": 378939
+          },
+          "gap": 779020,
+          "internal": 816639,
+          "parser": 617518
+        },
+        "snmp": {
+          "alloc": 554552,
+          "exception_policy": {
+            "bypass": 634088,
+            "drop_flow": 389642,
+            "drop_packet": 249825,
+            "pass_flow": 681834,
+            "pass_packet": 289351,
+            "reject": 220235
+          },
+          "gap": 612711,
+          "internal": 402704,
+          "parser": 91468
+        },
+        "ssh": {
+          "alloc": 930290,
+          "exception_policy": {
+            "bypass": 111532,
+            "drop_flow": 136823,
+            "drop_packet": 660140,
+            "pass_flow": 778659,
+            "pass_packet": 631069,
+            "reject": 126200
+          },
+          "gap": 43032,
+          "internal": 615054,
+          "parser": 956486
+        },
+        "telnet": {
+          "alloc": 926984,
+          "exception_policy": {
+            "bypass": 686141,
+            "drop_flow": 857115,
+            "drop_packet": 199684,
+            "pass_flow": 202299,
+            "pass_packet": 738889,
+            "reject": 467423
+          },
+          "gap": 970457,
+          "internal": 103428,
+          "parser": 78516
+        },
+        "tftp": {
+          "alloc": 987567,
+          "exception_policy": {
+            "bypass": 573129,
+            "drop_flow": 649079,
+            "drop_packet": 359554,
+            "pass_flow": 316120,
+            "pass_packet": 760585,
+            "reject": 497233
+          },
+          "gap": 797953,
+          "internal": 211811,
+          "parser": 559475
+        },
+        "tls": {
+          "alloc": 755781,
+          "exception_policy": {
+            "bypass": 161137,
+            "drop_flow": 45939,
+            "drop_packet": 134041,
+            "pass_flow": 201019,
+            "pass_packet": 438527,
+            "reject": 577236
+          },
+          "gap": 746169,
+          "internal": 264792,
+          "parser": 934896
+        },
+        "websocket": {
+          "alloc": 919680,
+          "exception_policy": {
+            "bypass": 796241,
+            "drop_flow": 894894,
+            "drop_packet": 887187,
+            "pass_flow": 950864,
+            "pass_packet": 587565,
+            "reject": 364211
+          },
+          "gap": 938384,
+          "internal": 383791,
+          "parser": 470267
+        }
+      },
+      "expectations": 660460,
+      "flow": {
+        "bittorrent-dht": 752170,
+        "dcerpc_tcp": 123133,
+        "dcerpc_udp": 955094,
+        "dhcp": 457311,
+        "dnp3": 70997,
+        "dns_tcp": 506274,
+        "dns_udp": 439357,
+        "doh2": 549205,
+        "enip_tcp": 976572,
+        "enip_udp": 998710,
+        "failed_tcp": 528345,
+        "failed_udp": 829303,
+        "ftp": 22937,
+        "ftp-data": 175044,
+        "http": 628258,
+        "http2": 287465,
+        "ike": 730549,
+        "ikev2": 135197,
+        "imap": 303726,
+        "krb5_tcp": 47652,
+        "krb5_udp": 593677,
+        "ldap_tcp": 63746,
+        "ldap_udp": 832978,
+        "mdns": 727505,
+        "modbus": 199429,
+        "mqtt": 776696,
+        "nfs_tcp": 854100,
+        "nfs_udp": 416802,
+        "ntp": 519072,
+        "pgsql": 717953,
+        "pop3": 558335,
+        "quic": 912529,
+        "rdp": 538430,
+        "rfb": 78628,
+        "sip_tcp": 173558,
+        "sip_udp": 459008,
+        "smb": 787195,
+        "smtp": 534017,
+        "snmp": 402810,
+        "ssh": 589822,
+        "telnet": 817230,
+        "tftp": 409203,
+        "tls": 420320,
+        "websocket": 636714
+      },
+      "tx": {
+        "bittorrent-dht": 284682,
+        "dcerpc_tcp": 216976,
+        "dcerpc_udp": 193007,
+        "dhcp": 3775,
+        "dnp3": 167775,
+        "dns_tcp": 599678,
+        "dns_udp": 228387,
+        "doh2": 620875,
+        "enip_tcp": 730565,
+        "enip_udp": 9291,
+        "ftp": 921860,
+        "ftp-data": 973736,
+        "http": 829053,
+        "http2": 537705,
+        "ike": 477564,
+        "ikev2": 528291,
+        "imap": 742133,
+        "krb5_tcp": 755582,
+        "krb5_udp": 550579,
+        "ldap_tcp": 271407,
+        "ldap_udp": 318148,
+        "mdns": 893884,
+        "modbus": 231039,
+        "mqtt": 310759,
+        "nfs_tcp": 742658,
+        "nfs_udp": 281558,
+        "ntp": 578972,
+        "pgsql": 124888,
+        "pop3": 179420,
+        "quic": 234807,
+        "rdp": 47828,
+        "rfb": 559484,
+        "sip_tcp": 249788,
+        "sip_udp": 306019,
+        "smb": 40989,
+        "smtp": 670685,
+        "snmp": 155335,
+        "ssh": 987806,
+        "telnet": 926524,
+        "tftp": 291248,
+        "tls": 972289,
+        "websocket": 139430
+      }
+    },
+    "capture": {
+      "kernel_drops": 283571,
+      "kernel_ifdrops": 915808,
+      "kernel_packets": 819
+    },
+    "decoder": {
+      "arp": 54022,
+      "avg_pkt_size": 4179,
+      "bytes": 28521,
+      "chdlc": 560563,
+      "erspan": 121828,
+      "esp": 1467,
+      "ethernet": 680154,
+      "event": {
+        "afpacket": {
+          "trunc_pkt": 364340
+        },
+        "arp": {
+          "invalid_hardware_size": 7192640,
+          "invalid_pkt": 6445244,
+          "invalid_protocol_size": 2396638,
+          "pkt_too_small": 992401,
+          "unsupported_hardware": 47257,
+          "unsupported_opcode": 58956,
+          "unsupported_protocol": 37021
+        },
+        "chdlc": {
+          "pkt_too_small": 276864
+        },
+        "dce": {
+          "pkt_too_small": 757155
+        },
+        "erspan": {
+          "header_too_small": 140101,
+          "too_many_vlan_layers": 428178,
+          "unsupported_version": 59897
+        },
+        "esp": {
+          "pkt_too_small": 641185
+        },
+        "ethernet": {
+          "pkt_too_small": 309220,
+          "unknown_ethertype": 340404
+        },
+        "geneve": {
+          "unknown_payload_type": 60045
+        },
+        "gre": {
+          "pkt_too_small": 656361,
+          "version0_flags": 855556,
+          "version0_hdr_too_big": 10913,
+          "version0_malformed_sre_hdr": 863955,
+          "version0_recur": 372751,
+          "version1_chksum": 229931,
+          "version1_flags": 765960,
+          "version1_hdr_too_big": 293276,
+          "version1_malformed_sre_hdr": 185320,
+          "version1_no_key": 268422,
+          "version1_recur": 16398,
+          "version1_route": 563492,
+          "version1_ssr": 689247,
+          "version1_wrong_protocol": 910145,
+          "wrong_version": 815987
+        },
+        "icmpv4": {
+          "ipv4_trunc_pkt": 984630,
+          "ipv4_unknown_ver": 818427,
+          "pkt_too_small": 611593,
+          "unknown_code": 111613,
+          "unknown_type": 757703
+        },
+        "icmpv6": {
+          "experimentation_type": 781996,
+          "ipv6_trunc_pkt": 721541,
+          "ipv6_unknown_version": 400536,
+          "mld_message_with_invalid_hl": 5317535,
+          "pkt_too_small": 912288,
+          "unassigned_type": 656649,
+          "unknown_code": 665117,
+          "unknown_type": 633698
+        },
+        "ieee8021ah": {
+          "header_too_small": 577637
+        },
+        "ipraw": {
+          "invalid_ip_version": 4458774
+        },
+        "ipv4": {
+          "frag_ignored": 856526,
+          "frag_overlap": 463664,
+          "frag_pkt_too_large": 231356,
+          "hlen_too_small": 340014,
+          "icmpv6": 281850,
+          "iplen_smaller_than_hlen": 213824,
+          "opt_duplicate": 609918,
+          "opt_eol_required": 660393,
+          "opt_invalid": 7634775,
+          "opt_invalid_len": 3611230,
+          "opt_malformed": 467723,
+          "opt_pad_required": 242979,
+          "opt_unknown": 765263,
+          "pkt_too_small": 761566,
+          "trunc_pkt": 454980,
+          "wrong_ip_version": 386547
+        },
+        "ipv6": {
+          "data_after_none_header": 155539,
+          "dstopts_only_padding": 945991,
+          "dstopts_unknown_opt": 502275,
+          "exthdr_ah_res_not_null": 98242,
+          "exthdr_dupl_ah": 520052,
+          "exthdr_dupl_dh": 190330,
+          "exthdr_dupl_eh": 481705,
+          "exthdr_dupl_fh": 194015,
+          "exthdr_dupl_hh": 855216,
+          "exthdr_dupl_rh": 904241,
+          "exthdr_invalid_optlen": 3954644,
+          "exthdr_useless_fh": 198033,
+          "fh_non_zero_reserved_field": 597329,
+          "frag_ignored": 514345,
+          "frag_invalid_length": 4026721,
+          "frag_overlap": 679020,
+          "frag_pkt_too_large": 295744,
+          "hopopts_only_padding": 22069,
+          "hopopts_unknown_opt": 325226,
+          "icmpv4": 170832,
+          "ipv4_in_ipv6_too_small": 928255,
+          "ipv4_in_ipv6_wrong_version": 186367,
+          "ipv6_in_ipv6_too_small": 857210,
+          "ipv6_in_ipv6_wrong_version": 413345,
+          "pkt_too_small": 720756,
+          "rh_type_0": 637347,
+          "trunc_exthdr": 196972,
+          "trunc_pkt": 72827,
+          "unknown_next_header": 150494,
+          "wrong_ip_version": 75548,
+          "zero_len_padn": 447107
+        },
+        "ltnull": {
+          "pkt_too_small": 257167,
+          "unsupported_type": 30844
+        },
+        "mpls": {
+          "bad_label_implicit_null": 953293,
+          "bad_label_reserved": 676456,
+          "bad_label_router_alert": 422056,
+          "header_too_small": 105102,
+          "pkt_too_small": 759490,
+          "unknown_payload_type": 552367
+        },
+        "nsh": {
+          "bad_header_length": 2349,
+          "header_too_small": 762067,
+          "reserved_type": 786897,
+          "unknown_payload": 847241,
+          "unsupported_type": 1796,
+          "unsupported_version": 40561
+        },
+        "ppp": {
+          "ip4_pkt_too_small": 104574,
+          "ip6_pkt_too_small": 396230,
+          "pkt_too_small": 402643,
+          "unsup_proto": 21722,
+          "vju_pkt_too_small": 115380,
+          "wrong_type": 866713
+        },
+        "pppoe": {
+          "malformed_tags": 14210,
+          "pkt_too_small": 800530,
+          "wrong_code": 870860
+        },
+        "sctp": {
+          "pkt_too_small": 675788
+        },
+        "sll": {
+          "pkt_too_small": 980080
+        },
+        "sll2": {
+          "pkt_too_small": 45864
+        },
+        "tcp": {
+          "hlen_too_small": 138599,
+          "invalid_optlen": 5166503,
+          "opt_duplicate": 807526,
+          "opt_invalid_len": 2402500,
+          "pkt_too_small": 280658
+        },
+        "udp": {
+          "hlen_invalid": 3393028,
+          "hlen_too_small": 984191,
+          "len_invalid": 1226440,
+          "pkt_too_small": 830892
+        },
+        "vlan": {
+          "header_too_small": 9852,
+          "too_many_layers": 830116,
+          "unknown_type": 111504
+        },
+        "vntag": {
+          "header_too_small": 568716,
+          "unknown_type": 771889
+        },
+        "vxlan": {
+          "unknown_payload_type": 858002
+        }
+      },
+      "geneve": 354827,
+      "gre": 894141,
+      "icmpv4": 741821,
+      "icmpv6": 89092,
+      "ieee8021ah": 212149,
+      "invalid": 3335893,
+      "ipv4": 503762,
+      "ipv4_in_ipv4": 796573,
+      "ipv4_in_ipv6": 590192,
+      "ipv6": 935739,
+      "ipv6_in_ipv4": 465909,
+      "ipv6_in_ipv6": 855076,
+      "max_mac_addrs_dst": 171069,
+      "max_mac_addrs_src": 322316,
+      "max_pkt_size": 5535,
+      "mpls": 502171,
+      "nsh": 162018,
+      "null": 255652,
+      "pkts": 67,
+      "ppp": 569928,
+      "pppoe": 725657,
+      "raw": 280448,
+      "sctp": 657966,
+      "sll": 570019,
+      "sll2": 129054,
+      "tcp": 22238,
+      "teredo": 864996,
+      "too_many_layers": 46688,
+      "udp": 107809,
+      "unknown_ethertype": 571098,
+      "vlan": 311152,
+      "vlan_qinq": 107548,
+      "vlan_qinqinq": 536391,
+      "vntag": 929517,
+      "vxlan": 877116
+    },
+    "defrag": {
+      "ipv4": {
+        "fragments": 435457,
+        "reassembled": 148724,
+        "timeouts": 1269
+      },
+      "ipv6": {
+        "fragments": 956476,
+        "reassembled": 235208,
+        "timeouts": 25166
+      },
+      "max_frags_reached": 237686,
+      "max_trackers_reached": 447883,
+      "memuse": 404103,
+      "mgr": {
+        "tracker_timeout": 154535
+      },
+      "tracker_hard_reuse": 370472,
+      "tracker_soft_reuse": 687199,
+      "wrk": {
+        "tracker_timeout": 300780
+      }
+    },
+    "detect": {
+      "alert": 236856,
+      "alert_queue_overflow": 966462,
+      "alerts_suppressed": 921687,
+      "engines": [
+        {
+          "id": 2885904,
+          "last_reload": "example_last_reload",
+          "rules_failed": 515711,
+          "rules_loaded": 177795,
+          "rules_skipped": 115485
+        },
+        {
+          "id": 4766861,
+          "last_reload": "example_last_reload",
+          "rules_failed": 106678,
+          "rules_loaded": 295503,
+          "rules_skipped": 374664
+        },
+        {
+          "id": 2279932,
+          "last_reload": "example_last_reload",
+          "rules_failed": 645604,
+          "rules_loaded": 349935,
+          "rules_skipped": 124099
+        },
+        {
+          "id": 7048077,
+          "last_reload": "example_last_reload",
+          "rules_failed": 968170,
+          "rules_loaded": 969620,
+          "rules_skipped": 964557
+        }
+      ],
+      "lua": {
+        "blocked_function_errors": 88923,
+        "errors": 939090,
+        "instruction_limit_errors": 45452,
+        "memory_limit_errors": 633870
+      },
+      "match_list": 158442,
+      "mpm_list": 186717
+    },
+    "exception_policy": {
+      "app_layer": {},
+      "defrag": {},
+      "flow": {},
+      "tcp": {}
+    },
+    "file_store": {
+      "fs_errors": 449449,
+      "open_files": 556249,
+      "open_files_max_hit": 351109
+    },
+    "flow": {
+      "active": 628738,
+      "elephant": 190175,
+      "emerg_mode_entered": 712437,
+      "emerg_mode_over": 445901,
+      "end": {
+        "state": {
+          "capture_bypassed": 157517,
+          "closed": 936501,
+          "established": 699686,
+          "local_bypassed": 720540,
+          "new": 316212
+        },
+        "tcp_liberal": 655106,
+        "tcp_state": {
+          "close_wait": 857276,
+          "closed": 300947,
+          "closing": 365308,
+          "established": 917925,
+          "fin_wait1": 108970,
+          "fin_wait2": 284261,
+          "last_ack": 960741,
+          "none": 523502,
+          "syn_recv": 693875,
+          "syn_sent": 387042,
+          "time_wait": 978197
+        }
+      },
+      "get_used": 278293,
+      "get_used_eval": 850100,
+      "get_used_eval_busy": 951042,
+      "get_used_eval_reject": 745859,
+      "get_used_failed": 837480,
+      "icmpv4": 80079,
+      "icmpv6": 827175,
+      "memcap": 2284,
+      "memuse": 903572,
+      "mgr": {
+        "flows_checked": 978420,
+        "flows_evicted": 155863,
+        "flows_evicted_needs_work": 815565,
+        "flows_notimeout": 687712,
+        "flows_timeout": 153709,
+        "full_hash_pass": 335812,
+        "rows_maxlen": 154958,
+        "rows_per_sec": 409573
+      },
+      "recycler": {
+        "queue_avg": 468394,
+        "queue_max": 756383,
+        "recycled": 835558
+      },
+      "spare": 823704,
+      "tcp": 501672,
+      "tcp_reuse": 854222,
+      "total": 70583,
+      "udp": 118661,
+      "wrk": {
+        "flows_evicted": 605912,
+        "flows_evicted_needs_work": 448217,
+        "flows_evicted_pkt_inject": 762008,
+        "flows_injected": 292003,
+        "flows_injected_max": 151695,
+        "spare_sync": 94840,
+        "spare_sync_avg": 338746,
+        "spare_sync_empty": 133730,
+        "spare_sync_incomplete": 190706
+      }
+    },
+    "flow_bypassed": {
+      "bytes": 51465,
+      "closed": 369737,
+      "local_bytes": 42853,
+      "local_capture_bytes": 65776,
+      "local_capture_pkts": 444,
+      "local_pkts": 502,
+      "pkts": 720
+    },
+    "flow_mgr": {
+      "bypassed_pruned": 434052,
+      "closed_pruned": 630973,
+      "est_pruned": 832046,
+      "flows_checked": 667527,
+      "flows_notimeout": 349663,
+      "flows_removed": 144935,
+      "flows_timeout": 841105,
+      "new_pruned": 989887,
+      "rows_busy": 685720,
+      "rows_checked": 966372,
+      "rows_empty": 257853,
+      "rows_maxlen": 401798,
+      "rows_skipped": 438996
+    },
+    "ftp": {
+      "memcap": 576023,
+      "memuse": 521249
+    },
+    "host": {
+      "memcap": 564917,
+      "memuse": 559699
+    },
+    "http": {
+      "byterange": {
+        "memcap": 516530,
+        "memuse": 558339
+      },
+      "memcap": 562259,
+      "memuse": 861304
+    },
+    "ippair": {
+      "memcap": 241292,
+      "memuse": 403310
+    },
+    "ips": {
+      "accepted": 87679,
+      "blocked": 609184,
+      "drop_reason": {
+        "applayer_error": 749649,
+        "applayer_memcap": 442332,
+        "decode_error": 552542,
+        "default_app_policy": 605947,
+        "default_packet_policy": 814316,
+        "defrag_error": 727186,
+        "defrag_memcap": 850701,
+        "flow_drop": 784632,
+        "flow_memcap": 229988,
+        "nfq_error": 737246,
+        "pre_flow_hook": 91488,
+        "pre_stream_hook": 246617,
+        "rules": 379279,
+        "stream_error": 3005,
+        "stream_memcap": 213154,
+        "stream_midstream": 1287807,
+        "stream_reassembly": 380002,
+        "stream_urgent": 585498,
+        "threshold_detection_filter": 496947,
+        "tunnel_packet_drop": 140082
+      },
+      "rejected": 965637,
+      "replaced": 115507
+    },
+    "memcap": {
+      "pressure": 62471,
+      "pressure_max": 955632
+    },
+    "pcap_log": {
+      "filtered_bpf": 366317,
+      "written": 378387
+    },
+    "tcp": {
+      "ack_unseen_data": 889980,
+      "active_sessions": 890586,
+      "insert_data_normal_fail": 908876,
+      "insert_data_overlap_fail": 816470,
+      "insert_list_fail": 858794,
+      "invalid_checksum": 3337892,
+      "memuse": 309012,
+      "midstream_pickups": 8724035,
+      "no_flow": 151141,
+      "overlap": 875825,
+      "overlap_diff_data": 894762,
+      "pkt_on_wrong_thread": 578290,
+      "pseudo": 976582,
+      "reassembly_gap": 957301,
+      "reassembly_memuse": 441531,
+      "rst": 254276,
+      "segment_from_cache": 220974,
+      "segment_from_pool": 868034,
+      "segment_memcap_drop": 235496,
+      "sessions": 58579,
+      "ssn_from_cache": 783281,
+      "ssn_from_pool": 144495,
+      "ssn_memcap_drop": 122930,
+      "stream_depth_reached": 729578,
+      "syn": 738158,
+      "synack": 150026,
+      "urg": 395796,
+      "urgent_oob_data": 768691
+    },
+    "uptime": 27626
+  },
+  "timestamp": "2023-01-01T12:00:00+00:00"
+}

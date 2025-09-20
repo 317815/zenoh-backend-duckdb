@@ -1,0 +1,103 @@
+{
+  "dest_ip": "198.51.100.1",
+  "dest_port": 1951,
+  "dhcp": {
+    "assigned_ip": "10.10.10.1",
+    "client_id": "example_client_id",
+    "client_ip": "10.10.10.1",
+    "client_mac": "example_client_mac",
+    "dhcp_type": "example_dhcp_type",
+    "dns_servers": [
+      "example_dns_servers_item_0",
+      "example_dns_servers_item_1",
+      "example_dns_servers_item_2"
+    ],
+    "hostname": "api.service.com",
+    "id": 1861958,
+    "lease_time": 264742,
+    "next_server_ip": "10.10.10.1",
+    "params": [
+      "example_params_item_0"
+    ],
+    "rebinding_time": 862050,
+    "relay_ip": "10.0.0.1",
+    "renewal_time": 420172,
+    "requested_ip": "10.10.10.1",
+    "routers": [
+      "example_routers_item_0"
+    ],
+    "subnet_mask": "example_subnet_mask",
+    "type": "example_type",
+    "vendor_class_identifier": "example_vendor_class_identifier"
+  },
+  "ether": {
+    "dest_mac": "example_dest_mac",
+    "dest_macs": [
+      "example_dest_macs_item_0"
+    ],
+    "ether_type": 601949,
+    "src_mac": "example_src_mac",
+    "src_macs": [
+      "example_src_macs_item_0",
+      "example_src_macs_item_1",
+      "example_src_macs_item_2"
+    ]
+  },
+  "event_type": "dhcp",
+  "flow_id": 5747930,
+  "host": "mail.company.net",
+  "icmp_code": 57174,
+  "icmp_type": 47726,
+  "in_iface": "example_in_iface",
+  "ip_v": 287636,
+  "metadata": {
+    "entropy": {},
+    "flowbits": [
+      "example_flowbits_item_0",
+      "example_flowbits_item_1"
+    ],
+    "flowints": {},
+    "flowvars": [
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      }
+    ],
+    "pktvars": [
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      }
+    ]
+  },
+  "parent_id": 2686548,
+  "pcap_cnt": 853,
+  "pcap_filename": "capture.pcap",
+  "pkt_src": "example_pkt_src",
+  "proto": "UDP",
+  "src_ip": "192.0.2.1",
+  "src_port": 12783,
+  "suricata_version": "7.0.0",
+  "timestamp": "2023-01-01T12:00:00+00:00",
+  "tx_id": 8875173,
+  "vlan": [
+    310636,
+    238533
+  ]
+}

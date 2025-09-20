@@ -1,4 +1,4 @@
-/* Copyright (C) 2025-2035 Open Information Security Foundation
+/* Copyright (C) 2025-2035 NetPrism Technology
  *
  * You can copy, redistribute or modify this Program under the terms of
  * the GNU General Public License version 2 as published by the Free
@@ -22,8 +22,9 @@
  * This is a schema parser for Zenoh to store data in DuckDB.
  */
 
-use std::collections::HashMap;
+use std::{collections::HashMap, path::{Path, PathBuf}};
 use serde_json::Value;
+use zenoh_util;
 
 /// JSON Schema field information
 #[derive(Debug, Clone)]
@@ -33,16 +34,19 @@ pub struct SchemaField {
     pub is_top_level: bool,
     pub is_array: bool,
     pub is_object: bool,
+    pub is_required: bool,
     pub description: Option<String>,
 }
 
-/// Schema parser - High performance Rust implementation
-pub struct SchemaParser {
+/// Table Schema handler - High performance Rust implementation
+pub struct TableSchema {
     /// Field type to DuckDB type mapping
     type_mapping: HashMap<String, String>,
+    /// Cached schema fields for performance
+    schema_fields: Option<Vec<SchemaField>>,
 }
 
-impl SchemaParser {
+impl TableSchema {
     pub fn new() -> Self {
         let mut type_mapping = HashMap::new();
         type_mapping.insert("string".to_string(), "VARCHAR".to_string());
@@ -54,6 +58,7 @@ impl SchemaParser {
 
         Self {
             type_mapping,
+            schema_fields: None,
         }
     }
 
@@ -61,6 +66,12 @@ impl SchemaParser {
     pub fn parse_schema(&self, schema: &Value) -> Result<Vec<SchemaField>, String> {
         let mut fields = Vec::new();
         let mut stack = Vec::new();
+        
+        // Get required fields from schema
+        let required_fields = schema.get("required")
+            .and_then(|v| v.as_array())
+            .map(|arr| arr.iter().filter_map(|v| v.as_str()).map(|s| s.to_string()).collect::<Vec<_>>())
+            .unwrap_or_default();
         
         // Start from root schema
         if let Some(properties) = schema.get("properties") {
@@ -88,12 +99,15 @@ impl SchemaParser {
                         .and_then(|v| v.as_str())
                         .map(|s| s.to_string());
 
+                    let is_required = required_fields.contains(name);
+                    
                     fields.push(SchemaField {
                         name: name.clone(),
                         field_type: field_type.clone(),
                         is_top_level,
                         is_array,
                         is_object,
+                        is_required,
                         description,
                     });
 
@@ -177,8 +191,56 @@ impl SchemaParser {
         duckdb_type
     }
 
-    /// Generate DDL
-    pub fn generate_ddl(&self, fields: &[SchemaField], table_name: &str, required_fields: &[String]) -> String {
+
+    /// Load schema from file and cache field information
+    pub fn load_file(&mut self, schema_file: &str) -> Result<(), String> {
+        // Resolve path relative to ZENOH_HOME if needed
+        let path = if Path::new(schema_file).is_absolute() {
+            PathBuf::from(schema_file)
+        } else {
+            zenoh_util::zenoh_home().join(schema_file)
+        };
+        
+        // Read schema file
+        let schema_content = std::fs::read_to_string(&path)
+            .map_err(|e| format!("Failed to read schema file {} (path: {}): {}", schema_file, path.display(), e))?;
+        
+        // Parse JSON
+        let schema: Value = serde_json::from_str(&schema_content)
+            .map_err(|e| format!("Failed to parse JSON schema: {}", e))?;
+        
+        // Parse schema and cache fields
+        let fields = self.parse_schema(&schema)?;
+        self.schema_fields = Some(fields);
+        
+        Ok(())
+    }
+
+    /// Get cached schema fields
+    pub fn get_fields(&self) -> Option<&[SchemaField]> {
+        self.schema_fields.as_deref()
+    }
+
+    /// Generate DDL from cached fields (or basic DDL if no fields)
+    pub fn generate_ddl(&self, table_name: &str) -> String {
+        let fields = match self.schema_fields.as_ref() {
+            Some(fields) => fields,
+            None => {
+                // No schema fields, generate basic DDL with only Zenoh fields
+                return format!(
+                    "CREATE TABLE IF NOT EXISTS {} (\
+                    \n    zenoh_timestamp VARCHAR NOT NULL,\
+                    \n    key_expr VARCHAR NOT NULL,\
+                    \n    kind VARCHAR NOT NULL,\
+                    \n    payload TEXT,\
+                    \n    PRIMARY KEY (zenoh_timestamp)\
+                    \n);\
+                    \nCREATE INDEX IF NOT EXISTS idx_{}_zenoh_timestamp ON {} (zenoh_timestamp);",
+                    table_name, table_name, table_name
+                );
+            }
+        };
+        
         let mut ddl_lines = Vec::new();
         
         // Generate DDL statement
@@ -191,10 +253,9 @@ impl SchemaParser {
             .filter(|f| f.is_top_level)
             .collect();
         
-        // Generate column definitions
         let mut column_definitions = Vec::new();
         
-        // First add Zenoh required fields
+        // First add Zenoh required fields (in order)
         column_definitions.push("    zenoh_timestamp VARCHAR NOT NULL".to_string());
         column_definitions.push("    key_expr VARCHAR NOT NULL".to_string());
         column_definitions.push("    kind VARCHAR NOT NULL".to_string());
@@ -202,7 +263,7 @@ impl SchemaParser {
         // Then add JSON Schema fields
         for field in &top_level_fields {
             let duckdb_type = self.get_duckdb_type(field);
-            let is_required = required_fields.contains(&field.name);
+            let is_required = field.is_required;
             
             let mut column_def = format!("    {} {}", field.name, duckdb_type);
             
@@ -213,51 +274,24 @@ impl SchemaParser {
             column_definitions.push(column_def);
         }
         
-        // Add column definitions to DDL
-        for (_i, column_def) in column_definitions.iter().enumerate() {
-            ddl_lines.push(format!("{},", column_def));
-        }
+        // Join column definitions
+        ddl_lines.push(column_definitions.join(",\n"));
         
-        // Add primary key constraint - use Zenoh's zenoh_timestamp as primary key
-        ddl_lines.push(format!("    PRIMARY KEY (zenoh_timestamp)"));
-
-        // End CREATE TABLE statement
+        // Add primary key constraint (with comma)
+        ddl_lines.push(",\n    PRIMARY KEY (zenoh_timestamp)".to_string());
+        
+        // Close CREATE TABLE statement
         ddl_lines.push(");".to_string());
         
-        // Add indexes
-        ddl_lines.push(String::new());
+        // Add index for timestamp
         ddl_lines.push(format!("CREATE INDEX IF NOT EXISTS idx_{}_zenoh_timestamp ON {} (zenoh_timestamp);", table_name, table_name));
 
         ddl_lines.join("\n")
     }
 
-    /// Load schema from file and generate DDL
-    pub fn load_schema_file(&self, schema_file: &str, table_name: &str) -> Result<String, String> {
-        // Read schema file
-        let schema_content = std::fs::read_to_string(schema_file)
-            .map_err(|e| format!("Failed to read schema file {}: {}", schema_file, e))?;
-        
-        // Parse JSON
-        let schema: Value = serde_json::from_str(&schema_content)
-            .map_err(|e| format!("Failed to parse JSON schema: {}", e))?;
-        
-        // Get required fields
-        let required_fields = schema.get("required")
-            .and_then(|v| v.as_array())
-            .map(|arr| arr.iter().filter_map(|v| v.as_str()).map(|s| s.to_string()).collect::<Vec<_>>())
-            .unwrap_or_default();
-        
-        // Parse schema
-        let fields = self.parse_schema(&schema)?;
-        
-        // Generate DDL
-        let ddl = self.generate_ddl(&fields, table_name, &required_fields);
-        
-        Ok(ddl)
-    }
 }
 
-impl Default for SchemaParser {
+impl Default for TableSchema {
     fn default() -> Self {
         Self::new()
     }

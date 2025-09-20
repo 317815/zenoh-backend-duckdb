@@ -1,0 +1,715 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "event_type",
+    "timestamp"
+  ],
+  "properties": {
+    "timestamp": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d+[+\\-]\\d+$"
+    },
+    "flow_id": {
+      "type": "integer"
+    },
+    "parent_id": {
+      "type": "integer"
+    },
+    "in_iface": {
+      "type": "string"
+    },
+    "pcap_cnt": {
+      "type": "integer"
+    },
+    "event_type": {
+      "type": "string"
+    },
+    "vlan": {
+      "type": "array",
+      "suricata": {
+        "keywords": [
+          "vlan.layers"
+        ]
+      },
+      "minItems": 1,
+      "items": {
+        "type": "number",
+        "suricata": {
+          "keywords": [
+            "vlan.id"
+          ]
+        }
+      }
+    },
+    "src_ip": {
+      "type": "string"
+    },
+    "src_port": {
+      "type": "integer"
+    },
+    "dest_ip": {
+      "type": "string"
+    },
+    "dest_port": {
+      "type": "integer"
+    },
+    "proto": {
+      "type": "string"
+    },
+    "ip_v": {
+      "type": "integer",
+      "description": "IP version of the packet or flow"
+    },
+    "icmp_type": {
+      "type": "integer",
+      "suricata": {
+        "keywords": [
+          "itype"
+        ]
+      }
+    },
+    "icmp_code": {
+      "type": "integer",
+      "suricata": {
+        "keywords": [
+          "icode"
+        ]
+      }
+    },
+    "pkt_src": {
+      "type": "string"
+    },
+    "suricata_version": {
+      "type": "string"
+    },
+    "host": {
+      "type": "string",
+      "$comment": "May change to sensor_name in the future, or become user configurable: https://redmine.openinfosecfoundation.org/issues/4919",
+      "description": "the sensor-name, if configured"
+    },
+    "pcap_filename": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "entropy": {
+          "type": "object",
+          "additionalProperties": true,
+          "suricata": {
+            "keywords": [
+              "entropy"
+            ]
+          }
+        },
+        "flowbits": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          },
+          "suricata": {
+            "keywords": [
+              "flowbits"
+            ]
+          }
+        },
+        "flowints": {
+          "type": "object",
+          "additionalProperties": true,
+          "suricata": {
+            "keywords": [
+              "flowint"
+            ]
+          }
+        },
+        "flowvars": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "gid": {
+                "type": "string"
+              },
+              "key": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "pktvars": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "uid": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "optional": true
+    },
+    "ether": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "dest_mac": {
+          "type": "string"
+        },
+        "dest_macs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "ether_type": {
+          "type": "integer",
+          "description": "Ethernet type value "
+        },
+        "src_mac": {
+          "type": "string"
+        },
+        "src_macs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "tx_id": {
+      "type": "integer"
+    },
+    "dns": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version"
+      ],
+      "properties": {
+        "aa": {
+          "type": "boolean"
+        },
+        "additionals": {
+          "$ref": "#/$defs/dns.additionals"
+        },
+        "answer": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "additionals": {
+              "$ref": "#/$defs/dns.additionals"
+            },
+            "authorities": {
+              "$ref": "#/$defs/dns.authorities"
+            },
+            "flags": {
+              "type": "string"
+            },
+            "id": {
+              "type": "integer"
+            },
+            "opcode": {
+              "type": "integer",
+              "description": "DNS opcode as an integer"
+            },
+            "qr": {
+              "type": "boolean"
+            },
+            "ra": {
+              "type": "boolean"
+            },
+            "rcode": {
+              "type": "string"
+            },
+            "rd": {
+              "type": "boolean"
+            },
+            "rrname": {
+              "type": "string"
+            },
+            "rrtype": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "version": {
+              "type": "integer"
+            }
+          }
+        },
+        "answers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "rdata": {
+                "type": "string",
+                "suricata": {
+                  "keywords": [
+                    "dns.response.rrname"
+                  ]
+                }
+              },
+              "rrname": {
+                "type": "string",
+                "suricata": {
+                  "keywords": [
+                    "dns.answers.rrname",
+                    "dns.response.rrname"
+                  ]
+                }
+              },
+              "rrtype": {
+                "type": "string"
+              },
+              "soa": {
+                "$ref": "#/$defs/dns.soa"
+              },
+              "srv": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "port": {
+                    "type": "integer"
+                  },
+                  "priority": {
+                    "type": "integer"
+                  },
+                  "weight": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "sshfp": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "algo": {
+                    "type": "integer"
+                  },
+                  "fingerprint": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "integer"
+                  }
+                },
+                "description": "A Secure Shell fingerprint, used to verify the system’s authenticity"
+              },
+              "ttl": {
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "authorities": {
+          "$ref": "#/$defs/dns.authorities"
+        },
+        "flags": {
+          "type": "string"
+        },
+        "grouped": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "A": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "AAAA": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "CNAME": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "MX": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "NS": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "NULL": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "PTR": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "SOA": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "$ref": "#/$defs/dns.soa"
+              }
+            },
+            "SRV": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "port": {
+                    "type": "integer"
+                  },
+                  "priority": {
+                    "type": "integer"
+                  },
+                  "weight": {
+                    "type": "integer"
+                  }
+                }
+              }
+            },
+            "SSHFP": {
+              "type": "array",
+              "description": "A Secure Shell fingerprint is used to verify the system’s authenticity",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "algo": {
+                    "type": "integer"
+                  },
+                  "fingerprint": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "integer"
+                  }
+                }
+              }
+            },
+            "TXT": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "desription": "DNS fields grouped by type: alternative format, no direct keywords",
+          "suricata": {
+            "keywords": false
+          }
+        },
+        "id": {
+          "type": "integer"
+        },
+        "opcode": {
+          "type": "integer",
+          "description": "DNS opcode as an integer"
+        },
+        "qr": {
+          "type": "boolean"
+        },
+        "queries": {
+          "type": "array",
+          "$comment": "EVE DNS v3 style query logging.",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "opcode": {
+                "type": "integer",
+                "description": "DNS opcode as an integer",
+                "suricata": {
+                  "keywords": [
+                    "dns.opcode"
+                  ]
+                }
+              },
+              "rrname": {
+                "type": "string",
+                "suricata": {
+                  "keywords": [
+                    "dns.queries.rrname",
+                    "dns.query"
+                  ]
+                }
+              },
+              "rrname_truncated": {
+                "type": "boolean",
+                "description": "Set to true if the rrname was too long and truncated by Suricata"
+              },
+              "rrtype": {
+                "type": "string",
+                "suricata": {
+                  "keywords": [
+                    "dns.rrtype"
+                  ]
+                }
+              },
+              "tx_id": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "string"
+              },
+              "z": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "query": {
+          "type": "array",
+          "$comment": "EVE DNS v2 style query logging; as of Suricata 8 only used in DNS records when v2 logging is enabled, not used for DNS records logged as part of an event.",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "opcode": {
+                "type": "integer",
+                "description": "DNS opcode as an integer"
+              },
+              "rrname": {
+                "type": "string"
+              },
+              "rrtype": {
+                "type": "string"
+              },
+              "tx_id": {
+                "type": "integer"
+              },
+              "type": {
+                "type": "string"
+              },
+              "z": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "ra": {
+          "type": "boolean"
+        },
+        "rcode": {
+          "type": "string",
+          "suricata": {
+            "keywords": [
+              "dns.rcode"
+            ]
+          }
+        },
+        "rd": {
+          "type": "boolean"
+        },
+        "rrname": {
+          "type": "string"
+        },
+        "rrtype": {
+          "type": "string"
+        },
+        "tc": {
+          "type": "boolean",
+          "description": "DNS truncation flag"
+        },
+        "tx_id": {
+          "type": "integer"
+        },
+        "type": {
+          "type": "string"
+        },
+        "version": {
+          "type": "integer",
+          "description": "The version of this EVE DNS event",
+          "suricata": {
+            "keywords": false
+          }
+        },
+        "z": {
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "dns.soa": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "expire": {
+          "type": "integer"
+        },
+        "minimum": {
+          "type": "integer"
+        },
+        "mname": {
+          "type": "string"
+        },
+        "mname_truncated": {
+          "type": "boolean",
+          "description": "Set to true if the mname was too long and truncated by Suricata"
+        },
+        "refresh": {
+          "type": "integer"
+        },
+        "retry": {
+          "type": "integer"
+        },
+        "rname": {
+          "type": "string"
+        },
+        "serial": {
+          "type": "integer"
+        }
+      }
+    },
+    "dns.authorities": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "rdata": {
+            "type": "string",
+            "suricata": {
+              "keywords": [
+                "dns.response.rrname"
+              ]
+            }
+          },
+          "rdata_truncated": {
+            "type": "boolean",
+            "description": "Set to true if the rdata was too long and truncated by Suricata"
+          },
+          "rrname": {
+            "type": "string",
+            "suricata": {
+              "keywords": [
+                "dns.authorities.rrname",
+                "dns.response.rrname"
+              ]
+            }
+          },
+          "rrname_truncated": {
+            "type": "boolean",
+            "description": "Set to true if the rrname was too long and truncated by Suricata"
+          },
+          "rrtype": {
+            "type": "string"
+          },
+          "soa": {
+            "$ref": "#/$defs/dns.soa"
+          },
+          "ttl": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "dns.additionals": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "opt": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "code": {
+                  "type": "integer"
+                },
+                "data": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "rdata": {
+            "type": "string",
+            "suricata": {
+              "keywords": [
+                "dns.response.rrname"
+              ]
+            }
+          },
+          "rrname": {
+            "type": "string",
+            "suricata": {
+              "keywords": [
+                "dns.additionals.rrname",
+                "dns.response.rrname"
+              ]
+            }
+          },
+          "rrtype": {
+            "type": "string"
+          },
+          "ttl": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  },
+  "description": "DNS event schema based on Suricata source code analysis"
+}

@@ -1,4 +1,4 @@
-/* Copyright (C) 2025-2035 Open Information Security Foundation
+/* Copyright (C) 2025-2035 NetPrism Technology
  *
  * You can copy, redistribute or modify this Program under the terms of
  * the GNU General Public License version 2 as published by the Free
@@ -22,6 +22,8 @@
  * This is a plugin for Zenoh to store data in DuckDB.
  */
 
+use std::path::{Path, PathBuf};
+
 use zenoh::{
     internal::zerror,
     try_init_log_from_env, 
@@ -32,6 +34,7 @@ use zenoh_backend_traits::{
     VolumeInstance,
 };
 use zenoh_plugin_trait::{plugin_long_version, plugin_version, Plugin};
+use zenoh_util;
 
 use crate::volume::DuckDBVolume;
 
@@ -84,6 +87,14 @@ impl Plugin for DuckDBBackend {
 }
 
 impl DuckDBBackend {
+    /// Validate if identifier is valid for SQL
+    pub fn is_valid_identifier(name: &str) -> bool {
+        !name.is_empty() 
+            && name.len() <= 64
+            && name.chars().all(|c| c.is_alphanumeric() || c == '_')
+            && name.chars().next().map_or(false, |c| !c.is_ascii_digit())
+    }
+    
     /// Validate the validity of plugin configuration
     fn validate_config(config: &VolumeConfig) -> ZResult<()> {
         tracing::debug!("Validating plugin configuration");
@@ -105,21 +116,53 @@ impl DuckDBBackend {
             }
         }
         
-        // Volume configuration only needs db_path, db_schema and db_table are in storage configuration
-        
-        // Validate db_table_desc configuration (if exists)
-        if let Some(db_table_desc) = config.rest.get("db_table_desc") {
-            if let Some(path_str) = db_table_desc.as_str() {
-                if path_str.is_empty() {
-                    return Err(zerror!("db_table_desc file path cannot be empty").into());
+        // Validate db identifier (if exists)
+        if let Some(db) = config.rest.get("db") {
+            if let Some(db_str) = db.as_str() {
+                if !Self::is_valid_identifier(db_str) {
+                    return Err(zerror!("Invalid database name '{}': must be non-empty, ≤64 chars, alphanumeric+underscore, not start with digit", db_str).into());
                 }
-                // Check if file exists
-                if !std::path::Path::new(path_str).exists() {
-                    return Err(zerror!("db_table_desc file not found: {}", path_str).into());
-                }
-                tracing::debug!("db_table_desc file configured: {}", path_str);
+                tracing::debug!("Database name validated: {}", db_str);
             } else {
-                return Err(zerror!("db_table_desc file path must be a string").into());
+                return Err(zerror!("Database name must be a string").into());
+            }
+        }
+        
+        // Validate table identifier (if exists)
+        if let Some(table) = config.rest.get("table") {
+            if let Some(table_str) = table.as_str() {
+                if !Self::is_valid_identifier(table_str) {
+                    return Err(zerror!("Invalid table name '{}': must be non-empty, ≤64 chars, alphanumeric+underscore, not start with digit", table_str).into());
+                }
+                tracing::debug!("Table name validated: {}", table_str);
+            } else {
+                return Err(zerror!("Table name must be a string").into());
+            }
+        }
+        
+        // Validate schema_file_path configuration (if exists)
+        if let Some(schema_file_path) = config.rest.get("schema_file_path") {
+            if let Some(path_str) = schema_file_path.as_str() {
+                if path_str.is_empty() {
+                    return Err(zerror!("schema_file_path cannot be empty").into());
+                }
+                
+                // Resolve path relative to ZENOH_HOME if needed
+                let path = if Path::new(path_str).is_absolute() {
+                    PathBuf::from(path_str)
+                } else {
+                    zenoh_util::zenoh_home().join(path_str)
+                };
+                
+                // Check if file exists
+                if !path.exists() {
+                    return Err(zerror!("schema_file_path file not found: {} (path: {})", 
+                                     path_str, path.display()).into());
+                }
+                tracing::debug!("schema_file_path configured: {} (path: {})", 
+                              path_str, path.display());
+            } else {
+                return Err(zerror!("schema_file_path must be a string").into());
             }
         }
         

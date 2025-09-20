@@ -1,0 +1,11 @@
+{
+  "engine": {
+    "error": "example_error",
+    "error_code": 132361,
+    "message": "example_message",
+    "module": "example_module",
+    "thread_name": "example_thread_name"
+  },
+  "event_type": "engine",
+  "timestamp": "2023-01-01T12:00:00+00:00"
+}

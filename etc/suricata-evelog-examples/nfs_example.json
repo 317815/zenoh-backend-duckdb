@@ -1,0 +1,109 @@
+{
+  "dest_ip": "10.0.0.1",
+  "dest_port": 28972,
+  "ether": {
+    "dest_mac": "example_dest_mac",
+    "dest_macs": [
+      "example_dest_macs_item_0",
+      "example_dest_macs_item_1",
+      "example_dest_macs_item_2"
+    ],
+    "ether_type": 857150,
+    "src_mac": "example_src_mac",
+    "src_macs": [
+      "example_src_macs_item_0",
+      "example_src_macs_item_1"
+    ]
+  },
+  "event_type": "nfs",
+  "flow_id": 1851044,
+  "host": "auth.service.io",
+  "icmp_code": 625078,
+  "icmp_type": 738908,
+  "in_iface": "example_in_iface",
+  "ip_v": 187677,
+  "metadata": {
+    "entropy": {},
+    "flowbits": [
+      "example_flowbits_item_0",
+      "example_flowbits_item_1",
+      "example_flowbits_item_2",
+      "example_flowbits_item_3",
+      "example_flowbits_item_4"
+    ],
+    "flowints": {},
+    "flowvars": [
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      },
+      {
+        "gid": "example_gid",
+        "key": "example_key",
+        "value": "example_value"
+      }
+    ],
+    "pktvars": [
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      },
+      {
+        "uid": "example_uid",
+        "username": "example_username"
+      }
+    ]
+  },
+  "nfs": {
+    "file_tx": true,
+    "filename": "capture.pcap",
+    "hhash": "example_hhash",
+    "id": 8813071,
+    "procedure": "example_procedure",
+    "read": {
+      "chunks": 595370,
+      "first": true,
+      "last": true,
+      "last_xid": 8856366
+    },
+    "rename": {
+      "from": "example_from",
+      "to": "example_to"
+    },
+    "status": "example_status",
+    "type": "example_type",
+    "version": 101987,
+    "write": {
+      "chunks": 477714,
+      "first": false,
+      "last": false,
+      "last_xid": 8894449
+    }
+  },
+  "parent_id": 3182279,
+  "pcap_cnt": 30,
+  "pcap_filename": "capture.pcap",
+  "pkt_src": "example_pkt_src",
+  "proto": "ICMP6",
+  "src_ip": "192.168.0.50",
+  "src_port": 4549,
+  "suricata_version": "7.0.0",
+  "timestamp": "2023-01-01T12:00:00+00:00",
+  "tx_id": 9950391,
+  "vlan": [
+    947170,
+    708308,
+    52906,
+    111072
+  ]
+}
